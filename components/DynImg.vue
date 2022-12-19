@@ -8,9 +8,7 @@
 	});
 	watchEffect(async () => {
 		src.value = (
-			await import(
-				/* @vite-ignore */ `/_nuxt/assets/${props.imgSrc}.${props.type}`
-			)
+			await import(/* @vite-ignore */ `../assets/${props.imgSrc}.${props.type}`)
 		).default;
 	});
 </script>
