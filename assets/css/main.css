@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*{
+    box-sizing: border-box;
+}
+@layer components{
+    .info-header{
+        @apply font-bold text-base;
+    }
+    .info-text{
+        @apply text-gray-400;
+    }
+    .hover-menu{
+       @apply hover:bg-blue-100 transition-all
+    }
+   
+}
+
+.tiptap-vuetify-editor__content{
+    height:150px;
+}
+.ql-editor{
+    height:150px !important;
+}
+.ql-container.ql-snow{
+    border-radius: 5px !important}
+.ql-toolbar.ql-snow{
+    border-radius: 5px !important;
+}
+
+
+.cell .el-select{
+    position:relative !important;
+    right:13px !important;
+}
+.cell .el-input__wrapper{
+    box-shadow:none !important;
+}
+.cell .el-select .el-input.is-focus .el-input__wrapper{
+    box-shadow:none !important;
+}
+.cell .el-select .el-input__wrapper.is-focus{
+    box-shadow:none !important;
+}
+
+.el-input__inner{
+    font-size:12px !important;
+}
+
+.el-select-dropdown__item span{
+    font-size:12px;
+}
+.filters .el-input__inner{
+    font-size:12px;
+}
+.topbar .el-input__inner{
+    width:120px;
+}
+.topbar .el-input__inner{
+    border:none;
+}
+.el-input__icon{
+    font-size: 9px !important;
+    font-weight: 900 !important;
+    color: black !important;
+}
+.el-select-dropdown__list .el-checkbox__label{
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    padding-left:0px;
+}
+.el-select-dropdown__list .el-checkbox  {
+    display: flex !important;
+    align-items: center;
+    padding: 0 20px !important;
+    flex-direction: row-reverse;
+    justify-content: space-between !important;
+    border:none !important;
+    margin:none !important;
+}

@@ -1,0 +1,472 @@
+<script>
+	export default {
+		data() {
+			return {
+				customers: [
+					{
+						name: "Ashiq Zaman",
+						email: "ashiq.zaman@gmail.com",
+						mobile: "+8801732986106",
+						timeline: [
+							{
+								source: "messenger",
+								data: "Hello",
+								date: "27 April 2022, 7:07 AM",
+								status: "Open",
+							},
+							{
+								source: "Facebook",
+								data: "A new comment",
+								date: "27 April 2022, 7:45 AM",
+								status: "Open",
+							},
+						],
+					},
+				],
+				contactInfo: false,
+				tagsValue: "",
+				info: "",
+				contactPrev: true,
+				form: [
+					{
+						name: "Contact",
+						type: "select",
+						value: "",
+					},
+					{
+						name: "Subject",
+						type: "input",
+						value: "",
+					},
+					{
+						name: "Type",
+						type: "select",
+						value: "",
+						data: [
+							{
+								value: "None",
+								label: "None",
+							},
+							{
+								value: "Question",
+								label: "Question",
+							},
+							{
+								value: "Problem",
+								label: "Problem",
+							},
+							{
+								value: "Feature request",
+								label: "Feature request",
+							},
+							{
+								value: "Refund",
+								label: "Refund",
+							},
+						],
+					},
+					{
+						name: "Source",
+						type: "select",
+						value: "",
+						data: [
+							{
+								value: "Phone",
+								label: "Phone",
+							},
+							{
+								value: "Email",
+								label: "Email",
+							},
+							{
+								value: "Messenger",
+								label: "Messenger",
+							},
+							{
+								value: "Facebook",
+								label: "Facebook",
+							},
+							{
+								value: "Whatsapp",
+								label: "Whatsapp",
+							},
+						],
+					},
+					{
+						name: "Status",
+						type: "select",
+						value: "Open",
+						data: [
+							{
+								value: "Open",
+								label: "Open",
+							},
+							{
+								value: "Pending",
+								label: "Pending",
+							},
+							{
+								value: "Resolved",
+								label: "Resolved",
+							},
+							{
+								value: "Waiting on customer",
+								label: "Waiting on customer",
+							},
+							{
+								value: "Waiting on third party",
+								label: "Waiting on third party",
+							},
+						],
+					},
+					{
+						name: "Priority",
+						type: "select",
+						value: "",
+						data: [
+							{
+								value: "Low",
+								label: "Low",
+							},
+							{
+								value: "Medium",
+								label: "Medium",
+							},
+							{
+								value: "High",
+								label: "High",
+							},
+							{
+								value: "Urgent",
+								label: "Urgent",
+							},
+						],
+					},
+					{
+						name: "Group",
+						type: "select",
+						value: "None",
+						data: [
+							{
+								value: "None",
+								label: "None",
+							},
+							{
+								value: "Billing",
+								label: "Billing",
+							},
+							{
+								value: "Customer Support",
+								label: "Customer Support",
+							},
+							{
+								value: "Escalations",
+								label: "Escalations",
+							},
+							{
+								value: "Refund",
+								label: "Refund",
+							},
+						],
+					},
+					{
+						name: "Agent",
+						type: "select",
+						value: "--",
+						data: [
+							{
+								value: "--",
+								label: "--",
+							},
+							{
+								value: "Ashiq Zaman",
+								label: "Ashiq Zaman",
+							},
+							{
+								value: "Saad",
+								label: "Saad",
+							},
+							{
+								value: "Ishfaq Ahmad",
+								label: "Ishfaq Ahmad",
+							},
+						],
+					},
+				],
+			};
+		},
+	};
+	definePageMeta({
+		layout: false,
+	});
+</script>
+
+<template>
+	<NuxtLayout name="default">
+		<template #title>Tickets</template>
+
+		<div class="flex space-x-5">
+			<div class="bg-white rounded-lg w-10/12 py-10 px-20 space-y-5 shadow">
+				<div class="grid gap-2" v-for="elem in form" :key="elem.name">
+					<label for="contact" class="text-black">
+						{{ elem.name }} <span class="text-red-300">*</span>
+					</label>
+					<!--select elem-->
+					<el-select
+						v-model="elem.value"
+						placeholder="Select"
+						v-show="elem.type === 'select'"
+						filterable
+					>
+						<el-option
+							v-for="item in elem.data"
+							:key="item.value"
+							:label="item.label"
+							:value="item.value"
+						>
+						</el-option>
+					</el-select>
+					<!--select element-->
+					<!--input elem-->
+					<el-input
+						placeholder=""
+						v-model="elem.value"
+						v-show="elem.type === 'input'"
+					></el-input>
+					<!--input elem-->
+				</div>
+				<div class="mt-5 space-y-2">
+					<label for="contact" class="text-black">
+						Description <span class="text-red-300">*</span>
+					</label>
+					<EditorItem />
+				</div>
+				<div class="mt-5 space-y-2">
+					<label for="contact" class="text-black">
+						Tags <span class="text-red-300">*</span>
+					</label>
+					<el-select
+						v-model="tagsValue"
+						multiple
+						filterable
+						allow-create
+						default-first-option
+						placeholder="Choose tags for your article"
+						class="w-full"
+					>
+						<el-option> </el-option>
+					</el-select>
+				</div>
+				<div
+					class="border-t-4 px-2 py-5 sticky bottom-0 border-gray-700 absolute z-50 bg-white flex justify-between"
+				>
+					<div class="left max-w-fit flex items-center gap-2">
+						<input type="checkbox" class="w-4 h-4" />
+						<label for="" class="info-header">Create another</label>
+					</div>
+					<div class="flex max-w-fit items-end gap-2">
+						<button class="py-1 px-3 infoheader border border-gray-400 rounded">
+							Cancel
+						</button>
+						<button
+							class="py-1 px-3 infoheader border border-black bg-blue-800 rounded text-white"
+						>
+							Create
+						</button>
+					</div>
+				</div>
+			</div>
+			<div
+				class="bg-white rounded-lg w-2/12 h-min p-2 flex-col items-center shadow border border-gray-200 justify-center space-y-3"
+			>
+				<button
+					class="flex gap-2 items-center"
+					@click="contactPrev = !contactPrev"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="w-6"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+						/>
+					</svg>
+
+					<span class="info-header"> Contact Details </span>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="2"
+						stroke="currentColor"
+						class="w-4 ml-2"
+						:class="{ 'rotate-180': contactPrev }"
+					>
+						<path
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+						/>
+					</svg>
+				</button>
+
+				<div v-show="contactPrev">
+					<div
+						v-show="!contactInfo"
+						class="flex flex-col items-center gap-2 font-medium text-gray-800"
+						@click="contactInfo = true"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width=".2"
+							stroke="currentColor"
+							class="w-20"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+							/>
+						</svg>
+						<span class="text-[12px] font-semibold"> Pick a Contact </span>
+						<p class="text-[10px] text-center text-gray-500">
+							Their details and recent <br />
+							conversation will appear here
+						</p>
+					</div>
+					<div v-show="contactInfo" class="space-y-2">
+						<button
+							class="flex text-blue-400 self-start gap-1 items-center"
+							@click="contactInfo = false"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="2.5"
+								stroke="currentColor"
+								class="w-[14px]"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"
+								/>
+							</svg>
+
+							<span class="text-[12px]">See other contact</span>
+						</button>
+						<div
+							class="flex gap-2 items-center gap-2 w-full justify-start ml-2"
+						>
+							<img
+								src="~/assets/images/contacts/ashiq.png"
+								alt=""
+								class="w-9 object-cover rounded border border-gray-500 rounded-lg"
+							/>
+							<p>Ashiq Zaman</p>
+						</div>
+						<div class="flex flex-col gap-[10px] items-start w-full pl-5 mt-1">
+							<div class="flex flex-col">
+								<span class="text-gray-400 text-[11px]">Emails</span>
+								<span class="text-[12px]">ashiq.zaman@gmail.com</span>
+							</div>
+							<div class="flex flex-col">
+								<span class="text-gray-400 text-[11px]">Work Phone</span>
+								<span class="text-[12px]">+8801732986106</span>
+							</div>
+							<div class="flex gap-1 text-blue-400">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke-width="1.5"
+									stroke="currentColor"
+									class="w-[14px]"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"
+									/>
+								</svg>
+
+								<span class="text-[12px]">view more info</span>
+							</div>
+							<div class="flex flex-col text-[10px] gap-6">
+								<span class="text-gray-400 text-[11px]">Timeline</span>
+								<div
+									class="relative py-2 px-2 flex flex-col border-l border-blue-300 space-y-[-4px] font-light text-black"
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 512 512"
+										class="w-3 object-cover text-blue-400 fill-current absolute top-[-16px] left-[-6px]"
+									>
+										<!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+										<path
+											d="M256.55 8C116.52 8 8 110.34 8 248.57c0 72.3 29.71 134.78 78.07 177.94 8.35 7.51 6.63 11.86 8.05 58.23A19.92 19.92 0 0 0 122 502.31c52.91-23.3 53.59-25.14 62.56-22.7C337.85 521.8 504 423.7 504 248.57 504 110.34 396.59 8 256.55 8zm149.24 185.13l-73 115.57a37.37 37.37 0 0 1-53.91 9.93l-58.08-43.47a15 15 0 0 0-18 0l-78.37 59.44c-10.46 7.93-24.16-4.6-17.11-15.67l73-115.57a37.36 37.36 0 0 1 53.91-9.93l58.06 43.46a15 15 0 0 0 18 0l78.41-59.38c10.44-7.98 24.14 4.54 17.09 15.62z"
+										/>
+									</svg>
+									<span class="text-[11px] font-semibold">Hello</span>
+									<span>27 April, 2022, 7:07 AM</span>
+									<span>Status: Open</span>
+								</div>
+								<div
+									class="py-2 px-2 flex flex-col border-l border-blue-300 relative space-y-[-4px] font-light text-black"
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 512 512"
+										class="w-3 object-cover text-blue-400 fill-current absolute top-[-16px] left-[-6px]"
+									>
+										<!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+										<path
+											d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"
+										/>
+									</svg>
+
+									<span class="text-[11px] font-semibold">A new </span>
+									<span>27 April, 2022, 7:07 AM</span>
+									<span>Status: Open</span>
+								</div>
+							</div>
+							<div class="flex gap-1 text-blue-400 items-center">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke-width="2.5"
+									stroke="currentColor"
+									class="w-[14px]"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+									/>
+								</svg>
+
+								<span class="text-[12px]">view all activity</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</NuxtLayout>
+</template>
+<style scoped>
+	.margin-det {
+		margin-top: 5px !important;
+		margin-bottom: -10px !important;
+	}
+</style>
