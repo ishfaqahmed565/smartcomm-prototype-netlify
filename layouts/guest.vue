@@ -22,18 +22,10 @@
 			class="z-10 absolute bottom-[5px] flex justify-between w-full items-center"
 		>
 			<div class="max-w-[200px] sm:max-w-[280px]">
-				<img
-					src="~/assets/images/login/footer_1.png"
-					alt=""
-					class="object-cover"
-				/>
+				<img src="/images/login/footer_1.png" alt="" class="object-cover" />
 			</div>
 			<div class="max-w-[200px] sm:max-w-[320px]">
-				<img
-					src="~/assets/images/login/footer_2.png"
-					alt=""
-					class="object-cover"
-				/>
+				<img src="/images/login/footer_2.png" alt="" class="object-cover" />
 			</div>
 		</div>
 	</div>

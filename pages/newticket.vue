@@ -243,14 +243,9 @@
 					</div>
 				</div>
 			</div>
-			<div
-				class="bg-white rounded-lg w-2/12 h-min p-2 flex-col items-center shadow border border-gray-200 justify-center space-y-3"
-			>
-				<button
-					class="flex gap-2 items-center"
-					@click="contactPrev = !contactPrev"
-				>
-					<svg
+			<SideStickyDrop>
+				<template #head-logo
+					><svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
 						viewBox="0 0 24 24"
@@ -264,27 +259,10 @@
 							d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
 						/>
 					</svg>
-
-					<span class="info-header"> Contact Details </span>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="2"
-						stroke="currentColor"
-						class="w-4 ml-2"
-						:class="{ 'rotate-180': contactPrev }"
-					>
-						<path
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-						/>
-					</svg>
-				</button>
-
-				<div v-show="contactPrev">
-					<div
+				</template>
+				<template #head-title>Contact Details </template>
+				<template #drop-data
+					><div
 						v-show="!contactInfo"
 						class="flex flex-col items-center gap-2 font-medium text-gray-800"
 						@click="contactInfo = true"
@@ -425,9 +403,9 @@
 								<span class="text-[12px]">view all activity</span>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
+					</div></template
+				>
+			</SideStickyDrop>
 		</div>
 	</NuxtLayout>
 </template>
