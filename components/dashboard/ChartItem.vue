@@ -1,5 +1,11 @@
 <template>
-	<apexchart type="bar" height="350" :options="chartOptions" :series="series" />
+	<client-only
+		><apexchart
+			type="bar"
+			height="350"
+			:options="chartOptions"
+			:series="series"
+	/></client-only>
 </template>
 
 <script>

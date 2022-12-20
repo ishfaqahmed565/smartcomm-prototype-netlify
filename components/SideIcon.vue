@@ -9,9 +9,8 @@
 		:to="nav"
 		class="bg-none hover:bg-gray-700 group rounded-lg p-2 relative flex transition-all ease-linear"
 	>
-		<DynImg
-			:imgSrc="`svgs/sidebar/${props.sideData.img}`"
-			:type="'svg'"
+		<img
+			:src="`/svgs/sidebar/${props.sideData.img}.svg`"
 			class="w-[17px] object-cover filter-bg dynImg"
 		/>
 		<div
