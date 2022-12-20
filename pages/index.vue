@@ -12,7 +12,7 @@
 					class="bg-blue-600 text-white font-semibold mx-auto flex p-[5px] gap-4 justify-between hover:shadow-lg hover:shadow-blue-400 shadow-gray-900 rounded"
 				>
 					<div class="bg-white flex items-center justify-center p-1">
-						<img src="~/assets/images/google.png" alt="" />
+						<img src="/images/google.png" alt="" />
 					</div>
 					Sign in with Google
 				</a>

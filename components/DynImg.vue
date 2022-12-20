@@ -6,12 +6,7 @@
 		imgSrc: String,
 		type: String,
 	});
-	watchEffect(async () => {
-		src.value = (
-			await import(/* @vite-ignore */ `../assets/${props.imgSrc}.${props.type}`)
-		).default;
-	});
 </script>
 <template>
-	<img :src="src" alt="" />
+	<img :src="`../assets/${props.imgSrc}.${props.type}`" alt="" />
 </template>
