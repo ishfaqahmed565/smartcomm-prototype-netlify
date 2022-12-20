@@ -157,7 +157,7 @@
 				<template #default="scope"
 					><div class="flex items-center gap-2">
 						<img
-							src="~/assets/images/contacts/ashiq.png"
+							src="/images/contacts/ashiq.png"
 							alt=""
 							class="w-7 object-cover rounded"
 						/>

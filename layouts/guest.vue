@@ -2,7 +2,7 @@
 	<div class="h-[100vh] py-5">
 		<div class="relative z-50">
 			<img
-				src="~/assets/images/logo.png"
+				src="/images/logo.png"
 				alt=""
 				class="w-[150px] object-cover self-center mx-auto"
 			/>
