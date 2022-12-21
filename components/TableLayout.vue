@@ -183,7 +183,7 @@
 					>
 						<el-option
 							v-for="item in selectElemInfo.group"
-							:key="item.name"
+							:key="item.value"
 							:label="item.label"
 							:value="item.value"
 						>
@@ -194,7 +194,7 @@
 			<el-table-column label="State" v-if="showCol('State')">
 				<template #default="scope">
 					<div
-						class="text-white w-max px-2 py-[5px] rounded-[4px]"
+						class="text-white w-max px-2 py-[4px] rounded"
 						:class="{
 							'bg-red-500': scope.row.state === 'Overdue',
 							'bg-green-500': scope.row.state === 'New',
@@ -211,7 +211,7 @@
 					<el-select v-model="scope.row.agent" filterable>
 						<el-option
 							v-for="item in selectElemInfo.agents"
-							:key="item.name"
+							:key="item.value"
 							:label="item.label"
 							:value="item.value"
 						>
@@ -243,7 +243,7 @@
 						</template>
 						<el-option
 							v-for="item in selectElemInfo.priority"
-							:key="item.name"
+							:key="item.value"
 							:label="item.label"
 							:value="item.value"
 						>
@@ -268,7 +268,7 @@
 					>
 						<el-option
 							v-for="item in selectElemInfo.status"
-							:key="item.name"
+							:key="item.value"
 							:label="item.label"
 							:value="item.value"
 						>

@@ -14,6 +14,13 @@
     .hover-menu{
        @apply hover:bg-blue-100 transition-all
     }
+    .ticket-info-section{
+        @apply p-3 bg-white rounded-sm
+
+    }
+    .ticket-info__main-section{
+        @apply py-2 border-b border-gray-100
+    }
    
 }
 

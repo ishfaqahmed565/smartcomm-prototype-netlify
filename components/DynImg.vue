@@ -8,5 +8,5 @@
 	});
 </script>
 <template>
-	<img :src="`../assets/${props.imgSrc}.${props.type}`" alt="" />
+	<img :src="`/${props.imgSrc}.${props.type}`" alt="" />
 </template>

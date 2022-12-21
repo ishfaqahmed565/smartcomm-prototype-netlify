@@ -6,7 +6,7 @@
 </script>
 <template>
 	<NuxtLink
-		:to="nav"
+		:to="`/${props.sideData.img}`"
 		class="bg-none hover:bg-gray-700 group rounded-lg p-2 relative flex transition-all ease-linear"
 	>
 		<img

@@ -1,6 +1,11 @@
-<script setup>
-	import { ref } from "vue";
+<script lang="ts" setup>
+	import { defineComponent, ref } from "vue";
 	import useDetectOutsideClick from "../composable/useDetectOutsideClick.js";
+
+	const newTab = ref(false);
+	const profileShow = ref(false);
+	const tabButton = ref(null);
+	const profileButton = ref(null);
 	const side1 = [
 		{ name: "Dashboard", img: "dashboard" },
 		{ name: "Customer", img: "customer" },
@@ -29,10 +34,6 @@
 		{ name: "Waiting Tickets", to: "waiting-tickets", number: 20 },
 		{ name: "New Messages", to: "new-messages", number: 2 },
 	];
-	const newTab = ref(false);
-	const profileShow = ref(false);
-	const tabButton = ref(null);
-	const profileButton = ref(null);
 	useDetectOutsideClick(profileButton, () => {
 		profileShow.value = false;
 	});
@@ -86,7 +87,7 @@
 							:key="nav.to"
 							class="shadow-sm border active:translate-y-px p-1 rounded-md relative hover:bg-gray-200 transition-all"
 						>
-							<NuxtLink :to="nav.to">
+							<NuxtLink :to="`/${nav.to}`">
 								{{ nav.name }}
 								<span
 									class="absolute bg-red-500 text-white right-0 rounded-md top-[-10px] right-[-10px] px-2 text-xs"

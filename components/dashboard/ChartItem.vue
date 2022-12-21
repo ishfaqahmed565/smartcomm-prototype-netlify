@@ -1,11 +1,14 @@
 <template>
-	<client-only
-		><apexchart
+	<!--
+	<client-only fallback-tag="span" fallback="Loading comments...">
+		<apexchart
 			type="bar"
 			height="350"
 			:options="chartOptions"
 			:series="series"
-	/></client-only>
+		/> </client-only
+	>-->
+	<div></div>
 </template>
 
 <script>
