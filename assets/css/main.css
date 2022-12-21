@@ -15,11 +15,14 @@
        @apply hover:bg-blue-100 transition-all
     }
     .ticket-info-section{
-        @apply p-3 bg-white rounded-sm
+        @apply p-3 bg-white rounded-lg shadow
 
     }
+    .ticket-info__time{
+        @apply text-gray-400 text-[9px]
+    }
     .ticket-info__main-section{
-        @apply py-2 border-b border-gray-100
+        @apply py-2 border-b border-gray-200
     }
    
 }

@@ -1,9 +1,148 @@
-<script>
+<script lang="ts">
+	import { defineComponent, ref } from "vue";
+	import FormEl from "~/types/FormEl";
 	export default defineComponent({
 		setup() {
 			const route = useRoute();
 			const id = computed(() => route.params.id);
-			return { id };
+			const showActivity = ref(false);
+			const formData = ref<FormEl[]>([
+				{
+					name: "Tags",
+					type: "tags",
+					value: "",
+					data: [{ value: "Important", label: "Important" }],
+				},
+				{
+					name: "Type",
+					type: "select",
+					value: "",
+					data: [
+						{
+							value: "None",
+							label: "None",
+						},
+						{
+							value: "Question",
+							label: "Question",
+						},
+						{
+							value: "Problem",
+							label: "Problem",
+						},
+						{
+							value: "Feature request",
+							label: "Feature request",
+						},
+						{
+							value: "Refund",
+							label: "Refund",
+						},
+					],
+				},
+
+				{
+					name: "Status",
+					type: "select",
+					value: "Open",
+					data: [
+						{
+							value: "Open",
+							label: "Open",
+						},
+						{
+							value: "Pending",
+							label: "Pending",
+						},
+						{
+							value: "Resolved",
+							label: "Resolved",
+						},
+						{
+							value: "Waiting on customer",
+							label: "Waiting on customer",
+						},
+						{
+							value: "Waiting on third party",
+							label: "Waiting on third party",
+						},
+					],
+				},
+				{
+					name: "Priority",
+					type: "select",
+					value: "",
+					data: [
+						{
+							value: "Low",
+							label: "Low",
+						},
+						{
+							value: "Medium",
+							label: "Medium",
+						},
+						{
+							value: "High",
+							label: "High",
+						},
+						{
+							value: "Urgent",
+							label: "Urgent",
+						},
+					],
+				},
+				{
+					name: "Group",
+					type: "select",
+					value: "None",
+					data: [
+						{
+							value: "None",
+							label: "None",
+						},
+						{
+							value: "Billing",
+							label: "Billing",
+						},
+						{
+							value: "Customer Support",
+							label: "Customer Support",
+						},
+						{
+							value: "Escalations",
+							label: "Escalations",
+						},
+						{
+							value: "Refund",
+							label: "Refund",
+						},
+					],
+				},
+				{
+					name: "Agent",
+					type: "select",
+					value: "--",
+					data: [
+						{
+							value: "--",
+							label: "--",
+						},
+						{
+							value: "Ashiq Zaman",
+							label: "Ashiq Zaman",
+						},
+						{
+							value: "Saad",
+							label: "Saad",
+						},
+						{
+							value: "Ishfaq Ahmad",
+							label: "Ishfaq Ahmad",
+						},
+					],
+				},
+			]);
+			return { id, formData, showActivity };
 		},
 	});
 	definePageMeta({
@@ -153,7 +292,7 @@
 						</NavButton>
 					</div>
 					<div class="gap-2 flex">
-						<NavButton>
+						<NavButton @click="showActivity = !showActivity">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -165,7 +304,7 @@
 								<path
 									stroke-linecap="round"
 									stroke-linejoin="round"
-									d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+									d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0118 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3l1.5 1.5 3-3.75"
 								/>
 							</svg>
 
@@ -177,64 +316,256 @@
 			</template>
 			<!--Second bar edit options end here-->
 			<div class="flex gap-3">
-				<div class="w-10/12 ticket-info-section">
-					<div class="ticket-info__main-section">
-						<div class="text-white w-max px-2 py-[4px] bg-red-600 rounded">
-							Overdue
+				<div class="w-8/12 ticket-info-section">
+					<div v-if="!showActivity">
+						<div class="ticket-info__main-section">
+							<div class="text-white w-max px-2 py-[4px] bg-red-600 rounded">
+								Overdue
+							</div>
 						</div>
+						<!--Ticket state ends here-->
+						<div class="ticket-info__main-section flex items-center gap-2">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="2"
+								stroke="currentColor"
+								class="w-4"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
+								/>
+							</svg>
+							<h2 class="info-header">Email address changed</h2>
+						</div>
+						<!--Ticket subject end here-->
+						<div class="client-message">
+							<TicketListProfileInfo class="ticket-info__main-section">
+								<template #name>Ashiq Zaman</template>
+								<template #ticket-source> reported via phone </template>
+								<template #ticket-time
+									>4 months ago (Sun 17 April 2022 at 6:00 PM)</template
+								>
+							</TicketListProfileInfo>
+							<!--Ticket profile info and ticket time ends here-->
+							<div class="info-text text-xs leading-6">
+								Hi, <br />
+								I need to update my email address. I want to know if I'will
+								loose access to my account if my email address is changed. I've
+								added quite a few products to my card and I don't want to look
+								for them again. It would be great to continue using this a count
+								with my email address. Please let me know if that's possible.
+								<br />
+								Regards, <br />Ashiq Zaman
+							</div>
+						</div>
+						<!--Ticket Client subject end here-->
+						<div class="p-2 bg-blue-100/[.5] rounded mt-5">
+							<TicketListProfileInfo>
+								<template #name>Customer Service</template>
+								<template #ticket-status>replied</template>
+								<template #ticket-time
+									>4 months ago (Sun 17 April at 8:00PM)</template
+								>
+							</TicketListProfileInfo>
+							<span class="text-xs"> To: ashiqzaman@gmail.com </span>
+							<p class="info-text text-xs leading-6">
+								Hi, Ashiq Zaman <br />
+								The good news is that you will loose the items in your cart when
+								you change your email address. A verification email will be senf
+								your email address when you update it. Once you successfully
+								update your email address. you can acess you account as usual.
+								If you have any other questions we alway here to help. <br />
+								Thank you, <br />
+								Customer Service.
+							</p>
+						</div>
+						<!--Ticket reply ends here-->
 					</div>
-					<!--Ticket state ends here-->
-					<div class="ticket-info__main-section flex items-center gap-2">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke-width="2"
-							stroke="currentColor"
-							class="w-4"
+					<!--show activity feature section starts here-->
+					<div class="space-y-3" v-if="showActivity">
+						<div class="shadow border rounded p-2 flex">
+							<TicketListProfileInfo>
+								<template #name>Ashiq Zaman</template>
+								<template #ticket-source>reported via phone</template>
+								<template #ticket-time
+									>4 months ago (Sun 17 April 2022 at 6:00 PM)</template
+								>
+							</TicketListProfileInfo>
+						</div>
+						<!--Activity 1-->
+						<div
+							class="shadow bg-blue-100 border rounded p-2 flex justify-between"
 						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
-							/>
-						</svg>
-						<h2 class="info-header">Email address changed</h2>
-					</div>
-					<!--Ticket subject end here-->
-					<div class="ticket-info__main-section flex items-center gap-2">
-						<img
-							src="/images/contacts/ashiq.png"
-							alt="profile-picture"
-							class="w-10 h-10 object-cover rounded"
-						/>
-						<div>
-							<div class="flex items-center gap-2">
-								<h3 class="contact-name font-semibold text-blue-400">
-									Ashiq Zaman
-								</h3>
-								<p class="info-text text-[9px] italic">reported via phone</p>
-							</div>
-							<div>
-								<p class="info-text text-[9px] italic">
-									4 months ago (Sun 17 April 2022 at 6:00 pm)
-								</p>
-							</div>
+							<TicketListProfileInfo>
+								<template #name>Customer Service</template>
+								<template #ticket-source>replied</template>
+								<template #ticket-time
+									>4 months ago (Sun 17 April 2022 at 6:00 PM)</template
+								>
+							</TicketListProfileInfo>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="2"
+								stroke="currentColor"
+								class="w-3 ml-2"
+							>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+								/>
+							</svg>
 						</div>
+						<!--Activity 2-->
+						<div
+							class="shadow bg-blue-100 border rounded p-2 flex justify-between"
+						>
+							<TicketListProfileInfo>
+								<template #name>System</template>
+								<template #ticket-source
+									>executed an automation
+									<strong class="text-gray-500"
+										>When a ticket has been overdue for a long time, assign it
+										to the Escalations team</strong
+									></template
+								>
+								<template #ticket-time
+									>4 months ago (Sun 17 April 2022 at 6:00 PM)</template
+								>
+							</TicketListProfileInfo>
+							<button
+								class="rounded-full text-[8px] bg-blue-200 text-blue-700 h-fit px-2 py-[2px]"
+							>
+								Group updated
+							</button>
+						</div>
+						<!--Activity 3-->
 					</div>
-					<!--Ticket profile info and ticket time ends here-->
-					<div class="ticket-info__main-section info-text text-xs leading-6">
-						Hi, <br />
-						I need to update my email address. I want to knwo if I'will loose
-						access to my account if my email address is changed. I've added
-						quite a few products to my card and I don't want to look for them
-						again. It would be great to continue using this a count with my
-						email address. Please let me know if that's possible. <br />
-						Regards, <br />Ashiq Zaman
+					<!--show activity feature section ends here-->
+				</div>
+				<div class="w-2/12 ticket-info-section space-y-3">
+					<div class="flex gap-1">
+						<h3 class="info-header">Status:</h3>
+						<p class="info-text">Open</p>
+					</div>
+					<div class="ticket-info__main-section pt-0">
+						<div class="flex items-center gap-1 text-[10px] font-semibold">
+							<button class="p-[5px] bg-red-500 rounded-full"></button>
+							<p class="uppercase">Resoltion Due</p>
+							<NuxtLink class="text-[9px] text-blue-400">Edit</NuxtLink>
+						</div>
+						<p class="ticket-info__time">by Mon 19 Apr 2022, 08:00PM</p>
+					</div>
+					<div class="space-y-3">
+						<h3 class="info-header">Properties</h3>
+						<FormElems :formData="formData" class="space-y-[10px]" />
+
+						<EventBut class="w-full"> Update </EventBut>
 					</div>
 				</div>
-				<div class="w-2/12 ticket-info-section"></div>
-				<div class="w-2/12 ticket-info-section"></div>
+				<div class="w-2/12 space-y-2">
+					<SideStickyDrop class="w-full">
+						<template #head-logo>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								class="w-5"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+								/>
+							</svg>
+						</template>
+						<template #head-title> TIME LOGS </template>
+						<template #drop-data>
+							<div class="p-2 space-y-3">
+								<h2 class="w-full info-header">
+									Start tracking the time you spend on the ticket
+								</h2>
+								<EventBut> Log Time </EventBut>
+							</div>
+						</template>
+					</SideStickyDrop>
+					<SideStickyDrop class="w-full">
+						<template #head-logo>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								class="w-5"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+								/>
+							</svg>
+						</template>
+						<template #head-title> Details </template>
+						<template #drop-data>
+							<div class="p-2 space-y-3">
+								<h2 class="w-full info-header">
+									Start tracking the time you spend on the ticket
+								</h2>
+								<EventBut> Log Time </EventBut>
+							</div>
+						</template>
+					</SideStickyDrop>
+					<SideStickyDrop class="w-full">
+						<template #head-logo>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								class="w-5"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z"
+								/>
+							</svg>
+						</template>
+						<template #head-title> TO-DO </template>
+						<template #drop-data>
+							<div
+								class="p-2 flex items-center ticket-info__main-section gap-2"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke-width="1.5"
+									stroke="currentColor"
+									class="w-5 text-green-400"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+									/>
+								</svg>
+								<p class="info-text">Add a todo</p>
+							</div>
+						</template>
+					</SideStickyDrop>
+				</div>
+				<!--Side sticky dropdowns end here-->
 			</div>
 		</NuxtLayout>
 	</div>

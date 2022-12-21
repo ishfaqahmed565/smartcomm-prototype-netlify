@@ -64,9 +64,7 @@
 			</div>
 			<!--Six info ends here-->
 			<div class="bg-white rounded-lg grid grid-cols-5">
-				<div class="col-span-3">
-					<DashboardChartItem />
-				</div>
+				<div class="col-span-3"></div>
 				<div class="stats col-span-2 grid-cols-2 gap-2 grid p-10">
 					<div
 						v-for="stat in stats"

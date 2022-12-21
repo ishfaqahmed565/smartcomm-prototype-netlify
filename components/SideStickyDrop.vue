@@ -10,19 +10,26 @@
 </script>
 <template>
 	<div
-		class="bg-white rounded-lg w-2/12 h-min p-2 flex-col items-center shadow border border-gray-200 justify-center space-y-3"
+		class="bg-white rounded-lg h-min p-2 flex-col items-center shadow border border-gray-200 justify-center space-y-3 w-full"
 	>
-		<button class="flex gap-2 items-center" @click="dropDown = !dropDown">
-			<slot name="head-logo"></slot>
+		<button
+			class="flex gap-2 items-center justify-between w-full"
+			@click="dropDown = !dropDown"
+		>
+			<div class="flex gap-2">
+				<slot name="head-logo"></slot>
 
-			<span class="info-header"> <slot name="head-title"></slot></span>
+				<span class="font-semibold text-sm uppercase">
+					<slot name="head-title"></slot
+				></span>
+			</div>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
 				viewBox="0 0 24 24"
 				stroke-width="2"
 				stroke="currentColor"
-				class="w-4 ml-2"
+				class="w-3 ml-2"
 				:class="{ 'rotate-180': dropDown }"
 			>
 				<path
