@@ -155,7 +155,7 @@
 			<el-table-column type="selection"> </el-table-column>
 			<el-table-column label="Contact">
 				<template #default="scope"
-					><div class="flex items-center gap-2">
+					><NuxtLink to="/contacts/1" class="flex items-center gap-2">
 						<img
 							src="/images/contacts/ashiq.png"
 							alt=""
@@ -163,7 +163,7 @@
 						/>
 
 						<span>{{ scope.row.contact }}</span>
-					</div></template
+					</NuxtLink></template
 				>
 			</el-table-column>
 

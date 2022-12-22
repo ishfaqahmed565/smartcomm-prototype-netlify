@@ -154,8 +154,8 @@
 		<NuxtLayout name="default">
 			<template #title>Tickets > {{ id }} </template>
 			<template #secondbar>
-				<div class="p-3 flex justify-between w-full">
-					<div class="flex gap-2">
+				<div class="second-bar">
+					<div class="second-bar__section">
 						<NavButton>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -291,7 +291,7 @@
 							</svg>
 						</NavButton>
 					</div>
-					<div class="gap-2 flex">
+					<div class="second-bar__section">
 						<NavButton @click="showActivity = !showActivity">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -316,7 +316,7 @@
 			</template>
 			<!--Second bar edit options end here-->
 			<div class="flex gap-3">
-				<div class="w-8/12 ticket-info-section">
+				<div class="w-8/12 feature-container">
 					<div v-if="!showActivity">
 						<div class="ticket-info__main-section">
 							<div class="text-white w-max px-2 py-[4px] bg-red-600 rounded">
@@ -449,7 +449,7 @@
 					</div>
 					<!--show activity feature section ends here-->
 				</div>
-				<div class="w-2/12 ticket-info-section space-y-3">
+				<div class="w-2/12 feature-container space-y-3">
 					<div class="flex gap-1">
 						<h3 class="info-header">Status:</h3>
 						<p class="info-text">Open</p>
@@ -497,7 +497,7 @@
 							</div>
 						</template>
 					</SideStickyDrop>
-					<SideStickyDrop class="w-full">
+					<SideStickyDrop>
 						<template #head-logo>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -524,7 +524,7 @@
 							</div>
 						</template>
 					</SideStickyDrop>
-					<SideStickyDrop class="w-full">
+					<SideStickyDrop>
 						<template #head-logo>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"

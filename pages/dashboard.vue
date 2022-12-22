@@ -29,7 +29,7 @@
 		<NuxtLayout name="default">
 			<template #title>My Dashboard</template>
 			<template #secondbar>
-				<div class="p-3">
+				<div class="second-bar">
 					<button class="flex gap-1 items-center">
 						<span>All Groups </span>
 						<svg
@@ -54,7 +54,7 @@
 				<div
 					v-for="task in tasks"
 					:key="task.name"
-					class="px-4 py-3 rounded-lg bg-white grid group hover:text-blue-400 transition-all"
+					class="feature-container grid group hover:text-blue-400 transition-all"
 				>
 					<span class="info-header">{{ task.name }}</span>
 					<span class="info-text group-hover:text-blue-400 transition-all"
@@ -63,13 +63,13 @@
 				</div>
 			</div>
 			<!--Six info ends here-->
-			<div class="bg-white rounded-lg grid grid-cols-5">
+			<div class="feature-container grid grid-cols-5">
 				<div class="col-span-3"></div>
-				<div class="stats col-span-2 grid-cols-2 gap-2 grid p-10">
+				<div class="stats col-span-2 grid-cols-2 gap-2 grid">
 					<div
 						v-for="stat in stats"
 						:key="stat.name"
-						class="px-4 py-3 grid group hover:text-blue-400 transition-all"
+						class="px-4 py-3 grid gap-2 group hover:text-blue-400 transition-all"
 					>
 						<span class="info-header w-max">{{ stat.name }}</span>
 						<span class="info-text group-hover:text-blue-400 transition-all"
@@ -80,7 +80,7 @@
 			</div>
 			<!--Chart info ends here-->
 			<div class="grid grid-cols-2 gap-4">
-				<div class="bg-white rounded-lg p-4">
+				<div class="feature-container p-4">
 					<div class="todo-header ml-2">
 						<h3 class="info-header mb-1">To-do</h3>
 						<div class="flex space-x-1">
@@ -104,7 +104,7 @@
 					<hr />
 				</div>
 				<!--Todo ends here-->
-				<div class="bg-white rounded-lg p-4 feedback space-y-2">
+				<div class="feature-container feedback space-y-2">
 					<div class="feedback-header">
 						<h3 class="info-header">Customer satisfaction</h3>
 						<span class="info-text">Accross helpdesk this month</span>

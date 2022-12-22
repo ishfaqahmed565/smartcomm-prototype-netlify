@@ -5,8 +5,11 @@
     box-sizing: border-box;
 }
 @layer components{
+    .feature-container{
+        @apply bg-white p-4 rounded-lg shadow
+    }
     .info-header{
-        @apply font-bold text-base;
+        @apply font-semibold text-sm;
     }
     .info-text{
         @apply text-gray-400;
@@ -14,10 +17,14 @@
     .hover-menu{
        @apply hover:bg-blue-100 transition-all
     }
-    .ticket-info-section{
-        @apply p-3 bg-white rounded-lg shadow
-
+    .second-bar{
+        @apply flex p-3 justify-between w-full items-center
     }
+    .second-bar__section{
+        @apply flex gap-2 items-center
+        
+    }
+    
     .ticket-info__time{
         @apply text-gray-400 text-[9px]
     }

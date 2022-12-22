@@ -102,7 +102,7 @@
 		<NuxtLayout name="default">
 			<template #title> Tickets </template>
 			<template #secondbar>
-				<div class="p-3 flex justify-between w-full items-center">
+				<div class="second-bar">
 					<el-select
 						v-show="!showEditOptions"
 						v-model="value"
@@ -126,7 +126,7 @@
 							>
 						</div>
 					</el-select>
-					<div v-if="showEditOptions" class="flex gap-2">
+					<div v-if="showEditOptions" class="second-bar__section">
 						<NavButton>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -260,7 +260,7 @@
 							<span>Delete</span>
 						</NavButton>
 					</div>
-					<div class="flex gap-3 items-center">
+					<div class="second-bar__section">
 						<NavButton
 							><svg
 								xmlns="http://www.w3.org/2000/svg"

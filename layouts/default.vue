@@ -44,7 +44,7 @@
 
 <template>
 	<div class="flex bg-gray-100">
-		<div class="bg-[#1E1E2D] min-h-[100vh]">
+		<div class="bg-[#1E1E2D] min-h-[100vh] z-[99999]">
 			<div class="sidebar p-2 gap-5 flex flex-col items-center">
 				<img src="/images/logo2.png" alt="" class="w-[50px] object-cover" />
 				<div class="space-y-[3rem]">

@@ -13,13 +13,13 @@
 		class="bg-white rounded-lg h-min p-2 flex-col items-center shadow border border-gray-200 justify-center space-y-3 w-full"
 	>
 		<button
-			class="flex gap-2 items-center justify-between w-full"
+			class="flex gap-2 items-center justify-between w-full h-full"
 			@click="dropDown = !dropDown"
 		>
 			<div class="flex gap-2">
 				<slot name="head-logo"></slot>
 
-				<span class="font-semibold text-sm uppercase">
+				<span class="info-header uppercase">
 					<slot name="head-title"></slot
 				></span>
 			</div>
