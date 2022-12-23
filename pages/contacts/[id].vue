@@ -362,6 +362,7 @@
 					<div class="feature-container" v-show="showNotes"></div>
 				</div>
 				<div class="w-2/12 space-y-2">
+					<!--SideStickyDrop Details starts here-->
 					<SideStickyDrop>
 						<template #head-logo>
 							<svg
@@ -381,14 +382,46 @@
 						</template>
 						<template #head-title> Details </template>
 						<template #drop-data>
-							<div class="p-2 space-y-3">
-								<h2 class="w-full info-header">
-									Start tracking the time you spend on the ticket
-								</h2>
-								<EventBut> Log Time </EventBut>
+							<div class="grid gap-4 px-2">
+								<!--Side Sticky info section tags starts here-->
+								<div class="overflow-hidden">
+									<h4 class="sidesticky-info-header">Tags</h4>
+									<p class="sidesticky-info-text truncate">Important</p>
+								</div>
+								<!--Side Sticky info section tags ends here-->
+								<!--Side Sticky info section Emails starts here-->
+								<div class="overflow-hidden">
+									<h4 class="sidesticky-info-header">Emails</h4>
+									<p class="sidesticky-info-text truncate">
+										ashiqzaman@gmail.com
+									</p>
+								</div>
+								<!--Side Sticky info section Emails ends here-->
+								<!--Side Sticky info section tags starts here-->
+								<div class="overflow-hidden">
+									<h4 class="sidesticky-info-header">Address</h4>
+									<p class="sidesticky-info-text truncate">Dhaka</p>
+								</div>
+								<!--Side Sticky info section tags ends here-->
+								<!--Side Sticky info section tags starts here-->
+								<div class="overflow-hidden">
+									<h4 class="sidesticky-info-header">Time Zone</h4>
+									<p class="sidesticky-info-text truncate">
+										BD Time (Bangladesh)
+									</p>
+								</div>
+								<!--Side Sticky info section tags ends here-->
+								<!--Side Sticky info section tags starts here-->
+								<div class="overflow-hidden">
+									<h4 class="sidesticky-info-header">Language</h4>
+									<p class="sidesticky-info-text truncate">English</p>
+								</div>
+								<!--Side Sticky info section tags ends here-->
 							</div>
 						</template>
 					</SideStickyDrop>
+					<!--SideStickyDrop Details starts here-->
+					<!--SideStickyDrop Todo starts here-->
 					<SideStickyDrop>
 						<template #head-logo>
 							<svg
@@ -408,9 +441,7 @@
 						</template>
 						<template #head-title> TO-DO </template>
 						<template #drop-data>
-							<div
-								class="p-2 flex items-center ticket-info__main-section gap-2"
-							>
+							<div class="flex items-center ticket-info__main-section gap-2">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									fill="none"
@@ -425,10 +456,11 @@
 										d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
 									/>
 								</svg>
-								<p class="info-text">Add a todo</p>
+								<p class="sidesticky-info-text">Add a todo</p>
 							</div>
 						</template>
 					</SideStickyDrop>
+					<!--SideStickyDrop Todo starts here-->
 				</div>
 			</div>
 			<!--Edit modal starts here-->

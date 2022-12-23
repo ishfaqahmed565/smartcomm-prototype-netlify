@@ -3,6 +3,169 @@
 		data() {
 			return {
 				selectedRows: [],
+				filters: [
+					{
+						name: "Contact",
+						type: "select",
+						value: "Ashiq Zaman",
+						data: [{ value: "Ashiq Zaman", label: "Ashiq Zaman" }],
+					},
+
+					{
+						name: "Type",
+						type: "select",
+						value: "None",
+						data: [
+							{
+								value: "None",
+								label: "None",
+							},
+							{
+								value: "Question",
+								label: "Question",
+							},
+							{
+								value: "Problem",
+								label: "Problem",
+							},
+							{
+								value: "Feature request",
+								label: "Feature request",
+							},
+							{
+								value: "Refund",
+								label: "Refund",
+							},
+						],
+					},
+					{
+						name: "Source",
+						type: "select",
+						value: "Phone",
+						data: [
+							{
+								value: "Phone",
+								label: "Phone",
+							},
+							{
+								value: "Email",
+								label: "Email",
+							},
+							{
+								value: "Messenger",
+								label: "Messenger",
+							},
+							{
+								value: "Facebook",
+								label: "Facebook",
+							},
+							{
+								value: "Whatsapp",
+								label: "Whatsapp",
+							},
+						],
+					},
+					{
+						name: "Status",
+						type: "select",
+						value: "Open",
+						data: [
+							{
+								value: "Open",
+								label: "Open",
+							},
+							{
+								value: "Pending",
+								label: "Pending",
+							},
+							{
+								value: "Resolved",
+								label: "Resolved",
+							},
+							{
+								value: "Waiting on customer",
+								label: "Waiting on customer",
+							},
+							{
+								value: "Waiting on third party",
+								label: "Waiting on third party",
+							},
+						],
+					},
+					{
+						name: "Priority",
+						type: "select",
+						value: "Low",
+						data: [
+							{
+								value: "Low",
+								label: "Low",
+							},
+							{
+								value: "Medium",
+								label: "Medium",
+							},
+							{
+								value: "High",
+								label: "High",
+							},
+							{
+								value: "Urgent",
+								label: "Urgent",
+							},
+						],
+					},
+					{
+						name: "Group",
+						type: "select",
+						value: "None",
+						data: [
+							{
+								value: "None",
+								label: "None",
+							},
+							{
+								value: "Billing",
+								label: "Billing",
+							},
+							{
+								value: "Customer Support",
+								label: "Customer Support",
+							},
+							{
+								value: "Escalations",
+								label: "Escalations",
+							},
+							{
+								value: "Refund",
+								label: "Refund",
+							},
+						],
+					},
+					{
+						name: "Agent",
+						type: "select",
+						value: "--",
+						data: [
+							{
+								value: "--",
+								label: "--",
+							},
+							{
+								value: "Ashiq Zaman",
+								label: "Ashiq Zaman",
+							},
+							{
+								value: "Saad",
+								label: "Saad",
+							},
+							{
+								value: "Ishfaq Ahmad",
+								label: "Ishfaq Ahmad",
+							},
+						],
+					},
+				],
 				showFilter: false,
 				colMenu: false,
 				checked: true,
@@ -103,13 +266,9 @@
 			<template #title> Tickets </template>
 			<template #secondbar>
 				<div class="second-bar">
-					<form action="">
+					<form action="" v-if="!showEditOptions">
 						<client-only>
-							<el-select
-								v-show="!showEditOptions"
-								v-model="value"
-								placeholder="Sort by:"
-							>
+							<el-select v-model="value" placeholder="Sort by:">
 								<el-option
 									v-for="item in options"
 									:key="item.value"
@@ -436,10 +595,45 @@
 			</template>
 			<div class="flex gap-2">
 				<div class="shadow h-fit" :class="tableAnimation">
-					<TableLayout :columns="columnsArr" @selected="isSelected" />
+					<form action="">
+						<TicketsTable :columns="columnsArr" @selected="isSelected" />
+					</form>
 				</div>
 				<Transition name="expand">
-					<TicketsFiltersItem v-show="showFilter" />
+					<Filters v-show="showFilter">
+						<template #filters>
+							<div class="grid gap-2" v-for="elem in filters" :key="elem.name">
+								<label for="contact" class="text-gray-400 text-xs font-bold">
+									{{ elem.name }} <span class="text-red-300">*</span>
+								</label>
+								<!--select elem-->
+								<client-only>
+									<el-select
+										v-show="elem.type === 'select'"
+										v-model="elem.value"
+										placeholder="Select"
+										filterable
+									>
+										<el-option
+											v-for="item in elem.data"
+											:key="item.value"
+											:label="item.label"
+											:value="item.value"
+										>
+										</el-option>
+									</el-select>
+								</client-only>
+								<!--select element-->
+								<!--input elem-->
+								<el-input
+									placeholder=""
+									v-model="elem.value"
+									v-show="elem.type === 'input'"
+								></el-input>
+								<!--input elem-->
+							</div>
+						</template>
+					</Filters>
 				</Transition>
 			</div>
 		</NuxtLayout>

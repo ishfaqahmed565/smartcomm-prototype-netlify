@@ -6,6 +6,7 @@
 			const route = useRoute();
 			const id = computed(() => route.params.id);
 			const showActivity = ref(false);
+
 			const formData = ref<FormEl[]>([
 				{
 					name: "Tags",
@@ -457,7 +458,7 @@
 					<div class="ticket-info__main-section pt-0">
 						<div class="flex items-center gap-1 text-[10px] font-semibold">
 							<button class="p-[5px] bg-red-500 rounded-full"></button>
-							<p class="uppercase">Resoltion Due</p>
+							<p class="uppercase">Resoultion Due</p>
 							<NuxtLink class="text-[9px] text-blue-400">Edit</NuxtLink>
 						</div>
 						<p class="ticket-info__time">by Mon 19 Apr 2022, 08:00PM</p>

@@ -31,7 +31,12 @@
     .ticket-info__main-section{
         @apply py-2 border-b border-gray-200
     }
-   
+    .sidesticky-info-header{
+        @apply text-gray-400 text-[11px]
+    }
+    .sidesticky-info-text{
+        @apply text-[12px]
+    }
 }
 
 .tiptap-vuetify-editor__content{
