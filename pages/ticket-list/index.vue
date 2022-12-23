@@ -126,7 +126,7 @@
 							>
 						</div>
 					</el-select>
-					<div v-if="showEditOptions" class="second-bar__section">
+					<div v-show="showEditOptions" class="second-bar__section">
 						<NavButton>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -435,7 +435,7 @@
 					<TableLayout :columns="columnsArr" @selected="isSelected" />
 				</div>
 				<Transition name="expand">
-					<TicketsFiltersItem v-if="showFilter" />
+					<TicketsFiltersItem v-show="showFilter" />
 				</Transition>
 			</div>
 		</NuxtLayout>

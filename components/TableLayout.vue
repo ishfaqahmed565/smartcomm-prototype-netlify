@@ -174,7 +174,7 @@
 					</NuxtLink>
 				</template>
 			</el-table-column>
-			<el-table-column label="Group" property="group" v-if="showCol('Group')">
+			<el-table-column label="Group" property="group" v-show="showCol('Group')">
 				<template #default="scope">
 					<el-select
 						v-model="scope.row.group"
@@ -191,7 +191,7 @@
 					</el-select>
 				</template>
 			</el-table-column>
-			<el-table-column label="State" v-if="showCol('State')">
+			<el-table-column label="State" v-show="showCol('State')">
 				<template #default="scope">
 					<div
 						class="text-white w-max px-2 py-[4px] rounded"
@@ -206,7 +206,7 @@
 				</template>
 			</el-table-column>
 
-			<el-table-column label="Agent" property="agent" v-if="showCol('Group')">
+			<el-table-column label="Agent" property="agent" v-show="showCol('Group')">
 				<template #default="scope">
 					<el-select v-model="scope.row.agent" filterable>
 						<el-option
@@ -223,7 +223,7 @@
 				label="Priority"
 				class-name="priority"
 				property="priority"
-				v-if="showCol('Priority')"
+				v-show="showCol('Priority')"
 			>
 				<template #default="scope">
 					<el-select v-model="scope.row.priority" filterable>
@@ -264,7 +264,7 @@
 					<el-select
 						v-model="scope.row.status.value"
 						filterable
-						v-if="showCol('Status')"
+						v-show="showCol('Status')"
 					>
 						<el-option
 							v-for="item in selectElemInfo.status"

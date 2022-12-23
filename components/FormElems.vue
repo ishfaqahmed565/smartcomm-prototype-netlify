@@ -12,20 +12,23 @@
 				{{ elem.name }} <span class="text-red-300">*</span>
 			</label>
 			<!--select elem-->
-			<el-select
-				v-model="elem.value"
-				placeholder="Select"
-				v-show="elem.type === 'select'"
-				filterable
-			>
-				<el-option
-					v-for="item in elem.data"
-					:key="item.value"
-					:label="item.label"
-					:value="item.value"
+			<client-only>
+				<el-select
+					v-model="elem.value"
+					placeholder="Select"
+					v-show="elem.type === 'select'"
+					:value-key="elem.name"
+					filterable
 				>
-				</el-option>
-			</el-select>
+					<el-option
+						v-for="item in elem.data"
+						:key="item.value"
+						:label="item.label"
+						:value="item.value"
+					>
+					</el-option>
+				</el-select>
+			</client-only>
 			<!--select element-->
 			<!--input elem-->
 			<el-input
@@ -34,24 +37,27 @@
 				v-show="elem.type === 'input'"
 			></el-input>
 			<!--input elem-->
-			<el-select
-				v-show="elem.type === 'tags'"
-				v-model="elem.value"
-				multiple
-				filterable
-				allow-create
-				default-first-option
-				placeholder="Choose Tags"
-				class="w-full"
-			>
-				<el-option
-					v-for="item in elem.data"
-					:key="item.value"
-					:label="item.label"
-					:value="item.value"
+			<client-only>
+				<el-select
+					v-show="elem.type === 'tags'"
+					:value-key="elem.name"
+					v-model="elem.value"
+					multiple
+					filterable
+					allow-create
+					default-first-option
+					placeholder="Choose Tags"
+					class="w-full"
 				>
-				</el-option>
-			</el-select>
+					<el-option
+						v-for="item in elem.data"
+						:key="item.value"
+						:label="item.label"
+						:value="item.value"
+					>
+					</el-option>
+				</el-select>
+			</client-only>
 		</div>
 	</div>
 </template>

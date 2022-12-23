@@ -30,7 +30,7 @@
 		{ name: "Social Media", to: "social-media" },
 	];
 	const rightNav = [
-		{ name: "New tickets", to: "newticket", number: 5 },
+		{ name: "New tickets", to: "new-ticket", number: 5 },
 		{ name: "Waiting Tickets", to: "waiting-tickets", number: 20 },
 		{ name: "New Messages", to: "new-messages", number: 2 },
 	];

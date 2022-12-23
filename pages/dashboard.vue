@@ -64,7 +64,9 @@
 			</div>
 			<!--Six info ends here-->
 			<div class="feature-container grid grid-cols-5">
-				<div class="col-span-3"></div>
+				<div class="col-span-3">
+					<DashboardChartItem />
+				</div>
 				<div class="stats col-span-2 grid-cols-2 gap-2 grid">
 					<div
 						v-for="stat in stats"

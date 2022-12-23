@@ -317,7 +317,7 @@
 			<!--Second bar edit options end here-->
 			<div class="flex gap-3">
 				<div class="w-8/12 feature-container">
-					<div v-if="!showActivity">
+					<div v-show="!showActivity">
 						<div class="ticket-info__main-section">
 							<div class="text-white w-max px-2 py-[4px] bg-red-600 rounded">
 								Overdue
@@ -343,13 +343,13 @@
 						</div>
 						<!--Ticket subject end here-->
 						<div class="client-message">
-							<TicketListProfileInfo class="ticket-info__main-section">
+							<ProfileInfo class="ticket-info__main-section">
 								<template #name>Ashiq Zaman</template>
 								<template #ticket-source> reported via phone </template>
 								<template #ticket-time
 									>4 months ago (Sun 17 April 2022 at 6:00 PM)</template
 								>
-							</TicketListProfileInfo>
+							</ProfileInfo>
 							<!--Ticket profile info and ticket time ends here-->
 							<div class="info-text text-xs leading-6">
 								Hi, <br />
@@ -386,27 +386,27 @@
 						<!--Ticket reply ends here-->
 					</div>
 					<!--show activity feature section starts here-->
-					<div class="space-y-3" v-if="showActivity">
+					<div class="space-y-3" v-show="showActivity">
 						<div class="shadow border rounded p-2 flex">
-							<TicketListProfileInfo>
+							<ProfileInfo>
 								<template #name>Ashiq Zaman</template>
 								<template #ticket-source>reported via phone</template>
 								<template #ticket-time
 									>4 months ago (Sun 17 April 2022 at 6:00 PM)</template
 								>
-							</TicketListProfileInfo>
+							</ProfileInfo>
 						</div>
 						<!--Activity 1-->
 						<div
 							class="shadow bg-blue-100 border rounded p-2 flex justify-between"
 						>
-							<TicketListProfileInfo>
+							<ProfileInfo>
 								<template #name>Customer Service</template>
 								<template #ticket-source>replied</template>
 								<template #ticket-time
 									>4 months ago (Sun 17 April 2022 at 6:00 PM)</template
 								>
-							</TicketListProfileInfo>
+							</ProfileInfo>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"

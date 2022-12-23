@@ -1,9 +1,9 @@
 <template>
-	<div class="flex items-center gap-2">
+	<div class="flex items-center gap-3">
 		<img
 			src="/images/contacts/ashiq.png"
 			alt="profile-picture"
-			class="w-9 h-9 object-cover rounded"
+			class="w-9 h-9 object-cover rounded border border-gray-400 shadow-lg"
 		/>
 		<div>
 			<div class="flex items-center gap-2">

@@ -15,8 +15,8 @@
 <template>
 	<Transition name="wrapper">
 		<div
-			class="w-full bg-gray-500 bg-opacity-50 absolute h-full w-full z-[10000] grid"
-			v-if="showEditModal"
+			class="w-full bg-gray-500 bg-opacity-50 absolute h-full w-full z-[10000] grid top-0"
+			v-show="showEditModal"
 		>
 			<div
 				class="w-[400px] max-h-[100vh] overflow-y-auto absolute right-0 feature-container px-10 pt-10"
