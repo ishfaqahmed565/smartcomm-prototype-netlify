@@ -9,8 +9,63 @@
 			const showTickets = ref<Boolean>(false);
 			const showNotes = ref<Boolean>(false);
 			const showEditModal = ref<Boolean>(false);
+			const aboutInput = ref<String>("");
 			const formData1 = ref<FormEl[]>([
-				{ value: "Ashiq Zaman", name: "Full name", type: "input" },
+				{ name: "Full name", type: "input", value: "Ashiq Zaman" },
+				{
+					name: "Title",
+					type: "input",
+					value: "Enter a title",
+				},
+			]);
+			const formData2 = ref<FormEl[]>([
+				{ name: "Email", type: "input", value: "ashiqzaman@gmail.com" },
+				{
+					name: "Work Phone",
+					type: "input",
+					value: "+880*********",
+				},
+				{
+					name: "Mobile Phonne",
+					type: "input",
+					value: "+880*********",
+				},
+				{
+					name: "Unique external ID",
+					type: "input",
+					value: "",
+				},
+			]);
+			const formData3 = ref<FormEl[]>([
+				{
+					name: "Company",
+					type: "input",
+					value: "",
+					metadata: "Associate another company",
+				},
+				{
+					name: "Address",
+					type: "input",
+					value: "",
+				},
+
+				{
+					name: "Language",
+					type: "select",
+					value: "",
+					data: [
+						{ label: "English", value: "English" },
+						{ label: "English", value: "Bangla" },
+						{ label: "English", value: "Hindi" },
+					],
+				},
+			]);
+			const tags = ref<FormEl[]>([
+				{
+					name: "Tags",
+					type: "tag",
+					value: [],
+				},
 			]);
 			return {
 				id,
@@ -19,6 +74,10 @@
 				showNotes,
 				showEditModal,
 				formData1,
+				formData2,
+				formData3,
+				tags,
+				aboutInput,
 			};
 		},
 	});
@@ -379,7 +438,7 @@
 					:showEditModal="showEditModal"
 					@close="showEditModal = false"
 				>
-					<div class="grid gap-3">
+					<div class="grid gap-4">
 						<div class="flex item-center gap-3 border-b border-gray-500 pb-1">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -399,7 +458,7 @@
 						</div>
 						<ProfileInfo>
 							<template #name>
-								<div class="text-[10px]">Upload photo</div></template
+								<div class="text-[12px]">Upload photo</div></template
 							>
 							<template #ticket-time>
 								<div class="not-italic text-black">
@@ -408,11 +467,49 @@
 								</div></template
 							>
 						</ProfileInfo>
-						<FormElems :formData="formData1" />
-					</div> </EditModal
-			></Teleport>
+						<form class="space-y-3">
+							<FormElems :formData="formData1" :size="'small'" />
+
+							<div class="space-y-2 bg-blue-100/[.4] p-2 rounded-sm">
+								<FormLabel class="text-[12px]">
+									Atleast one of them is mandatory
+								</FormLabel>
+								<FormElems :formData="formData2" :size="'small'" />
+							</div>
+							<FormElems :formData="formData3" :size="'small'" />
+							<div class="grid gap-1">
+								<FormLabel size="small"> About </FormLabel>
+								<el-input
+									placeholder="Enter some text"
+									size="small"
+									v-model="aboutInput"
+									class="h-20"
+								>
+								</el-input>
+							</div>
+							<div
+								class="text-[11px] border-t px-2 py-5 bottom-0 border-gray-500"
+							>
+								<div class="flex max-w-fit items-end gap-2">
+									<button
+										class="py-1 px-3 infoheader border border-gray-400 rounded"
+									>
+										Cancel
+									</button>
+									<button
+										class="py-1 px-3 infoheader border border-black bg-blue-800 rounded text-white"
+									>
+										Save
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</EditModal></Teleport
+			>
 			<!--Edit modal ends here-->
 			<!--Feature slot is here-->
 		</NuxtLayout>
 	</div>
 </template>
+<style scoped></style>

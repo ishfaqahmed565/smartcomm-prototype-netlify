@@ -94,20 +94,7 @@
 						group: "None",
 						agent: "Ishfaq Ahmad",
 						priority: "Low",
-						status: {
-							type: "select",
-							value: "Open",
-							data: [
-								{
-									value: "Open",
-									label: "Open",
-								},
-								{
-									value: "Close",
-									label: "Close",
-								},
-							],
-						},
+						status: "Open",
 					},
 				],
 				multipleSelection: [],
@@ -262,7 +249,7 @@
 			<el-table-column label="Status">
 				<template #default="scope">
 					<el-select
-						v-model="scope.row.status.value"
+						v-model="scope.row.status"
 						filterable
 						v-show="showCol('Status')"
 					>

@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { defineComponent, ref } from "vue";
+	import { defineComponent, reactive, ref } from "vue";
 	import FormEl from "~/types/FormEl";
 
 	export default defineComponent({
 		setup() {
 			const contactInfo = ref(false);
-			const tagsValue = ref("");
+			const tagsValue = ref([]);
 			const info = ref("");
 			const contactPrev = ref(false);
 			const customers = [
@@ -29,11 +29,16 @@
 					],
 				},
 			];
-			const formData = ref<FormEl[]>([
+			const formData = reactive<FormEl[]>([
 				{
 					name: "Contact",
 					type: "select",
 					value: "",
+				},
+				{
+					name: "Subject",
+					type: "input",
+					value: "asdflasdkj",
 				},
 
 				{
@@ -193,7 +198,7 @@
 				{
 					name: "Tags",
 					type: "tags",
-					value: "",
+					value: [],
 					data: [{ value: "Important", label: "Important" }],
 				},
 			]);
@@ -213,7 +218,7 @@
 
 			<div class="flex space-x-3">
 				<div class="bg-white rounded-lg w-10/12 py-10 px-20 shadow">
-					<form action="">
+					<form action="" class="space-y-7">
 						<FormElems :formData="formData" />
 						<div class="mt-5 space-y-2">
 							<label for="contact" class="text-black">

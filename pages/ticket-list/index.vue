@@ -103,29 +103,33 @@
 			<template #title> Tickets </template>
 			<template #secondbar>
 				<div class="second-bar">
-					<el-select
-						v-show="!showEditOptions"
-						v-model="value"
-						placeholder="Sort by:"
-					>
-						<el-option
-							v-for="item in options"
-							:key="item.value"
-							:label="item.label"
-							:value="item.value"
-						>
-						</el-option>
-						<div @click="checked2 = false">
-							<el-checkbox v-model="checked" size="small" border
-								>Ascending</el-checkbox
+					<form action="">
+						<client-only>
+							<el-select
+								v-show="!showEditOptions"
+								v-model="value"
+								placeholder="Sort by:"
 							>
-						</div>
-						<div @click="checked = false">
-							<el-checkbox v-model="checked2" size="small" border
-								>Descending</el-checkbox
-							>
-						</div>
-					</el-select>
+								<el-option
+									v-for="item in options"
+									:key="item.value"
+									:label="item.label"
+									:value="item.value"
+								>
+								</el-option>
+								<div @click="checked2 = false">
+									<el-checkbox v-model="checked" size="small" border
+										>Ascending</el-checkbox
+									>
+								</div>
+								<div @click="checked = false">
+									<el-checkbox v-model="checked2" size="small" border
+										>Descending</el-checkbox
+									>
+								</div>
+							</el-select>
+						</client-only>
+					</form>
 					<div v-show="showEditOptions" class="second-bar__section">
 						<NavButton>
 							<svg
