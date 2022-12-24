@@ -18,23 +18,24 @@
 			{{ elem.name }} <span class="text-red-300">*</span>
 		</label>
 		<!--select elem-->
-		<client-only>
-			<el-select
-				placeholder="Select"
-				:size="size"
-				v-model="elem.value"
-				v-if="elem.type === 'select'"
-				filterable
+		<el-select
+			placeholder="Select"
+			:size="size"
+			filterable
+			v-model="elem.value"
+			:multiple="elem.name === 'Tags'"
+			:allow-create="elem.name === 'Tags'"
+			:default-first-option="elem.name === 'Tags'"
+			v-if="elem.type === 'select'"
+		>
+			<el-option
+				v-for="item in elem.data"
+				:key="item.value"
+				:label="item.label"
+				:value="item.value"
 			>
-				<el-option
-					v-for="item in elem.data"
-					:key="item.value"
-					:label="item.label"
-					:value="item.value"
-				>
-				</el-option>
-			</el-select>
-		</client-only>
+			</el-option>
+		</el-select>
 		<!--select element-->
 		<!--input elem-->
 		<el-input
@@ -44,25 +45,7 @@
 			v-if="elem.type === 'input'"
 		></el-input>
 		<!--input elem-->
-		<client-only>
-			<el-select
-				v-if="elem.type === 'tags'"
-				:size="size"
-				multiple
-				filterable
-				allow-create
-				placeholder="Choose Tags"
-				class="w-full"
-			>
-				<el-option
-					v-for="item in elem.data"
-					:key="item.value"
-					:label="item.label"
-					:value="item.value"
-				>
-				</el-option>
-			</el-select>
-		</client-only>
+
 		<p class="text-blue-400 text-[10px] place-self-end" v-if="elem.metadata">
 			{{ elem.metadata }}
 		</p>

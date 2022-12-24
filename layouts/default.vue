@@ -20,13 +20,3 @@
 		</div>
 	</div>
 </template>
-<style scoped>
-	.sidebar {
-		position: -webkit-sticky; /* Safari */
-		position: sticky;
-		top: 0;
-		z-index: 999;
-		top: 0;
-		left: 0;
-	}
-</style>
