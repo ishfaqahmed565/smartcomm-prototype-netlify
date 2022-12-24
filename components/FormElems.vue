@@ -38,7 +38,12 @@
 			</el-select>
 			<!--select element-->
 			<!--input elem-->
-
+			<el-input
+				placeholder=""
+				:size="size"
+				v-model="elem.value"
+				v-if="elem.type === 'input'"
+			></el-input>
 			<!--input elem-->
 
 			<p class="text-blue-400 text-[10px] place-self-end" v-if="elem.metadata">
