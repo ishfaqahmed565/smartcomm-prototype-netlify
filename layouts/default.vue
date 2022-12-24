@@ -1,29 +1,8 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 	import { defineComponent, ref } from "vue";
 	import useDetectOutsideClick from "../composable/useDetectOutsideClick.js";
 
-	const newTab = ref(false);
-	const profileShow = ref(false);
-	const tabButton = ref(null);
-	const profileButton = ref(null);
-	const side1 = [
-		{ name: "Dashboard", img: "dashboard" },
-		{ name: "Customer", img: "customer" },
-		{ name: "Call History", img: "call-history" },
-	];
-	const side2 = [
-		{ name: "Summary", img: "summary" },
-		{ name: "Ticket List", img: "ticket-list" },
-		{ name: "Assigned Tickets", img: "assigned-tickets" },
-		{ name: "Message Templates", img: "message-templates" },
-		{ name: "Long Waited Queues", img: "long-waited-queues" },
-	];
-	const side3 = [
-		{ name: "Inbox", img: "inbox" },
-		{ name: "Team", img: "users" },
-		{ name: "Roles", img: "roles" },
-		{ name: "Channel Automation", img: "channel-automation" },
-	];
+	//Left and Right Nav is variables are created to dynamically created the left and right side of the top navigation bar
 	const leftNav = [
 		{ name: "Customer", to: "customer" },
 		{ name: "Call Center", to: "call-center" },
@@ -34,32 +13,26 @@
 		{ name: "Waiting Tickets", to: "waiting-tickets", number: 20 },
 		{ name: "New Messages", to: "new-messages", number: 2 },
 	];
-	useDetectOutsideClick(profileButton, () => {
-		profileShow.value = false;
+	//newTab is used to show the newTab dropdown in the top navbar
+	const newTab = ref(false);
+	//profileTab is used to show the newTab dropdown in the top navbar
+	const profileTab = ref(false);
+	// newTabButton and profileTabButton are used to show the newTab and profileTab dropdown repectively when they are clicked.
+	const newTabButton = ref(null);
+	const profileTabButton = ref(null);
+
+	//useDeteOutsideClick function is used to detect any clicks outside the reffered elem and executes the call function
+	useDetectOutsideClick(profileTabButton, () => {
+		profileTab.value = false;
 	});
-	useDetectOutsideClick(tabButton, () => {
+	useDetectOutsideClick(newTabButton, () => {
 		newTab.value = false;
 	});
 </script>
 
 <template>
 	<div class="flex bg-gray-100">
-		<div class="bg-[#1E1E2D] min-h-[100vh] z-[99999]">
-			<div class="sidebar p-2 gap-5 flex flex-col items-center">
-				<img src="/images/logo2.png" alt="" class="w-[50px] object-cover" />
-				<div class="space-y-[3rem]">
-					<div class="space-y-[.2rem]">
-						<SideIcon v-for="icon in side1" :key="icon.img" :sideData="icon" />
-					</div>
-					<div class="space-y-[.2rem]">
-						<SideIcon v-for="icon in side2" :key="icon.img" :sideData="icon" />
-					</div>
-					<div class="space-y-[.2rem]">
-						<SideIcon v-for="icon in side3" :key="icon.img" :sideData="icon" />
-					</div>
-				</div>
-			</div>
-		</div>
+		<SideNav />
 		<div class="feature-card w-full overflow-auto">
 			<div class="topbar bg-white border-b-2 border-gray-300 shadow-lg">
 				<div
@@ -95,7 +68,7 @@
 								>
 							</NuxtLink>
 						</NavButton>
-						<div class="relative grid" ref="tabButton">
+						<div class="relative grid" ref="newTabButton">
 							<NavButton @click="newTab = !newTab">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -172,10 +145,10 @@
 							</TransWrap>
 						</div>
 						<button class="p-[7px] rounded-full bg-green-500"></button>
-						<div class="relative grid" ref="profileButton">
+						<div class="relative grid" ref="profileTabButton">
 							<button
 								class="p-3 rounded-lg bg-gray-200"
-								@click="profileShow = !profileShow"
+								@click="profileTab = !profileTab"
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -192,8 +165,8 @@
 									/>
 								</svg>
 							</button>
-							<TransWrap :show="profileShow">
-								<PopUp v-show="profileShow"
+							<TransWrap :show="profileTab">
+								<PopUp v-show="profileTab"
 									><div class="p-3 flex gap-2">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"

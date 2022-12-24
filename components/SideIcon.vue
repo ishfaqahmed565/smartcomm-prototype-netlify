@@ -1,16 +1,17 @@
-<script setup>
+<script setup lang="ts">
+	import { PropType } from "vue";
+	import SideNavButton from "~/types/SideNavButton";
 	const props = defineProps({
-		sideData: Object,
+		sideNavData: { required: true, type: Object as PropType<SideNavButton> },
 	});
-	const nav = `/${props.sideData.img}`;
 </script>
 <template>
 	<NuxtLink
-		:to="`/${props.sideData.img}`"
+		:to="`/${props.sideNavData.imgName}`"
 		class="bg-none hover:bg-gray-700 group rounded-lg p-2 relative flex transition-all ease-linear"
 	>
 		<img
-			:src="`/svgs/sidebar/${props.sideData.img}.svg`"
+			:src="`/svgs/sidebar/${props.sideNavData.imgName}.svg`"
 			class="w-[17px] object-cover filter-bg dynImg"
 		/>
 		<div
@@ -26,7 +27,7 @@
 			<div
 				class="absolute z-10 w-max rounded left-[30px] top-[-6px] bg-gray-800 text-white font-semibold text-sm p-1"
 			>
-				{{ props.sideData.name }}
+				{{ props.sideNavData.name }}
 			</div>
 		</div>
 	</NuxtLink>

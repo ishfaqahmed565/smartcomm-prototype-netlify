@@ -1,7 +1,7 @@
 export default interface FormElem{
-    name:String,
-    value:String | Array<String>,
-    type:String,
-    metadata?:String,
-    data?:Array<{label:String,value:String}>
+    name:string,
+    value:string | Array<string>,
+    type:string,
+    metadata?:string,
+    data?:Array<{label:string,value:string}>
 }
