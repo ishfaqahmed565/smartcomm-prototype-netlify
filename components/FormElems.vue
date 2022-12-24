@@ -9,16 +9,16 @@
 	});
 </script>
 <template>
-	<div class="grid gap-1" v-for="elem in formData" :key="elem.name">
-		<label
-			for="contact"
-			class="text-gray-400 text-xs font-bold"
-			:class="{ 'text-[11px]': size === 'small' }"
-		>
-			{{ elem.name }} <span class="text-red-300">*</span>
-		</label>
-		<!--select elem-->
-		<client-only>
+	<client-only>
+		<div class="grid gap-1" v-for="elem in formData" :key="elem.name">
+			<label
+				for="contact"
+				class="text-gray-400 text-xs font-bold"
+				:class="{ 'text-[11px]': size === 'small' }"
+			>
+				{{ elem.name }} <span class="text-red-300">*</span>
+			</label>
+			<!--select elem-->
 			<el-select
 				placeholder="Select"
 				:size="size"
@@ -36,14 +36,14 @@
 				>
 				</el-option>
 			</el-select>
-		</client-only>
-		<!--select element-->
-		<!--input elem-->
+			<!--select element-->
+			<!--input elem-->
 
-		<!--input elem-->
+			<!--input elem-->
 
-		<p class="text-blue-400 text-[10px] place-self-end" v-if="elem.metadata">
-			{{ elem.metadata }}
-		</p>
-	</div>
+			<p class="text-blue-400 text-[10px] place-self-end" v-if="elem.metadata">
+				{{ elem.metadata }}
+			</p>
+		</div>
+	</client-only>
 </template>
