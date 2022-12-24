@@ -19,25 +19,23 @@
 		</label>
 		<!--select elem-->
 		<div v-show="elem.type === 'select'">
-			<ClientOnly v-if="elem.type === 'select'">
-				<el-select
-					placeholder="Select"
-					:size="size"
-					filterable
-					v-model="elem.value"
-					:multiple="elem.name === 'Tags'"
-					:allow-create="elem.name === 'Tags'"
-					:default-first-option="elem.name === 'Tags'"
+			<el-select
+				placeholder="Select"
+				:size="size"
+				filterable
+				v-model="elem.value"
+				:multiple="elem.name === 'Tags'"
+				:allow-create="elem.name === 'Tags'"
+				:default-first-option="elem.name === 'Tags'"
+			>
+				<el-option
+					v-for="item in elem.data"
+					:key="item.value"
+					:label="item.label"
+					:value="item.value"
 				>
-					<el-option
-						v-for="item in elem.data"
-						:key="item.value"
-						:label="item.label"
-						:value="item.value"
-					>
-					</el-option>
-				</el-select>
-			</ClientOnly>
+				</el-option>
+			</el-select>
 		</div>
 		<!--select element-->
 		<!--input elem-->
