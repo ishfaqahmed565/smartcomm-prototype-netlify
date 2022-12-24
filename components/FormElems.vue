@@ -18,7 +18,7 @@
 			{{ elem.name }} <span class="text-red-300">*</span>
 		</label>
 		<!--select elem-->
-		<div v-show="elem.type === 'select'">
+		<div v-if="elem.type === 'select'">
 			<el-select
 				placeholder="Select"
 				:size="size"
