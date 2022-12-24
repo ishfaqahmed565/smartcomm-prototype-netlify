@@ -12,7 +12,7 @@
 	<div class="grid gap-1" v-for="elem in formData" :key="elem.name">
 		<label
 			for="contact"
-			class="text-black form-label"
+			class="text-gray-400 text-xs font-bold"
 			:class="{ 'text-[11px]': size === 'small' }"
 		>
 			{{ elem.name }} <span class="text-red-300">*</span>

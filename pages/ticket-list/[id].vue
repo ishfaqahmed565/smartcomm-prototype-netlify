@@ -10,7 +10,7 @@
 			const formData = ref<FormEl[]>([
 				{
 					name: "Tags",
-					type: "tags",
+					type: "select",
 					value: "",
 					data: [{ value: "Important", label: "Important" }],
 				},
