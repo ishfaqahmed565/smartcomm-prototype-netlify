@@ -18,24 +18,26 @@
 			{{ elem.name }} <span class="text-red-300">*</span>
 		</label>
 		<!--select elem-->
-		<el-select
-			placeholder="Select"
-			:size="size"
-			filterable
-			v-model="elem.value"
-			:multiple="elem.name === 'Tags'"
-			:allow-create="elem.name === 'Tags'"
-			:default-first-option="elem.name === 'Tags'"
-			v-if="elem.type === 'select'"
-		>
-			<el-option
-				v-for="item in elem.data"
-				:key="item.value"
-				:label="item.label"
-				:value="item.value"
+		<client-only>
+			<el-select
+				placeholder="Select"
+				:size="size"
+				filterable
+				v-model="elem.value"
+				:multiple="elem.name === 'Tags'"
+				:allow-create="elem.name === 'Tags'"
+				:default-first-option="elem.name === 'Tags'"
+				v-if="elem.type === 'select'"
 			>
-			</el-option>
-		</el-select>
+				<el-option
+					v-for="item in elem.data"
+					:key="item.value"
+					:label="item.label"
+					:value="item.value"
+				>
+				</el-option>
+			</el-select>
+		</client-only>
 		<!--select element-->
 		<!--input elem-->
 		<el-input
