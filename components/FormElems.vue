@@ -18,8 +18,8 @@
 			{{ elem.name }} <span class="text-red-300">*</span>
 		</label>
 		<!--select elem-->
-		<div v-if="elem.type === 'select'">
-			<client-only>
+		<div v-show="elem.type === 'select'">
+			<ClientOnly v-if="elem.type === 'select'">
 				<el-select
 					placeholder="Select"
 					:size="size"
@@ -37,7 +37,7 @@
 					>
 					</el-option>
 				</el-select>
-			</client-only>
+			</ClientOnly>
 		</div>
 		<!--select element-->
 		<!--input elem-->
