@@ -18,7 +18,7 @@
 			{{ elem.name }} <span class="text-red-300">*</span>
 		</label>
 		<!--select elem-->
-		<client-only v-if="elem.type === 'select'">
+		<client-only>
 			<el-select
 				placeholder="Select"
 				:size="size"

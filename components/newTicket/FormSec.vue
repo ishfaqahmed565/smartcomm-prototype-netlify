@@ -13,11 +13,6 @@
 			type: "select",
 			value: "",
 		},
-		{
-			name: "Subject",
-			type: "input",
-			value: "",
-		},
 
 		{
 			name: "Type",
