@@ -9,7 +9,7 @@
 </script>
 <template>
 	<label
-		class="text-black form-label"
+		class="text-gray-400 text-xs font-bold"
 		:class="{ 'text-[11px]': size === 'small' }"
 	>
 		<slot></slot>

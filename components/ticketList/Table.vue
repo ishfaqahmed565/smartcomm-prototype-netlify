@@ -1,5 +1,7 @@
 <script setup lang="ts">
-	import { ref, PropType } from "vue";
+	import { ref, PropType, inject } from "vue";
+	import Ticket from "~/types/Ticket";
+	import type { Ref } from "vue";
 	interface Columns {
 		name: String;
 		show: Boolean;
@@ -86,7 +88,8 @@
 			},
 		],
 	});
-	const tickets = ref([
+
+	const tickets = ref<Ticket[]>([
 		{
 			contact: "Ashiq Zaman",
 			subject: "Email adress changed",
@@ -97,8 +100,8 @@
 			status: "Open",
 		},
 	]);
-	const multipleSelection = ref<Object>([]);
-	const handleSelectionChange = (val: Object) => {
+	const multipleSelection = ref<Ticket[]>([]);
+	const handleSelectionChange = (val: Ticket[]) => {
 		multipleSelection.value = val;
 	};
 	function showCol(name2: String) {
@@ -106,8 +109,17 @@
 
 		return foundCol.show;
 	}
-	const emits = defineEmits(["selected"]);
-	watch(multipleSelection, (newVal) => emits("selected", newVal));
+	const emits = defineEmits(["showEditOptions"]);
+	watch(multipleSelection, (newVal): void => {
+		if (newVal.length > 0) {
+			emits("showEditOptions", true);
+			return;
+		} else {
+			emits("showEditOptions", false);
+			return;
+		}
+	});
+	let something = inject("something");
 </script>
 <template>
 	<TableContainer
@@ -124,7 +136,7 @@
 						class="w-7 object-cover rounded"
 					/>
 
-					<span>{{ scope.row.contact }}</span>
+					<span>{{ something }}</span>
 				</NuxtLink></template
 			>
 		</el-table-column>

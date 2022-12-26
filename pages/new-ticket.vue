@@ -16,9 +16,11 @@
 
 			<div class="flex space-x-3">
 				<div class="bg-white rounded-lg w-10/12 py-10 px-20 shadow">
+					<!--This is form to add new tickets-->
 					<NewTicketFormSec />
 				</div>
 				<div class="w-2/12">
+					<!--This is DropDown to see preview of activity of a contact -->
 					<SideStickyDrop class="w-full">
 						<template #head-logo
 							><svg
@@ -189,9 +191,3 @@
 		</NuxtLayout>
 	</div>
 </template>
-<style scoped>
-	.margin-det {
-		margin-top: 5px !important;
-		margin-bottom: -10px !important;
-	}
-</style>

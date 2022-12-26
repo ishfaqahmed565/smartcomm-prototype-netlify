@@ -365,13 +365,13 @@
 						</div>
 						<!--Ticket Client subject end here-->
 						<div class="p-2 bg-blue-100/[.5] rounded mt-5">
-							<TicketListProfileInfo>
+							<ProfileInfo>
 								<template #name>Customer Service</template>
 								<template #ticket-status>replied</template>
 								<template #ticket-time
 									>4 months ago (Sun 17 April at 8:00PM)</template
 								>
-							</TicketListProfileInfo>
+							</ProfileInfo>
 							<span class="text-xs"> To: ashiqzaman@gmail.com </span>
 							<p class="info-text text-xs leading-6">
 								Hi, Ashiq Zaman <br />
@@ -427,7 +427,7 @@
 						<div
 							class="shadow bg-blue-100 border rounded p-2 flex justify-between"
 						>
-							<TicketListProfileInfo>
+							<ProfileInfo>
 								<template #name>System</template>
 								<template #ticket-source
 									>executed an automation
@@ -439,7 +439,7 @@
 								<template #ticket-time
 									>4 months ago (Sun 17 April 2022 at 6:00 PM)</template
 								>
-							</TicketListProfileInfo>
+							</ProfileInfo>
 							<button
 								class="rounded-full text-[8px] bg-blue-200 text-blue-700 h-fit px-2 py-[2px]"
 							>

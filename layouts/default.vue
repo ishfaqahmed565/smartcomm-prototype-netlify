@@ -1,3 +1,9 @@
+<script setup>
+	import { provide } from "vue";
+	const something = "Hello";
+
+	provide("something", something);
+</script>
 <template>
 	<div class="flex bg-gray-100">
 		<SideNav />

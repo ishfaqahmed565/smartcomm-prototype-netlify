@@ -1,260 +1,105 @@
-<script>
-	export default {
-		data() {
-			return {
-				selectedRows: [],
-				filters: [
-					{
-						name: "Contact",
-						type: "select",
-						value: "Ashiq Zaman",
-						data: [{ value: "Ashiq Zaman", label: "Ashiq Zaman" }],
-					},
+<script setup lang="ts">
+	import colShowArrInt from "~/types/colShowArr";
+	import Ticket from "~/types/Ticket";
 
-					{
-						name: "Type",
-						type: "select",
-						value: "None",
-						data: [
-							{
-								value: "None",
-								label: "None",
-							},
-							{
-								value: "Question",
-								label: "Question",
-							},
-							{
-								value: "Problem",
-								label: "Problem",
-							},
-							{
-								value: "Feature request",
-								label: "Feature request",
-							},
-							{
-								value: "Refund",
-								label: "Refund",
-							},
-						],
-					},
-					{
-						name: "Source",
-						type: "select",
-						value: "Phone",
-						data: [
-							{
-								value: "Phone",
-								label: "Phone",
-							},
-							{
-								value: "Email",
-								label: "Email",
-							},
-							{
-								value: "Messenger",
-								label: "Messenger",
-							},
-							{
-								value: "Facebook",
-								label: "Facebook",
-							},
-							{
-								value: "Whatsapp",
-								label: "Whatsapp",
-							},
-						],
-					},
-					{
-						name: "Status",
-						type: "select",
-						value: "Open",
-						data: [
-							{
-								value: "Open",
-								label: "Open",
-							},
-							{
-								value: "Pending",
-								label: "Pending",
-							},
-							{
-								value: "Resolved",
-								label: "Resolved",
-							},
-							{
-								value: "Waiting on customer",
-								label: "Waiting on customer",
-							},
-							{
-								value: "Waiting on third party",
-								label: "Waiting on third party",
-							},
-						],
-					},
-					{
-						name: "Priority",
-						type: "select",
-						value: "Low",
-						data: [
-							{
-								value: "Low",
-								label: "Low",
-							},
-							{
-								value: "Medium",
-								label: "Medium",
-							},
-							{
-								value: "High",
-								label: "High",
-							},
-							{
-								value: "Urgent",
-								label: "Urgent",
-							},
-						],
-					},
-					{
-						name: "Group",
-						type: "select",
-						value: "None",
-						data: [
-							{
-								value: "None",
-								label: "None",
-							},
-							{
-								value: "Billing",
-								label: "Billing",
-							},
-							{
-								value: "Customer Support",
-								label: "Customer Support",
-							},
-							{
-								value: "Escalations",
-								label: "Escalations",
-							},
-							{
-								value: "Refund",
-								label: "Refund",
-							},
-						],
-					},
-					{
-						name: "Agent",
-						type: "select",
-						value: "--",
-						data: [
-							{
-								value: "--",
-								label: "--",
-							},
-							{
-								value: "Ashiq Zaman",
-								label: "Ashiq Zaman",
-							},
-							{
-								value: "Saad",
-								label: "Saad",
-							},
-							{
-								value: "Ishfaq Ahmad",
-								label: "Ishfaq Ahmad",
-							},
-						],
-					},
-				],
-				showFilter: false,
-				colMenu: false,
-				checked: true,
-				checked2: false,
-				tableAnimation: "w-full",
-				columnsArr: [
-					{ name: "State", show: true },
-					{ name: "Group", show: true },
-					{ name: "Priority", show: true },
-					{ name: "Status", show: true },
-					{ name: "Agent", show: true },
-					{ name: "Company", show: false },
-					{ name: "Created At", show: false },
-					{ name: "First Response Date", show: false },
-					{ name: "Internal Response Data", show: false },
-					{ name: "Next Response Due", show: false },
-					{ name: "Resolve by", show: false },
-					{ name: "Source", show: false },
-					{ name: "Tags", show: false },
-					{ name: "Type", show: false },
-					{ name: "Waiting Since", show: false },
-				],
-				options: [
-					{
-						value: "Date",
-						label: "Date",
-					},
-					{
-						value: "Due by time",
-						label: "Due by time",
-					},
-					{
-						value: "Last Modified",
-						label: "Last Modified",
-					},
-					{
-						value: "Priority",
-						label: "Priority",
-					},
-					{
-						value: "Status",
-						label: "Status",
-					},
-				],
-				value: "",
-			};
-		},
-		computed: {
-			colTrue() {
-				return this.columnsArr.filter((elem) => elem.show);
-			},
-			colFalse() {
-				return this.columnsArr.filter((elem) => !elem.show);
-			},
-			showEditOptions() {
-				if (this.selectedRows.length > 0) {
-					console.log(this.selectedRows.length, "here");
-
-					return true;
-				}
-				return false;
-			},
-		},
-		watch: {
-			// whenever question changes, this function will run
-			showFilter(newVal, oldVal) {
-				if (oldVal === true) {
-					this.tableAnimation = "leave-table-animation";
-				}
-				if (oldVal === false) {
-					this.tableAnimation = "enter-table-animation";
-				}
-			},
-		},
-		methods: {
-			toggleShowCol(filName) {
-				for (let i = 0; i < this.columnsArr.length; i++) {
-					const colName = this.columnsArr[i].name;
-					if (colName === filName) {
-						this.columnsArr[i].show = !this.columnsArr[i].show;
-						return;
-					}
-				}
-			},
-			isSelected(value) {
-				this.selectedRows = value;
-			},
-		},
+	import { ref, inject, computed, watch } from "vue";
+	let something: any;
+	onMounted(() => {
+		console.log("mounted", inject("something"));
+	});
+	//selected rows that are selected by the check button
+	const selectedRows = ref<Ticket[]>([]);
+	//showFiltersTab maintains showing the FiltersTab
+	const showFiltersTab = ref(false);
+	//showColsTab maintains showing the Popup in which you can choose which columns should be presented
+	const showColsTab = ref(false);
+	//ascending and descending are use determing sorting methods in sort by dropdown
+	const ascending = ref(false);
+	const descending = ref(false);
+	//tableAnimation controls the shrinking and expanding of the data table
+	type tableAnimationType =
+		| "w-full"
+		| "leave-table-animation"
+		| "enter-table-animation";
+	const tableAnimation = ref<tableAnimationType>("w-full");
+	//columnsArr array hold the values of which column to show and which not to show i.e which columns are active
+	const colShowArr = ref<colShowArrInt[]>([
+		{ name: "State", show: true },
+		{ name: "Group", show: true },
+		{ name: "Priority", show: true },
+		{ name: "Status", show: true },
+		{ name: "Agent", show: true },
+		{ name: "Company", show: false },
+		{ name: "Created At", show: false },
+		{ name: "First Response Date", show: false },
+		{ name: "Internal Response Data", show: false },
+		{ name: "Next Response Due", show: false },
+		{ name: "Resolve by", show: false },
+		{ name: "Source", show: false },
+		{ name: "Tags", show: false },
+		{ name: "Type", show: false },
+		{ name: "Waiting Since", show: false },
+	]);
+	//colsAvtive and colsInActive computed functions return an array of which columns are shown and which columns are not shown
+	const colsActive = computed(() => {
+		return colShowArr.value.filter((elem) => elem.show);
+	});
+	const colsInActive = computed(() => {
+		return colShowArr.value.filter((elem) => !elem.show);
+	});
+	//showEditOptions computes if an column is selected and show the edit options in the topnav
+	let showEditOptions = ref(false);
+	//toggleShowCol toggles between false or true of each column value in the colShowArr state
+	const toggleShowCol = (givenColName: String) => {
+		for (let i = 0; i < colShowArr.value.length; i++) {
+			const colName = colShowArr.value[i].name;
+			if (colName === givenColName) {
+				colShowArr.value[i].show = !colShowArr.value[i].show;
+				return;
+			}
+		}
 	};
+	//isSelected is called when the table emits @selected event. @selected event occurs when any rows is selected
+	//and passes an array of the selected rows in the table through the event which is then
+	//accepted as value params in the function
+	const isSelected = (value: Ticket[]): void => {
+		selectedRows.value = value;
+	};
+	//this watcher is watching the showFiltersTab variable to change the styling of the table based on the
+	//filters tab
+	watch(showFiltersTab, (newV, oldVal) => {
+		if (oldVal === true) {
+			tableAnimation.value = "leave-table-animation";
+		}
+		if (oldVal === false) {
+			tableAnimation.value = "enter-table-animation";
+		}
+	});
+
+	const sortOptions = ref([
+		{
+			value: "Date",
+			label: "Date",
+		},
+		{
+			value: "Due by time",
+			label: "Due by time",
+		},
+		{
+			value: "Last Modified",
+			label: "Last Modified",
+		},
+		{
+			value: "Priority",
+			label: "Priority",
+		},
+		{
+			value: "Status",
+			label: "Status",
+		},
+	]);
+	const sortValue = ref("");
+
 	definePageMeta({
 		layout: false,
 	});
@@ -263,26 +108,28 @@
 <template>
 	<div>
 		<NuxtLayout name="default">
-			<template #title> Tickets </template>
+			<template #title> {{ something }} </template>
 			<template #secondbar>
 				<div class="second-bar">
 					<form action="" v-if="!showEditOptions">
 						<client-only>
-							<el-select v-model="value" placeholder="Sort by:">
+							<el-select v-model="sortValue" placeholder="Sort by:">
 								<el-option
-									v-for="item in options"
+									v-for="item in sortOptions"
 									:key="item.value"
 									:label="item.label"
 									:value="item.value"
 								>
 								</el-option>
-								<div @click="checked2 = false">
-									<el-checkbox v-model="checked" size="small" border
-										>Ascending</el-checkbox
-									>
+								<div @click="descending = false">
+									<el-checkbox
+										v-model="ascending"
+										size="small"
+										border
+									></el-checkbox>
 								</div>
-								<div @click="checked = false">
-									<el-checkbox v-model="checked2" size="small" border
+								<div @click="ascending = false">
+									<el-checkbox v-model="descending" size="small" border
 										>Descending</el-checkbox
 									>
 								</div>
@@ -443,7 +290,7 @@
 						</NavButton>
 						<span class="text-gray-400"> 1 - 10 of 10 </span>
 						<PagButton />
-						<NavButton @click="showFilter = !showFilter"
+						<NavButton @click="showFiltersTab = !showFiltersTab"
 							><svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -460,7 +307,7 @@
 							</svg>
 						</NavButton>
 						<div class="relative">
-							<NavButton @click="colMenu = !colMenu"
+							<NavButton @click="showColsTab = !showColsTab"
 								><svg
 									xmlns="http://www.w3.org/2000/svg"
 									fill="none"
@@ -476,7 +323,7 @@
 									/>
 								</svg>
 							</NavButton>
-							<TransWrap :show="colMenu">
+							<TransWrap :show="showColsTab">
 								<PopUp class="max-h-[30rem] overflow-y-auto">
 									<div class="space-y-4 p-5">
 										<div
@@ -499,7 +346,7 @@
 
 											<button
 												class="flex justify-between group active:translate-y-0 active:shadow-none items-center px-2 py-1 trasition-all duration-500 hover:shadow-lg hover:-translate-y-1"
-												v-for="col in colTrue"
+												v-for="col in colsActive"
 												:key="col.name"
 												@click="toggleShowCol(col.name)"
 											>
@@ -542,11 +389,13 @@
 											<button
 												:class="{
 													' active:translate-y-0 active:shadow-none trasition-all opacity-100 duration-500 hover:shadow-lg hover:-translate-y-1 ':
-														colTrue.length < 5,
+														colsActive.length < 5,
 												}"
 												class="flex justify-between group items-center px-2 py-1 opacity-50"
-												v-for="col in colFalse"
-												@click="colTrue.length < 5 && toggleShowCol(col.name)"
+												v-for="col in colsInActive"
+												@click="
+													colsActive.length < 5 && toggleShowCol(col.name)
+												"
 												:key="col.name"
 											>
 												<div class="flex items-center gap-1">
@@ -558,7 +407,7 @@
 														stroke="currentColor"
 														:class="{
 															'text-green-500 group-hover:text-green-800':
-																colTrue.length < 5,
+																colsActive.length < 5,
 														}"
 														class="w-5"
 													>
@@ -596,44 +445,14 @@
 			<div class="flex gap-2">
 				<div class="shadow h-fit" :class="tableAnimation">
 					<form action="">
-						<TicketsTable :columns="columnsArr" @selected="isSelected" />
+						<TicketListTable
+							:columns="colShowArr"
+							@showEditOptions="showEditOptions = $event"
+						/>
 					</form>
 				</div>
 				<Transition name="expand">
-					<Filters v-show="showFilter">
-						<template #filters>
-							<div class="grid gap-2" v-for="elem in filters" :key="elem.name">
-								<label for="contact" class="text-gray-400 text-xs font-bold">
-									{{ elem.name }} <span class="text-red-300">*</span>
-								</label>
-								<!--select elem-->
-								<client-only>
-									<el-select
-										v-show="elem.type === 'select'"
-										v-model="elem.value"
-										placeholder="Select"
-										filterable
-									>
-										<el-option
-											v-for="item in elem.data"
-											:key="item.value"
-											:label="item.label"
-											:value="item.value"
-										>
-										</el-option>
-									</el-select>
-								</client-only>
-								<!--select element-->
-								<!--input elem-->
-								<el-input
-									placeholder=""
-									v-model="elem.value"
-									v-show="elem.type === 'input'"
-								></el-input>
-								<!--input elem-->
-							</div>
-						</template>
-					</Filters>
+					<TicketListFilters v-show="showFiltersTab" />
 				</Transition>
 			</div>
 		</NuxtLayout>

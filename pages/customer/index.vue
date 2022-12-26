@@ -93,8 +93,6 @@
 			},
 			showEditOptions() {
 				if (this.selectedRows.length > 0) {
-					console.log(this.selectedRows.length, "here");
-
 					return true;
 				}
 				return false;
@@ -140,7 +138,7 @@
 					<form action="" v-if="!showEditOptions">
 						<el-input
 							v-model="input4"
-							class="w-50 m-2"
+							class="w-50"
 							placeholder="Type something"
 						>
 							<template #prefix>
