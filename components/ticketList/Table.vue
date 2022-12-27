@@ -130,21 +130,26 @@
 		<el-table-column type="selection"> </el-table-column>
 		<el-table-column label="Contact">
 			<template #default="scope"
-				><NuxtLink to="/contacts/1" class="flex items-center gap-2">
+				><NuxtLink to="/contacts/1" class="flex items-center gap-2 group">
 					<img
 						src="/images/contacts/ashiq.png"
 						alt=""
 						class="w-7 object-cover rounded"
 					/>
 
-					<span>{{ scope.row.contact }}</span>
+					<span class="group-hover:text-blue-300 transition-all">{{
+						scope.row.contact
+					}}</span>
 				</NuxtLink></template
 			>
 		</el-table-column>
 
 		<el-table-column property="subject" label="Subject">
 			<template #default="scope">
-				<NuxtLink to="/ticket-list/1">
+				<NuxtLink
+					to="/ticket-list/1 "
+					class="hover:text-blue-400 transiton-all"
+				>
 					{{ scope.row.subject }}
 				</NuxtLink>
 			</template>

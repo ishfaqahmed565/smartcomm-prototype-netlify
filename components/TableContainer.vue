@@ -1,14 +1,13 @@
 <script setup lang="ts">
 	import { ref, defineProps, PropType, inject } from "vue";
-	import Ticket from "~/types/Ticket";
 	let props = defineProps({
 		tableData: {
 			required: true,
-			type: Array as PropType<Array<{}>>,
+			type: Array,
 		},
 	});
-	const multipleSelection = ref<Ticket[]>([]);
-	const handleSelectionChange = (val: Ticket[]) => {
+	const multipleSelection = ref<Object[]>([]);
+	const handleSelectionChange = (val: Object[]) => {
 		multipleSelection.value = val;
 	};
 	const setShowEditOptions = inject("setShowEditOptions");
@@ -28,6 +27,7 @@
 		tooltip-effect="dark"
 		header-cell-class-name="table-header"
 		row-class-name="table-row"
+		:flexible="true"
 	>
 		<slot></slot>
 	</el-table>

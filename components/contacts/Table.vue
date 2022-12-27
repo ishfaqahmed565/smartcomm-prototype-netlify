@@ -1,15 +1,5 @@
 <script setup lang="ts">
 	import { ref, PropType } from "vue";
-	interface Columns {
-		name: String;
-		show: Boolean;
-	}
-	const props = defineProps({
-		columns: {
-			type: Array as PropType<Columns[]>,
-			required: false,
-		},
-	});
 
 	const tickets = ref([
 		{
@@ -22,17 +12,6 @@
 			instagram: "View Profile",
 		},
 	]);
-	const multipleSelection = ref<Object>([]);
-	const handleSelectionChange = (val: Object) => {
-		multipleSelection.value = val;
-	};
-	function showCol(name2: String) {
-		const foundCol = props.columns.find((elem) => elem.name === name2);
-
-		return foundCol.show;
-	}
-	const emits = defineEmits(["selected"]);
-	watch(multipleSelection, (newVal) => emits("selected", newVal));
 </script>
 <template>
 	<TableContainer

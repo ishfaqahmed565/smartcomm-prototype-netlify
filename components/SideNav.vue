@@ -15,7 +15,7 @@
 	];
 	const side3: SideNavButton[] = [
 		{ name: "Inbox", imgName: "inbox" },
-		{ name: "Team", imgName: "users" },
+		{ name: "Team", imgName: "teams" },
 		{ name: "Roles", imgName: "roles" },
 		{ name: "Channel Automation", imgName: "channel-automation" },
 	];

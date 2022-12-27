@@ -467,7 +467,7 @@
 						<h3 class="info-header">Properties</h3>
 						<FormElems :formData="formData" class="space-y-[10px]" />
 
-						<EventBut class="w-full"> Update </EventBut>
+						<EventButton class="w-full"> Update </EventButton>
 					</div>
 				</div>
 				<div class="w-2/12 space-y-2">

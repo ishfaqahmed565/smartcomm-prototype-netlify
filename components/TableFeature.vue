@@ -1,6 +1,12 @@
 <script setup lang="ts">
 	import { ref, defineProps, provide, PropType, computed } from "vue";
 	import Ticket from "~/types/Ticket";
+	let props = defineProps({
+		showFiltersButton: {
+			default: true,
+			required: false,
+		},
+	});
 	//in the left section of the top bar i want to toggle between a sorting option i.e:Sort by or Search-done
 	// and edit options row when any column is selected.-done
 	//in the right section of the top bar the button for toggling filters tab will be fixed-done
@@ -36,9 +42,9 @@
 	provide("setShowEditOptions", setShowEditOptions);
 </script>
 <template>
-	<div class="space-y-4">
+	<div>
 		<div
-			class="second-bar bg-white shadow-md border-b-3 border-gray-300 font-medium text-sm"
+			class="second-bar bg-white shadow-md border-b-3 border-gray-300 font-medium text-sm relative z-10"
 		>
 			<div class="second-bar__section">
 				<slot v-if="showEditOptions" name="second-bar-left-edit-options"></slot>
@@ -49,7 +55,9 @@
 			</div>
 			<div class="second-bar__section">
 				<slot name="second-bar-right"> </slot>
-				<NavButton @click="showFiltersTab = !showFiltersTab"
+				<NavButton
+					@click="showFiltersTab = !showFiltersTab"
+					v-if="showFiltersButton"
 					><svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
