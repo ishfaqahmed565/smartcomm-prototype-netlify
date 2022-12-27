@@ -23,8 +23,11 @@
 		:data="tableData"
 		empty-text
 		tooltip
+		style="width: 100%"
 		size="small"
 		tooltip-effect="dark"
+		header-cell-class-name="table-header"
+		row-class-name="table-row"
 	>
 		<slot></slot>
 	</el-table>

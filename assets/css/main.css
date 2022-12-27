@@ -4,7 +4,11 @@
 *{
     box-sizing: border-box;
 }
-@layer components{
+.table-header {
+    background: #F3F4F6 !important;
+}
+
+@layer components{ 
     .feature-container{
         @apply bg-white p-4 rounded-lg shadow
     }
