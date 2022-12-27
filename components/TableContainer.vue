@@ -1,19 +1,25 @@
-<script lang="ts">
-	import { defineComponent, PropType } from "vue";
-
-	export default defineComponent({
-		props: {
-			tableData: {
-				required: true,
-				type: Array as PropType<Array<{}>>,
-			},
+<script setup lang="ts">
+	import { ref, defineProps, PropType, inject } from "vue";
+	import Ticket from "~/types/Ticket";
+	let props = defineProps({
+		tableData: {
+			required: true,
+			type: Array as PropType<Array<{}>>,
 		},
-		setup() {},
+	});
+	const multipleSelection = ref<Ticket[]>([]);
+	const handleSelectionChange = (val: Ticket[]) => {
+		multipleSelection.value = val;
+	};
+	const setShowEditOptions = inject("setShowEditOptions");
+	watch(multipleSelection, (newVal): void => {
+		setShowEditOptions(newVal);
 	});
 </script>
 <template>
 	<el-table
 		ref="multipleTable"
+		@selection-change="handleSelectionChange"
 		:data="tableData"
 		empty-text
 		tooltip

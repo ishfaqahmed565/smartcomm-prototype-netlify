@@ -1,15 +1,7 @@
-<script>
-	export default {
-		data() {
-			return {
-				tagsValue: "",
-			};
-		},
-	};
-</script>
+<script></script>
 <template>
 	<div
-		class="w-2/12 px-3 py-[6px] bg-white gap-4 shadow filters max-h-[80rem] overflow-y-auto min-h-[80vh] flex flex-col"
+		class="px-3 py-[6px] bg-white gap-4 shadow filters max-h-[80rem] overflow-y-auto min-h-[80vh] flex flex-col"
 	>
 		<div class="flex justify-between w-full items-center">
 			<span class="text-[13px] font-[500] uppercase">Filters</span>

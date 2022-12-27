@@ -20,6 +20,7 @@
 </script>
 <template>
 	<NuxtLayout name="custom-default">
+		<template #title> Dashboard </template>
 		<GenFeature>
 			<template #second-bar>
 				<button class="flex gap-1 items-center">

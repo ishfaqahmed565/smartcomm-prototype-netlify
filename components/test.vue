@@ -195,7 +195,6 @@
 	                  })
 	           const showEditOptions = computed(()=>{
 	                       if (selectedRows.value.length > 0) {
-					console.log(selectedRows.value.length, "here");
 
 					return true;
 				}

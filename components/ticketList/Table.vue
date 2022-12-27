@@ -100,32 +100,15 @@
 			status: "Open",
 		},
 	]);
-	const multipleSelection = ref<Ticket[]>([]);
-	const handleSelectionChange = (val: Ticket[]) => {
-		multipleSelection.value = val;
-	};
+
 	function showCol(name2: String) {
 		const foundCol = props.columns.find((elem) => elem.name === name2);
 
 		return foundCol.show;
 	}
-	const emits = defineEmits(["showEditOptions"]);
-	watch(multipleSelection, (newVal): void => {
-		if (newVal.length > 0) {
-			emits("showEditOptions", true);
-			return;
-		} else {
-			emits("showEditOptions", false);
-			return;
-		}
-	});
-	let something = inject("something");
 </script>
 <template>
-	<TableContainer
-		@selection-change="handleSelectionChange"
-		:tableData="tickets"
-	>
+	<TableContainer :tableData="tickets">
 		<el-table-column type="selection"> </el-table-column>
 		<el-table-column label="Contact">
 			<template #default="scope"
@@ -136,7 +119,7 @@
 						class="w-7 object-cover rounded"
 					/>
 
-					<span>{{ something }}</span>
+					<span>{{ scope.row.contact }}</span>
 				</NuxtLink></template
 			>
 		</el-table-column>
