@@ -28,10 +28,12 @@
 	<TableContainer :tableData="tickets">
 		<el-table-column label="Name" property="name">
 			<template #default="scope">
-				<div class="text-xs font-medium text-black">
-					{{ scope.row.name }}
-				</div>
-				<div>Team to handle {{ scope.row.name }}</div>
+				<NuxtLink to="/teams/1" class="group">
+					<span class="text-xs font-medium text-black group-hover:animate-text">
+						{{ scope.row.name }}
+					</span>
+					<div>Team to handle {{ scope.row.name }}</div>
+				</NuxtLink>
 			</template>
 		</el-table-column>
 
@@ -54,7 +56,7 @@
 					viewBox="0 0 24 24"
 					stroke-width="2"
 					stroke="currentColor"
-					class="w-5"
+					class="w-4"
 				>
 					<path
 						stroke-linecap="round"

@@ -19,7 +19,7 @@
 	});
 </script>
 <template>
-	<NuxtLayout name="custom-default">
+	<NuxtLayout name="default">
 		<template #title> Dashboard </template>
 		<GenFeature>
 			<template #second-bar>

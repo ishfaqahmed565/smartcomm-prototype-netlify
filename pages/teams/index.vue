@@ -42,7 +42,7 @@
 
 <template>
 	<div>
-		<NuxtLayout name="custom-default">
+		<NuxtLayout name="default">
 			<template #title>Teams</template>
 			<TableFeature :showFiltersButton="false">
 				<template #second-bar-left-edit-options>

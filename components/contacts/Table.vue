@@ -21,7 +21,7 @@
 		<el-table-column type="selection"> </el-table-column>
 		<el-table-column label="Contact">
 			<template #default="scope"
-				><NuxtLink to="/contacts/1" class="flex items-center gap-2">
+				><NuxtLink to="/customers/1" class="flex items-center gap-2">
 					<img
 						src="/images/contacts/ashiq.png"
 						alt=""
@@ -71,7 +71,7 @@
 					viewBox="0 0 24 24"
 					stroke-width="2"
 					stroke="currentColor"
-					class="w-5"
+					class="w-4"
 				>
 					<path
 						stroke-linecap="round"

@@ -3,7 +3,7 @@
 	//SideNavButton 1 2 3 are created to dynamically create the side navigation bar
 	const side1: SideNavButton[] = [
 		{ name: "Dashboard", imgName: "dashboard" },
-		{ name: "Customer", imgName: "customer" },
+		{ name: "Customer", imgName: "customers" },
 		{ name: "Call History", imgName: "call-history" },
 	];
 	const side2: SideNavButton[] = [

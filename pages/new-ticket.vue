@@ -14,7 +14,7 @@
 		<NuxtLayout name="default">
 			<template #title>Tickets</template>
 
-			<div class="flex space-x-3">
+			<div class="flex space-x-3 mt-3 px-2">
 				<div class="bg-white rounded-lg w-10/12 py-10 px-20 shadow">
 					<!--This is form to add new tickets-->
 					<NewTicketFormSec />

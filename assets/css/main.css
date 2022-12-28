@@ -18,11 +18,14 @@
     .info-text{
         @apply text-gray-400;
     }
+    .animate-text{
+        @apply text-blue-400 transition-all
+    }
     .hover-menu{
        @apply hover:bg-blue-100 transition-all
     }
     .second-bar{
-        @apply flex p-3 justify-between w-full items-center
+        @apply flex p-3 justify-between w-full items-center bg-white shadow-md border-gray-300 font-medium text-sm
     }
     .second-bar__section{
         @apply flex gap-2 items-center

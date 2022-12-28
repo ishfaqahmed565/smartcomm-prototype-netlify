@@ -42,7 +42,7 @@
 
 <template>
 	<div>
-		<NuxtLayout name="custom-default">
+		<NuxtLayout name="default">
 			<template #title>Customers</template>
 			<TableFeature>
 				<template #second-bar-left-edit-options>

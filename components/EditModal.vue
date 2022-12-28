@@ -19,11 +19,11 @@
 			v-show="showEditModal"
 		>
 			<div
-				class="w-[400px] max-h-[100vh] overflow-y-auto absolute right-0 feature-container px-10 pt-10"
+				class="w-[400px] max-h-[100vh] overflow-y-auto absolute right-0 feature-container rounded-none px-10 pt-10"
 			>
 				<button
 					@click="$emit('close')"
-					class="bg-black text-white p-2 w-fit absolute top-0 left-0 rounded rounded-r-none rounded-b-none"
+					class="bg-black text-white p-1 w-fit absolute top-0 left-0"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +31,7 @@
 						viewBox="0 0 24 24"
 						stroke-width="1.5"
 						stroke="currentColor"
-						class="w-5"
+						class="w-4"
 					>
 						<path
 							stroke-linecap="round"

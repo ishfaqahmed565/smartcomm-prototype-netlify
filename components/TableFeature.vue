@@ -43,9 +43,7 @@
 </script>
 <template>
 	<div>
-		<div
-			class="second-bar bg-white shadow-md border-b-3 border-gray-300 font-medium text-sm relative z-10"
-		>
+		<div class="second-bar relative z-10">
 			<div class="second-bar__section">
 				<slot v-if="showEditOptions" name="second-bar-left-edit-options"></slot>
 				<slot
