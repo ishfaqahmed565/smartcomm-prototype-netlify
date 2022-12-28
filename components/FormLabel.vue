@@ -9,10 +9,10 @@
 </script>
 <template>
 	<label
-		class="text-gray-400 text-xs font-bold"
-		:class="{ 'text-[11px]': size === 'small' }"
+		class="text-black text-xs font-bold"
+		:class="{ 'text-[11px] font-semibold': size === 'small' }"
 	>
 		<slot></slot>
-		<span class="text-red-300">*</span>
+		<span class="text-red-500 ml-1">*</span>
 	</label>
 </template>

@@ -195,7 +195,7 @@
 	]);
 </script>
 <template>
-	<form action="" class="space-y-7">
+	<form action="" class="form-space">
 		<FormElems :formData="formData" />
 
 		<div class="mt-5 space-y-2">
