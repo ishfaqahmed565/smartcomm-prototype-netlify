@@ -48,7 +48,7 @@
 							v-for="nav in leftNav"
 							:key="nav.to"
 							:to="nav.to"
-							class="text-sm hover:text-blue-500 font-medium"
+							class="info-header hover:animate-text"
 						>
 							{{ nav.name }}</NuxtLink
 						>

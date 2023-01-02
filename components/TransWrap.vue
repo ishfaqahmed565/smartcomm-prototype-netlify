@@ -3,7 +3,7 @@
 </script>
 <template>
 	<Transition name="wrapper"
-		><div v-show="show" class="relative z-[999999]"><slot></slot></div>
+		><div v-show="show" class="relative z-[999]"><slot></slot></div>
 	</Transition>
 </template>
 <style scoped>

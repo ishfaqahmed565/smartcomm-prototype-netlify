@@ -12,28 +12,48 @@
     .form-space{
         @apply space-y-6
     }
+    .profile-img{
+        @apply w-10 object-contain rounded
+    }
     .feature-container{
         @apply bg-white p-4 rounded-lg shadow
     }
     .info-header{
-        @apply font-semibold text-sm;
+        @apply font-semibold text-gray-800 text-sm;
     }
     .info-text{
-        @apply text-gray-400 text-xs;
+        @apply text-gray-800 text-xs;
+    }
+    .inbox-header{
+        @apply bg-white border-[1px] border-gray-200 p-3 h-[55px] py-2 shadow px-4
+    }
+    .inbox-text{
+        @apply info-text text-[10px]
+    }
+    .inbox-msg{
+        @apply info-text p-2 rounded bg-blue-100/[.7] shadow max-w-[75%] w-fit
+    }
+    .inbox-msg-img{
+        @apply profile-img w-6 self-start
+    }
+    
+    .inbox-section{
+        @apply inbox-header h-auto shadow-none bg-transparent border-none flex gap-4 flex-col 
     }
     .animate-text{
         @apply text-blue-400 transition-all
     }
     .hover-menu{
-       @apply hover:bg-blue-100 transition-all
+       @apply hover:bg-blue-100 transition-all w-full text-start info-text
     }
     .second-bar{
-        @apply flex p-3 justify-between w-full items-center bg-white shadow-md border-gray-300 font-medium text-sm
+        @apply flex p-3 justify-between w-full items-center bg-white shadow border-gray-300 font-medium text-sm
     }
     .second-bar__section{
         @apply flex gap-2 items-center
         
     }
+   
     
     .ticket-info__time{
         @apply text-gray-400 text-[9px]
@@ -47,6 +67,15 @@
     .sidesticky-info-text{
         @apply text-[12px]
     }
+}
+.bg-brand-red{
+    background: #DB1F2A;
+    border-color: #DB1F2A;
+    color:white;
+
+}
+.bg-brand-red:hover {
+    background-color: #DB1F2A !important;
 }
 
 .tiptap-vuetify-editor__content{
