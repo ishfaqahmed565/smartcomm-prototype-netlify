@@ -1,5 +1,11 @@
 <script setup>
 	import useDetectOutsideClick from "~/composable/useDetectOutsideClick.js";
+	let props = defineProps({
+		messages: {
+			required: true,
+			type: Array,
+		},
+	});
 	const queueTabButton = ref(null);
 	const queueTab = ref(false);
 	let searchVal = ref("");
@@ -98,12 +104,18 @@
 			<!--People/Customer-->
 			<div>
 				<NuxtLink
-					class="bg-white p-3 flex items-center border border-gray-200 outline-l border-l-brand-red border-l-[4px] outline-brand-red"
+					class="bg-white p-3 flex items-center border border-gray-200"
+					v-for="message in props.messages"
+					:to="`/inbox/${message.uid}`"
 				>
 					<div class="inbox-profile-info flex items-center gap-3">
-						<img src="/images/contacts/ashiq.png" alt="" class="profile-img" />
+						<img
+							:src="`/images/contacts/${message.img}.png`"
+							alt=""
+							class="profile-img"
+						/>
 						<div class="grid space-y-[-3px]">
-							<span class="info-header"> Rousana Ara Fancy </span>
+							<span class="info-header">{{ message.name }}</span>
 							<span class="inbox-text"> User has sent a message </span>
 							<div class="flex items-center gap-1">
 								<Svgs name="messenger" />
@@ -116,3 +128,8 @@
 		</div>
 	</div>
 </template>
+<style scoped>
+	.router-link-active {
+		border-left: 4px solid #db1f2a;
+	}
+</style>

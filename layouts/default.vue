@@ -37,7 +37,7 @@
 			<!--Top Navigation Bar goes here-->
 			<!--In the top bar there two dynamic named slots which #title and #secondbar which varies from page to page-->
 			<!--Second bar is the bottom section of the top bar-->
-			<div class="bg-white border-b-2 border-gray-200">
+			<div class="bg-white border-b border-gray-300">
 				<div class="flex items-center p-3 justify-between">
 					<div class="left space-x-5 flex items-center justify-center">
 						<h2 class="text-xl font-bold mb-[2px]">

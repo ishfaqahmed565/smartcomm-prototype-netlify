@@ -14,56 +14,42 @@
 
 <template>
 	<Teleport to="body">
-		<Transition name="wrapper">
-			<div
-				class="w-full bg-gray-500 bg-opacity-50 absolute h-full z-[1000] grid top-0"
-				v-if="showEditModal"
-			>
+		<ModalMask v-show="showEditModal">
+			<Transition name="wrapper">
 				<div
+					v-show="showEditModal"
 					class="w-[400px] h-[100vh] overflow-auto absolute right-0 feature-container rounded-none px-10 pt-10"
 				>
-					<button
+					<NavButton
 						@click="$emit('close')"
-						class="bg-brand-red text-white p-1 w-fit absolute top-0 left-0"
+						class="bg-brand-red px-1 absolute top-0 left-0"
+						style="border-radius: 0px"
 					>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke-width="1.5"
-							stroke="currentColor"
-							class="w-4"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M6 18L18 6M6 6l12 12"
-							/>
-						</svg>
-					</button>
+						<Svgs name="close" />
+					</NavButton>
 					<div class="grid gap-5">
 						<slot></slot>
 					</div>
 				</div>
-			</div>
-		</Transition>
+			</Transition>
+		</ModalMask>
 	</Teleport>
 </template>
 <style scoped>
 	.wrapper-enter-active {
 		animation-name: enter;
-		animation-duration: 0.2s;
+		animation-duration: 0.5s;
 	}
 	.wrapper-leave-active {
-		animation: enter 0.2s reverse;
+		animation: enter 0.5s reverse;
 	}
 	@keyframes enter {
 		0% {
-			opacity: 0;
+			right: -400px;
 		}
 
 		100% {
-			opacity: 1;
+			right: 0px;
 		}
 	}
 </style>

@@ -1,8 +1,16 @@
+<script setup>
+	let props = defineProps({
+		messages: {
+			required: true,
+			type: Array,
+		},
+	});
+</script>
 <template>
 	<div class="col-span-2">
 		<div class="inbox-header">
 			<div class="grid space-y-[-2px]">
-				<span class="info-header">Rousana Ara Fancy</span>
+				<span class="info-header">Ashiq Zaman</span>
 				<div class="flex items-center gap-1">
 					<svg
 						viewBox="0 0 800 806.5"
@@ -41,8 +49,17 @@
 				<template #drop-data>
 					<!--Side Sticky info section tags starts here-->
 					<div class="overflow-hidden">
+						<h4
+							class="sidesticky-info-header flex items-center gap-1"
+							@click="$emit('showClientEditModal')"
+						>
+							My SmartComm UID <Svgs name="pen" class="hover:text-blue-400" />
+						</h4>
+						<p class="sidesticky-info-text truncate">#16878732</p>
+					</div>
+					<div class="overflow-hidden">
 						<h4 class="sidesticky-info-header">Gender</h4>
-						<p class="sidesticky-info-text truncate">Female</p>
+						<p class="sidesticky-info-text truncate">Male</p>
 					</div>
 					<!--Side Sticky info section tags ends here-->
 					<!--Side Sticky info section tags starts here-->

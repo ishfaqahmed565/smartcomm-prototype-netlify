@@ -10,7 +10,7 @@
 </script>
 <template>
 	<client-only>
-		<div class="grid gap-1" v-for="elem in formData" :key="elem.name">
+		<div class="form-elem-container" v-for="elem in formData" :key="elem.name">
 			<FormLabel :size="size">
 				{{ elem.name }}
 			</FormLabel>
