@@ -72,7 +72,11 @@
 			</div>
 			<!--Message box-->
 			<div class="inbox-section chat-border bg-white h-[65vh] overflow-auto">
-				<div v-for="message in selectedChat.messages" :key="message.type">
+				<div
+					v-for="message in selectedChat.messages"
+					:key="message.type"
+					class="flex flex-col space-y-10"
+				>
 					<!--Client message-->
 					<div class="flex gap-1 self-start" v-if="message.type == 'client'">
 						<img
@@ -118,10 +122,13 @@
 								class="text-[8px] flex gap-1 items-center text-gray-700 place-self-end"
 							>
 								<span>{{ message.time }}</span>
+								<span class="border-x px-1">{{
+									message.by === "BOT" ? "BOT" : selectedChat.assigned
+								}}</span>
 								<span
 									><svg
-										fill="none"
 										xmlns="http://www.w3.org/2000/svg"
+										fill="none"
 										viewBox="0 0 24 24"
 										stroke-width="6"
 										stroke="currentColor"

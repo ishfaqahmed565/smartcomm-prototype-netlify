@@ -14,9 +14,9 @@
     }
     .form-elem-container{
         @apply grid gap-1 w-full
-    }
+    } 
     .profile-img{
-        @apply w-10 object-contain rounded
+        @apply w-10 h-10 object-cover rounded
     }
     .feature-container{
         @apply bg-white p-4 rounded shadow
@@ -35,10 +35,10 @@
         @apply info-text text-[10px]
     }
     .inbox-msg{
-        @apply info-text p-2 rounded bg-blue-100/[.7] shadow max-w-[75%] w-fit
+        @apply info-text p-2 rounded bg-blue-100/[.7] shadow max-w-[75%] w-fit object-contain
     }
     .inbox-msg-img{
-        @apply profile-img w-6 self-start
+        @apply profile-img w-6 h-6 self-start 
     }
     
     .inbox-section{

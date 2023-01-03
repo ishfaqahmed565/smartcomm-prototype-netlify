@@ -5,12 +5,17 @@
 			type: Array,
 		},
 	});
+	const route = useRoute();
+	const id = ref(route.params.id);
+	const selectedChat = computed(() => {
+		return props.messages.find((elem) => elem.uid === id.value);
+	});
 </script>
 <template>
 	<div class="col-span-2">
 		<div class="inbox-header">
 			<div class="grid space-y-[-2px]">
-				<span class="info-header">Ashiq Zaman</span>
+				<span class="info-header">{{ selectedChat?.name }}</span>
 				<div class="flex items-center gap-1">
 					<svg
 						viewBox="0 0 800 806.5"
@@ -55,29 +60,49 @@
 						>
 							My SmartComm UID <Svgs name="pen" class="hover:text-blue-400" />
 						</h4>
-						<p class="sidesticky-info-text truncate">#16878732</p>
+						<p class="sidesticky-info-text truncate">#{{ selectedChat.uid }}</p>
 					</div>
 					<div class="overflow-hidden">
 						<h4 class="sidesticky-info-header">Gender</h4>
-						<p class="sidesticky-info-text truncate">Male</p>
+						<p class="sidesticky-info-text truncate">
+							{{ selectedChat.gender }}
+						</p>
+					</div>
+					<div class="overflow-hidden">
+						<h4 class="sidesticky-info-header">Mobile</h4>
+						<p class="sidesticky-info-text truncate">
+							{{ selectedChat.mobile }}
+						</p>
+					</div>
+					<div class="overflow-hidden">
+						<h4 class="sidesticky-info-header">Email</h4>
+						<p class="sidesticky-info-text truncate">
+							{{ selectedChat.email }}
+						</p>
 					</div>
 					<!--Side Sticky info section tags ends here-->
 					<!--Side Sticky info section tags starts here-->
 					<div class="overflow-hidden">
 						<h4 class="sidesticky-info-header">Locale</h4>
-						<p class="sidesticky-info-text truncate">en_GB</p>
+						<p class="sidesticky-info-text truncate">
+							{{ selectedChat.locale }}
+						</p>
 					</div>
 					<!--Side Sticky info section tags ends here-->
 					<!--Side Sticky info section tags starts here-->
 					<div class="overflow-hidden">
 						<h4 class="sidesticky-info-header">Time Zone</h4>
-						<p class="sidesticky-info-text truncate">BD Time (Bangladesh)</p>
+						<p class="sidesticky-info-text truncate">
+							{{ selectedChat.timeZone }}
+						</p>
 					</div>
 					<!--Side Sticky info section tags ends here-->
 					<!--Side Sticky info section tags starts here-->
 					<div class="overflow-hidden">
 						<h4 class="sidesticky-info-header">Language</h4>
-						<p class="sidesticky-info-text truncate">English</p>
+						<p class="sidesticky-info-text truncate">
+							{{ selectedChat.language }}
+						</p>
 					</div>
 				</template>
 			</SideStickyDrop>
