@@ -82,7 +82,7 @@
 			<el-input
 				v-model="searchVal"
 				class="w-full"
-				placeholder="Search all agents"
+				placeholder="Search Customers Name"
 			>
 				<template #prefix>
 					<svg

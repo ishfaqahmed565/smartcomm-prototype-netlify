@@ -50,7 +50,9 @@
 							"
 						/>
 					</div>
-					<NavButton class="nav-border-brand-red"
+					<NavButton
+						class="nav-border-brand-red"
+						@click="$emit('showAssignModal')"
 						>Agent
 						<svg
 							xmlns="http://www.w3.org/2000/svg"

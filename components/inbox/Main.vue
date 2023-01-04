@@ -2,6 +2,7 @@
 	import { ref } from "vue";
 	const showEditModal = ref(false);
 	let showClientEditModal = ref(false);
+	let showAssignModal = ref(false);
 	let messages = ref([
 		{
 			name: "Ashiq Zaman",
@@ -105,14 +106,17 @@
 			:messages="messages"
 		/>
 		<!--Clients Message section-->
-		<InboxMessageBox :messages="messages" />
+		<InboxMessageBox
+			:messages="messages"
+			@showAssignModal="showAssignModal = true"
+		/>
 		<!--Customer info section-->
 		<InboxClientInfo
 			@showClientEditModal="showClientEditModal = true"
 			:messages="messages"
 		/>
 	</div>
-	<!--Filter Editmodal starts here-->
+	<!--Editmodals starts here-->
 	<InboxClientEditModal
 		:showClientEditModal="showClientEditModal"
 		@closeClientEditModal="showClientEditModal = false"
@@ -120,5 +124,9 @@
 	<InboxFilterModal
 		:showEditModal="showEditModal"
 		@closeEditModal="showEditModal = false"
+	/>
+	<InboxAssignModal
+		:showAssignModal="showAssignModal"
+		@closeAssignModal="showAssignModal = false"
 	/>
 </template>

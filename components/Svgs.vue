@@ -9,10 +9,10 @@
 </script>
 <template>
 	<svg
+		v-if="props.name == 'messenger'"
 		viewBox="0 0 800 806.5"
 		xmlns="http://www.w3.org/2000/svg"
-		class="w-3"
-		v-if="props.name == 'messenger'"
+		class="w-3 self-end"
 	>
 		<radialGradient
 			id="a"
@@ -36,50 +36,44 @@
 			fill="#fff"
 		/>
 	</svg>
-
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		fill="none"
 		viewBox="0 0 24 24"
 		stroke-width="1.5"
 		stroke="currentColor"
-		class="text-black w-4 hover:animate-text"
-		v-if="props.name == 'pen'"
+		class="w-4"
+		v-if="props.name !== 'messenger'"
 	>
 		<path
+			v-if="props.name == 'pen'"
 			stroke-linecap="round"
 			stroke-linejoin="round"
 			d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
 		/>
-	</svg>
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		fill="none"
-		viewBox="0 0 24 24"
-		stroke-width="1.5"
-		stroke="currentColor"
-		v-if="props.name == 'close'"
-		class="w-4"
-	>
 		<path
+			v-if="props.name == 'close'"
 			stroke-linecap="round"
 			stroke-linejoin="round"
 			d="M6 18L18 6M6 6l12 12"
 		/>
-	</svg>
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		fill="none"
-		viewBox="0 0 24 24"
-		stroke-width="1.5"
-		stroke="currentColor"
-		v-if="props.name == 'message'"
-		class="w-4"
-	>
 		<path
+			v-if="props.name == 'message'"
 			stroke-linecap="round"
 			stroke-linejoin="round"
 			d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"
+		/>
+		<path
+			v-if="props.name == 'arrow-path'"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+		/>
+		<path
+			v-if="props.name == 'tick'"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			d="M4.5 12.75l6 6 9-13.5"
 		/>
 	</svg>
 </template>
