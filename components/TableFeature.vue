@@ -73,7 +73,7 @@
 				</NavButton>
 			</div>
 		</div>
-		<div class="grid gap-4 feature-card bg-gray-100 px-2 py-3">
+		<div class="feature-main-card">
 			<div class="flex gap-2 w-full overflow-auto">
 				<div class="shadow h-fit" :class="tableAnimation">
 					<!--table slot goes here-->

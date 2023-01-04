@@ -37,7 +37,7 @@
 		filter: invert(46%) sepia(44%) saturate(5680%) hue-rotate(336deg)
 			brightness(86%) contrast(123%);
 	}
-	.router-link-exact-active > .dynImg {
+	.router-link-active > .dynImg {
 		filter: invert(46%) sepia(44%) saturate(5680%) hue-rotate(336deg)
 			brightness(86%) contrast(123%);
 	}

@@ -14,7 +14,7 @@
 					<slot name="secondbar"></slot>
 				</template>
 			</TopNav>
-			<div class="feature-card bg-gray-100 px-2 py-3 space-y-4">
+			<div class="feature-card bg-gray-100 px-2 py-2 space-y-4">
 				<!--This is the dynamic part of the page that keeps changin i.e:feature-card-->
 				<slot />
 			</div>
