@@ -4,8 +4,29 @@
 	const tickets = ref([
 		{
 			contact: "Ashiq Zaman",
+			img: "ashiq",
 			title: "Founder",
 			company: "Udvash",
+			email: "ashiqzaman@gmail.com",
+			workphone: "+8801732986106",
+			facebook: "View Profile",
+			instagram: "View Profile",
+		},
+		{
+			contact: "Kamrun Nahar",
+			img: "kamrun-nahar",
+			title: "Founder",
+			company: "Unmesh",
+			email: "ashiqzaman@gmail.com",
+			workphone: "+8801732986106",
+			facebook: "View Profile",
+			instagram: "View Profile",
+		},
+		{
+			contact: "Ahmad Ishfaq",
+			title: "Founder",
+			img: "ishfaq",
+			company: "Grammenphone",
 			email: "ashiqzaman@gmail.com",
 			workphone: "+8801732986106",
 			facebook: "View Profile",
@@ -14,16 +35,13 @@
 	]);
 </script>
 <template>
-	<TableContainer
-		@selection-change="handleSelectionChange"
-		:tableData="tickets"
-	>
+	<TableContainer :tableData="tickets">
 		<el-table-column type="selection"> </el-table-column>
 		<el-table-column label="Contact">
 			<template #default="scope"
 				><NuxtLink to="/customers/1" class="flex items-center gap-2 group">
 					<img
-						src="/images/contacts/ashiq.png"
+						:src="`/images/contacts/${scope.row.img}.png`"
 						alt=""
 						class="w-7 object-cover rounded"
 					/>
