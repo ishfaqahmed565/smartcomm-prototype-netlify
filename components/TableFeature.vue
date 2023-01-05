@@ -40,6 +40,7 @@
 		}
 	};
 	provide("setShowEditOptions", setShowEditOptions);
+	const showFiltersModal = ref(false);
 </script>
 <template>
 	<div>
@@ -54,7 +55,7 @@
 			<div class="second-bar__section">
 				<slot name="second-bar-right"> </slot>
 				<NavButton
-					@click="showFiltersTab = !showFiltersTab"
+					@click="showFiltersModal = !showFiltersModal"
 					v-if="showFiltersButton"
 					><svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -75,17 +76,23 @@
 		</div>
 		<div class="feature-main-card">
 			<div class="flex gap-2 w-full overflow-auto">
-				<div class="shadow h-fit" :class="tableAnimation">
+				<div class="shadow h-fit w-full">
 					<!--table slot goes here-->
 
 					<slot name="feature-table"> </slot>
 				</div>
-				<Transition name="expand">
+				<!--<Transition name="expand">
 					<div class="w-2/12" v-show="showFiltersTab">
-						<!--Filter slot goes here-->
+						
 						<slot name="feature-filter"></slot>
 					</div>
-				</Transition>
+				</Transition>-->
+				<EditModal
+					:showEditModal="showFiltersModal"
+					@close="showFiltersModal = false"
+				>
+					<slot name="feature-filter"></slot>
+				</EditModal>
 			</div>
 		</div>
 	</div>

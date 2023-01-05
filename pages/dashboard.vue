@@ -55,11 +55,11 @@
 					</button>
 				</div>
 				<!--Six info tasks ends here-->
-				<div class="feature-container grid grid-cols-5">
-					<div class="col-span-3">
+				<div class="feature-container grid grid-cols-12">
+					<div class="col-span-8">
 						<DashboardChartItem />
 					</div>
-					<div class="stats col-span-2 grid-cols-2 gap-2 grid">
+					<div class="stats col-span-4 grid-cols-2 gap-2 grid">
 						<div
 							v-for="stat in stats"
 							:key="stat.name"

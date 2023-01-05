@@ -7,7 +7,9 @@
 .table-header {
     background: #F3F4F6 !important;
 }
-
+.apexcharts-title-text {
+    margin: 5px !important;
+}
 @layer components{ 
     .feature-main-card{
         @apply grid gap-4 bg-gray-100 px-4 py-2

@@ -18,36 +18,100 @@
 						name: "Actual",
 						data: [
 							{
-								x: "2011",
-								y: 1292,
+								x: "0",
+								y: 3,
 							},
 							{
-								x: "2012",
-								y: 4432,
+								x: "1",
+								y: 2.5,
 							},
 							{
-								x: "2013",
-								y: 5423,
+								x: "3",
+								y: 6,
 							},
 							{
-								x: "2014",
-								y: 6653,
+								x: "4",
+								y: 10,
 							},
 							{
-								x: "2015",
-								y: 8133,
+								x: "5",
+								y: 5,
 							},
 							{
-								x: "2016",
-								y: 7132,
+								x: "6",
+								y: 9,
 							},
 							{
-								x: "2017",
-								y: 7332,
+								x: "7",
+								y: 10,
 							},
 							{
-								x: "2018",
-								y: 6553,
+								x: "8",
+								y: 15,
+							},
+							{
+								x: "9",
+								y: 3,
+							},
+							{
+								x: "10",
+								y: 2.5,
+							},
+							{
+								x: "11",
+								y: 6,
+							},
+							{
+								x: "12",
+								y: 10,
+							},
+							{
+								x: "13",
+								y: 5,
+							},
+							{
+								x: "14",
+								y: 9,
+							},
+							{
+								x: "15",
+								y: 10,
+							},
+							{
+								x: "16",
+								y: 15,
+							},
+							{
+								x: "17",
+								y: 3,
+							},
+							{
+								x: "18",
+								y: 2.5,
+							},
+							{
+								x: "19",
+								y: 6,
+							},
+							{
+								x: "20",
+								y: 10,
+							},
+							{
+								x: "21",
+								y: 5,
+							},
+							{
+								x: "22",
+								y: 9,
+							},
+							{
+								x: "23",
+								y: 10,
+							},
+							{
+								x: "24",
+								y: 15,
 							},
 						],
 					},
@@ -57,12 +121,36 @@
 						height: 350,
 						type: "bar",
 					},
+
+					grid: {
+						xaxis: {
+							lines: {
+								show: false,
+							},
+						},
+						yaxis: {
+							lines: {
+								show: false,
+							},
+						},
+					},
+					title: {
+						text: "Hours",
+						floating: true,
+						offsetY: 327,
+						align: "center",
+						style: {
+							color: "#444",
+							fontSize: "13px",
+							fontWeight: "500",
+						},
+					},
 					plotOptions: {
 						bar: {
 							columnWidth: "60%",
 						},
 					},
-					colors: ["#8C367D"],
+					colors: ["#DB1F2A"],
 					dataLabels: {
 						enabled: false,
 					},
@@ -70,8 +158,14 @@
 						show: true,
 						showForSingleSeries: true,
 						customLegendItems: ["Today", "Yesterday"],
+						horizontalAlign: "right",
 						markers: {
-							fillColors: ["#8C367D", "#775DD0"],
+							fillColors: ["#DB1F2A", "black"],
+							style: {
+								justifyContent: "end",
+								fontSize: "2px !important",
+								fontWeight: "100",
+							},
 						},
 					},
 				},

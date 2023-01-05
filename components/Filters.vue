@@ -1,10 +1,10 @@
 <script></script>
 <template>
 	<div
-		class="px-3 py-[6px] bg-white gap-4 shadow filters max-h-[80rem] overflow-y-auto min-h-[80vh] flex flex-col"
+		class="bg-white gap-4 filters max-h-[80rem] overflow-y-auto min-h-[80vh] flex flex-col"
 	>
 		<div class="flex justify-between w-full items-center">
-			<span class="text-[13px] font-[500] uppercase">Filters</span>
+			<span class="text-[14px] font-[500] uppercase">Filters</span>
 			<div class="border border-gray-300 p-2 shadow rounded">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -24,6 +24,8 @@
 		</div>
 		<form action="" class="grid gap-3">
 			<slot name="filters"> </slot>
+			<hr />
+			<FormSubmitSec />
 		</form>
 	</div>
 </template>
