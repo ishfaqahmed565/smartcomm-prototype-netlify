@@ -93,6 +93,7 @@
 		{
 			contact: "Ashiq Zaman",
 			subject: "Email adress changed",
+			img: "ashiq",
 			state: "Overdue",
 			group: "None",
 			agent: "Ishfaq Ahmad",
@@ -100,8 +101,9 @@
 			status: "Open",
 		},
 		{
-			contact: "Ashiq Zaman",
-			subject: "Email adress changed",
+			contact: "Kamrun Nahar",
+			subject: "Payment failed",
+			img: "kamrun-nahar",
 			state: "Customer Responded",
 			group: "None",
 			agent: "Ishfaq Ahmad",
@@ -109,8 +111,9 @@
 			status: "Open",
 		},
 		{
-			contact: "Ashiq Zaman",
-			subject: "Email adress changed",
+			contact: "Ishfaq Ahmad",
+			img: "ishfaq",
+			subject: "Hello",
 			state: "New",
 			group: "None",
 			agent: "Ishfaq Ahmad",
@@ -132,7 +135,7 @@
 			<template #default="scope"
 				><NuxtLink to="/customers/1" class="flex items-center gap-2 group">
 					<img
-						src="/images/contacts/ashiq.png"
+						:src="`/images/contacts/${scope.row.img}.png`"
 						alt=""
 						class="w-7 object-cover rounded"
 					/>
