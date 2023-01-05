@@ -366,7 +366,30 @@
 									</div>
 								</div>
 							</div>
-							<div class="feature-container" v-show="showNotes"></div>
+							<div
+								class="feature-container px-[0px] pt-[0px] min-h-[40vh]"
+								v-show="showNotes"
+							>
+								<div class="shadow w-full border border-gray-300 rounded p-3">
+									<div class="flex items-center gap-3">
+										<Svgs name="pen" />
+										<span class="info-text"
+											>add notes about this contact (things your team should
+											know about)</span
+										>
+									</div>
+								</div>
+								<div class="w-full h-full grid place-items-center pt-10">
+									<Svgs
+										name="message"
+										class="grid place-items-center w-12 text-gray-500"
+										stroke-width="1"
+									/>
+									<span class="info-text"
+										>Your team has not added any note yet!</span
+									>
+								</div>
+							</div>
 						</div>
 						<div class="w-2/12 space-y-2">
 							<!--SideStickyDrop Details starts here-->

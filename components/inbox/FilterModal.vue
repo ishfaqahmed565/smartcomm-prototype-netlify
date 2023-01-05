@@ -78,7 +78,7 @@
 						:class="{
 							'nav-border-brand-red': ticketStatus == 'pending',
 						}"
-						class="hover:bg-brand-red hover:text-white"
+						class="hover:bg-brand-purple hover:text-white"
 						@click="ticketStatus = 'pending'"
 						>Pending</NavButton
 					>
@@ -86,7 +86,7 @@
 						:class="{
 							'nav-border-brand-red': ticketStatus == 'resolved',
 						}"
-						class="hover:bg-brand-red hover:text-white"
+						class="hover:bg-brand-purple hover:text-white"
 						@click="ticketStatus = 'resolved'"
 						>Resolved</NavButton
 					>
@@ -108,7 +108,7 @@
 						:class="{
 							'nav-border-brand-red': channels == 'page',
 						}"
-						class="hover:bg-brand-red hover:text-white"
+						class="hover:bg-brand-purple hover:text-white"
 						@click="channels = 'page'"
 					>
 						<Svgs name="messenger" />your page</NavButton

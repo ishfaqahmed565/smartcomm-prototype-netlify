@@ -45,7 +45,7 @@
 							class="ml-2"
 							size="small"
 							style="
-								--el-switch-on-color: #db1f2a;
+								--el-switch-on-color: #7c3985;
 								--el-switch-off-color: #dcdfe6;
 							"
 						/>
@@ -164,7 +164,7 @@
 							class="relative top-[19px] z-10 border-t border-gray-100 w-full"
 						/>
 						<div
-							class="inbox-msg bg-brand-red self-center relative z-20 uppercase"
+							class="inbox-msg bg-[#C92C5F] text-white self-center relative z-20 uppercase"
 						>
 							<span>{{ message.message }}</span>
 						</div>

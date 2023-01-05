@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { defineComponent, PropType } from "vue";
-
+	import { defineComponent, PropType, defineEmits, ref } from "vue";
+	import useDetectOutsideClick from "~/composable/useDetectOutsideClick.js";
 	export default defineComponent({
 		props: {
 			showEditModal: {
@@ -10,6 +10,15 @@
 		},
 		setup() {},
 	});
+	const emit = defineEmits(["close"]);
+	const editModal = ref(null);
+	useDetectOutsideClick(editModal, () => {
+		emit("close");
+	});
+	function buttonClick() {
+		emit("close");
+		console.log("i am here");
+	}
 </script>
 
 <template>
@@ -21,6 +30,7 @@
 					class="w-[400px] h-[100vh] overflow-auto absolute right-0 feature-container rounded-none px-10 pt-10"
 				>
 					<NavButton
+						ref="editModal"
 						@click="$emit('close')"
 						class="bg-brand-red px-1 absolute top-0 left-0"
 						style="border-radius: 0px"

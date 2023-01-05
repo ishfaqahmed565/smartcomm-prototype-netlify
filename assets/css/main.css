@@ -80,21 +80,21 @@
     
 }
 .nav-border-brand-red{
-    border-color: #DB1F2A;
+    border-color: #7c3985;
     color: rgb(37, 36, 36);
 }
 .nav-border-brand-red:hover {
-    background-color: #DB1F2A !important;
+    background-color: #7c3985 !important;
     color:white
 }
 .bg-brand-red{
-    background: #DB1F2A;
-    border-color: #DB1F2A;
+    background: #7c3985;
+    border-color: #7c3985;
     color:white;
 
 }
 .bg-brand-red:hover {
-    background-color: #DB1F2A !important;
+    background-color: #7c3985 !important;
 }
 
 .tiptap-vuetify-editor__content{
@@ -109,7 +109,7 @@
     border-radius: 5px !important;
 }
  .is-focus{
-    outline:2px solid #DB1F2A;
+    outline:2px solid #7c3985;
     outline-offset: -2px;
     border-radius: 3px;
 

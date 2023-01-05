@@ -64,7 +64,7 @@
 							<NuxtLink :to="`/${nav.to}`">
 								{{ nav.name }}
 								<span
-									class="absolute bg-red-500 text-white right-0 rounded-md top-[-10px] right-[-10px] px-2 text-xs"
+									class="absolute bg-[#C92C5F] text-white right-0 rounded-md top-[-10px] right-[-10px] px-2 text-xs"
 									>{{ nav.number }}</span
 								>
 							</NuxtLink>

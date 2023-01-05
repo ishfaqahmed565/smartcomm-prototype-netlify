@@ -150,7 +150,7 @@
 							columnWidth: "60%",
 						},
 					},
-					colors: ["#DB1F2A"],
+					colors: ["#7c3985"],
 					dataLabels: {
 						enabled: false,
 					},

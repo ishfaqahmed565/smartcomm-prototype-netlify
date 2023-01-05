@@ -130,6 +130,6 @@
 </template>
 <style scoped>
 	.router-link-active {
-		border-left: 4px solid #db1f2a;
+		border-left: 4px solid #7c3985;
 	}
 </style>
