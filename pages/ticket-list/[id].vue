@@ -154,7 +154,7 @@
 <template>
 	<div>
 		<NuxtLayout name="default">
-			<template #title>Customer>1</template>
+			<template #title>Ticket>1</template>
 			<GenFeature>
 				<template #second-bar>
 					<div class="second-bar__section">
@@ -283,7 +283,7 @@
 								viewBox="0 0 24 24"
 								stroke-width="2"
 								stroke="currentColor"
-								class="w-4"
+								class="w-5"
 							>
 								<path
 									stroke-linecap="round"
