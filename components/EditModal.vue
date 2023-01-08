@@ -1,18 +1,17 @@
-<script setup lang="ts">
-	import { PropType, defineEmits, ref, defineProps, onMounted } from "vue";
-	import useDetectOutsideClick from "~/composable/useDetectOutsideClick.js";
+<script setup>
+	import { defineEmits, ref, defineProps, onMounted, watch } from "vue";
 
 	let props = defineProps({
 		showEditModal: {
 			type: Boolean,
 		},
 	});
+	let emit = defineEmits(["close"]);
 
 	function close() {
 		emit("close");
-		console.log("here");
+		console.log("i am here");
 	}
-	let emit = defineEmits(["close"]);
 </script>
 
 <template>
@@ -20,9 +19,9 @@
 		<ModalMask v-show="props.showEditModal">
 			<Transition name="wrapper">
 				<div
-					ref="editModal"
 					v-if="props.showEditModal"
-					class="w-[400px] h-[100vh] overflow-auto absolute right-0 feature-container rounded-none px-10 pt-10"
+					ref="editModal"
+					class="w-[400px] h-[100vh] overflow-auto absolute z-[50] right-0 feature-container rounded-none px-10 pt-10"
 				>
 					<NavButton
 						class="bg-brand-red px-1 absolute top-0 left-0"
@@ -31,7 +30,7 @@
 					>
 						<Svgs name="close" />
 					</NavButton>
-					<div class="grid gap-5">
+					<div class="grid gap-5" @click="!close">
 						<slot></slot>
 					</div>
 				</div>
