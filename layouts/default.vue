@@ -88,9 +88,7 @@
 								<span>New</span>
 							</template>
 							<template #drop-data>
-								<div
-									class="hover-menu p-2 hover:text-blue-400 flex gap-2 flex-items-center border-b"
-								>
+								<div class="drop-data">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										fill="none"
@@ -108,9 +106,7 @@
 
 									<span>New Ticket</span>
 								</div>
-								<div
-									class="hover-menu p-2 hover:text-blue-400 flex gap-2 items-center border-b"
-								>
+								<div class="drop-data">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										fill="none"
@@ -171,17 +167,11 @@
 										<span>Admin Demo</span>
 									</div>
 									<hr />
-									<NuxtLink
-										to="/profile"
-										class="hover-menu p-1 hover:text-blue-400 flex gap-2 px-3"
-									>
+									<NuxtLink to="/profile" class="drop-data">
 										My Profile
 									</NuxtLink>
 									<hr />
-									<NuxtLink
-										to="/"
-										class="hover-menu p-1 hover:text-blue-400 flex gap-2 px-3"
-									>
+									<NuxtLink to="/" class="drop-data">
 										Sign Out
 									</NuxtLink></PopUp
 								>

@@ -98,7 +98,7 @@
 
 					<TransWrap :show="newTab">
 						<PopUp
-							><div class="hover-menu p-2 hover:text-blue-400 flex gap-2">
+							><div class="drop-data p-2 hover:text-blue-400 flex gap-2">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									fill="none"
@@ -117,7 +117,7 @@
 								<span>New Ticket</span>
 							</div>
 							<hr />
-							<div class="hover-menu p-1 hover:text-blue-400 flex gap-2">
+							<div class="drop-data p-1 hover:text-blue-400 flex gap-2">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									fill="none"
@@ -179,19 +179,9 @@
 								<span>Admin Demo</span>
 							</div>
 							<hr />
-							<NuxtLink
-								to="/profile"
-								class="hover-menu p-1 hover:text-blue-400 flex gap-2 px-3"
-							>
-								My Profile
-							</NuxtLink>
+							<NuxtLink to="/profile" class="drop-data"> My Profile </NuxtLink>
 							<hr />
-							<NuxtLink
-								to="/"
-								class="hover-menu p-1 hover:text-blue-400 flex gap-2 px-3"
-							>
-								Sign Out
-							</NuxtLink></PopUp
+							<NuxtLink to="/" class="drop-data"> Sign Out </NuxtLink></PopUp
 						>
 					</TransWrap>
 				</div>

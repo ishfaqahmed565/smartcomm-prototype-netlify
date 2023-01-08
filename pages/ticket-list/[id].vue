@@ -276,22 +276,18 @@
 							</svg>
 							<span>Delete</span></NavButton
 						>
-						<NavButton
-							><svg
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke-width="2"
-								stroke="currentColor"
-								class="w-5"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
-								/>
-							</svg>
-						</NavButton>
+						<DropDown :showCarret="false">
+							<template #drop-button>
+								<Svgs name="hr-ellipsis" class="w-5" />
+							</template>
+							<template #drop-data>
+								<button class="drop-data">Execute scenarios</button>
+								<button class="drop-data">Log Time</button>
+								<button class="drop-data">Edit ticket details</button>
+								<button class="drop-data">Print</button>
+								<button class="drop-data">Spam</button>
+							</template>
+						</DropDown>
 					</div>
 					<div class="second-bar__section">
 						<NavButton @click="showActivity = !showActivity">

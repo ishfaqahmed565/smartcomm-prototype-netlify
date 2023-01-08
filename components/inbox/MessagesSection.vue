@@ -43,19 +43,13 @@
 
 				<TransWrap :show="queueTab">
 					<PopUp class="left-0 rounded-[0px] w-[7rem] grid place-items-start">
-						<button class="hover-menu p-1 px-2" @click="inboxSort = 'My Queue'">
+						<button class="drop-data" @click="inboxSort = 'My Queue'">
 							My Queue
 						</button>
-						<button
-							class="hover-menu p-1 px-2"
-							@click="inboxSort = 'All Queue'"
-						>
+						<button class="drop-data" @click="inboxSort = 'All Queue'">
 							All Queue
 						</button>
-						<button
-							class="hover-menu p-1 px-2"
-							@click="inboxSort = 'Unassigned'"
-						>
+						<button class="drop-data" @click="inboxSort = 'Unassigned'">
 							Unassigned
 						</button>
 					</PopUp>
