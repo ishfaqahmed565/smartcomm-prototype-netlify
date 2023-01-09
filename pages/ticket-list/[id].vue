@@ -1,151 +1,148 @@
-<script lang="ts">
+<script setup lang="ts">
 	import { defineComponent, ref } from "vue";
 	import FormEl from "~/types/FormEl";
-	export default defineComponent({
-		setup() {
-			const route = useRoute();
-			const id = computed(() => route.params.id);
-			const showActivity = ref(false);
+	const route = useRoute();
+	const id = computed(() => route.params.id);
+	const showActivity = ref(false);
 
-			const formData = ref<FormEl[]>([
-				{
-					name: "Tags",
-					type: "select",
-					value: "",
-					data: [{ value: "Important", label: "Important" }],
-				},
-				{
-					name: "Type",
-					type: "select",
-					value: "",
-					data: [
-						{
-							value: "None",
-							label: "None",
-						},
-						{
-							value: "Question",
-							label: "Question",
-						},
-						{
-							value: "Problem",
-							label: "Problem",
-						},
-						{
-							value: "Feature request",
-							label: "Feature request",
-						},
-						{
-							value: "Refund",
-							label: "Refund",
-						},
-					],
-				},
-
-				{
-					name: "Status",
-					type: "select",
-					value: "Open",
-					data: [
-						{
-							value: "Open",
-							label: "Open",
-						},
-						{
-							value: "Pending",
-							label: "Pending",
-						},
-						{
-							value: "Resolved",
-							label: "Resolved",
-						},
-						{
-							value: "Waiting on customer",
-							label: "Waiting on customer",
-						},
-						{
-							value: "Waiting on third party",
-							label: "Waiting on third party",
-						},
-					],
-				},
-				{
-					name: "Priority",
-					type: "select",
-					value: "",
-					data: [
-						{
-							value: "Low",
-							label: "Low",
-						},
-						{
-							value: "Medium",
-							label: "Medium",
-						},
-						{
-							value: "High",
-							label: "High",
-						},
-						{
-							value: "Urgent",
-							label: "Urgent",
-						},
-					],
-				},
-				{
-					name: "Group",
-					type: "select",
-					value: "None",
-					data: [
-						{
-							value: "None",
-							label: "None",
-						},
-						{
-							value: "Billing",
-							label: "Billing",
-						},
-						{
-							value: "Customer Support",
-							label: "Customer Support",
-						},
-						{
-							value: "Escalations",
-							label: "Escalations",
-						},
-						{
-							value: "Refund",
-							label: "Refund",
-						},
-					],
-				},
-				{
-					name: "Agent",
-					type: "select",
-					value: "--",
-					data: [
-						{
-							value: "--",
-							label: "--",
-						},
-						{
-							value: "Ashiq Zaman",
-							label: "Ashiq Zaman",
-						},
-						{
-							value: "Saad",
-							label: "Saad",
-						},
-						{
-							value: "Ishfaq Ahmad",
-							label: "Ishfaq Ahmad",
-						},
-					],
-				},
-			]);
-			return { id, formData, showActivity };
+	const formData = ref<FormEl[]>([
+		{
+			name: "Tags",
+			type: "select",
+			value: "",
+			data: [{ value: "Important", label: "Important" }],
 		},
-	});
+		{
+			name: "Type",
+			type: "select",
+			value: "",
+			data: [
+				{
+					value: "None",
+					label: "None",
+				},
+				{
+					value: "Question",
+					label: "Question",
+				},
+				{
+					value: "Problem",
+					label: "Problem",
+				},
+				{
+					value: "Feature request",
+					label: "Feature request",
+				},
+				{
+					value: "Refund",
+					label: "Refund",
+				},
+			],
+		},
+
+		{
+			name: "Status",
+			type: "select",
+			value: "Open",
+			data: [
+				{
+					value: "Open",
+					label: "Open",
+				},
+				{
+					value: "Pending",
+					label: "Pending",
+				},
+				{
+					value: "Resolved",
+					label: "Resolved",
+				},
+				{
+					value: "Waiting on customer",
+					label: "Waiting on customer",
+				},
+				{
+					value: "Waiting on third party",
+					label: "Waiting on third party",
+				},
+			],
+		},
+		{
+			name: "Priority",
+			type: "select",
+			value: "",
+			data: [
+				{
+					value: "Low",
+					label: "Low",
+				},
+				{
+					value: "Medium",
+					label: "Medium",
+				},
+				{
+					value: "High",
+					label: "High",
+				},
+				{
+					value: "Urgent",
+					label: "Urgent",
+				},
+			],
+		},
+		{
+			name: "Group",
+			type: "select",
+			value: "None",
+			data: [
+				{
+					value: "None",
+					label: "None",
+				},
+				{
+					value: "Billing",
+					label: "Billing",
+				},
+				{
+					value: "Customer Support",
+					label: "Customer Support",
+				},
+				{
+					value: "Escalations",
+					label: "Escalations",
+				},
+				{
+					value: "Refund",
+					label: "Refund",
+				},
+			],
+		},
+		{
+			name: "Agent",
+			type: "select",
+			value: "--",
+			data: [
+				{
+					value: "--",
+					label: "--",
+				},
+				{
+					value: "Ashiq Zaman",
+					label: "Ashiq Zaman",
+				},
+				{
+					value: "Saad",
+					label: "Saad",
+				},
+				{
+					value: "Ishfaq Ahmad",
+					label: "Ishfaq Ahmad",
+				},
+			],
+		},
+	]);
+	const showMergeModal = ref(true);
+	const mergeSearchVal = ref("");
 	definePageMeta({
 		layout: false,
 	});
@@ -225,7 +222,7 @@
 							</svg>
 							<span>Forward</span></NavButton
 						>
-						<NavButton
+						<NavButton @click="showMergeModal = true"
 							><svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -571,6 +568,57 @@
 					</div>
 				</template>
 			</GenFeature>
+			<!--Modal goes here-->
+			<EditModal
+				:showEditModal="showMergeModal"
+				@close="showMergeModal = false"
+			>
+				<div class="grid gap-2">
+					<div class="flex items-center gap-2">
+						<Svgs name="merge" />
+						<span class="info-header">Merge Ticket</span>
+					</div>
+					<span class="info-text"
+						>1 ticket(s) selected (interactions from secondary tickets will be
+						added to the primary ticket)</span
+					>
+				</div>
+				<div class="flex items-center gap-2">
+					<DropDown>
+						<template #drop-button> Contact </template>
+					</DropDown>
+					<el-input
+						v-model="mergeSearchVal"
+						class="w-full"
+						placeholder="Search for a contact's tickets"
+					>
+						<template #prefix>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="2"
+								stroke="currentColor"
+								class="w-4"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+								/>
+							</svg>
+						</template>
+					</el-input>
+				</div>
+				<div class="h-[55vh]"></div>
+				<div class="flex gap-2">
+					<input type="checkbox" />
+					<span class="inbox-text">Add secondary ticket recipients to CC</span>
+				</div>
+				<div class="flex items-center justify-between border-t pt-3">
+					<FormSubmitSec />
+				</div>
+			</EditModal>
 		</NuxtLayout>
 	</div>
 </template>

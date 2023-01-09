@@ -24,7 +24,7 @@
 					class="w-[400px] h-[100vh] overflow-auto absolute z-[50] right-0 feature-container rounded-none px-10 pt-10"
 				>
 					<NavButton
-						class="bg-brand-red px-1 absolute top-0 left-0"
+						class="bg-brand-red px-1 absolute top-0 left-0 p-[3px] px-[3px]"
 						style="border-radius: 0px"
 						@click="close"
 					>
