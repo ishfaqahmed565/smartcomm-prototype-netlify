@@ -1,7 +1,16 @@
+<script setup>
+	let props = defineProps({
+		img: {
+			default: "contacts/ashiq",
+			required: false,
+			type: String,
+		},
+	});
+</script>
 <template>
 	<div class="flex items-center gap-3">
 		<img
-			src="/images/contacts/ashiq.png"
+			:src="`/images/${props.img}.png`"
 			alt="profile-picture"
 			class="w-10 h-10 object-cover rounded border border-gray-400 shadow-lg"
 		/>

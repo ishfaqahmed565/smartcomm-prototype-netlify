@@ -11,5 +11,6 @@ export default defineNuxtPlugin((nuxtApp) => {
 
 	nuxtApp.vueApp.use(ElementPlus, {
 		locale: localeEs,
+		zIndex: 195,
 	});
 });

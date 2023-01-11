@@ -56,7 +56,7 @@
 				<slot name="second-bar-right"> </slot>
 				<NavButton
 					@click="showFiltersModal = !showFiltersModal"
-					v-if="showFiltersButton"
+					v-if="props.showFiltersButton"
 					><svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"

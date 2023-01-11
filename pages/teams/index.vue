@@ -1,8 +1,8 @@
 <script setup lang="ts">
-	import { ref } from "vue";
+	import { ref, reactive } from "vue";
 	import colShowArrInt from "~/types/colShowArr";
 	import Ticket from "~/types/Ticket";
-
+	const showTeamDialog = ref(false);
 	const input4 = ref("");
 	const filtersFormData = [
 		{
@@ -34,7 +34,29 @@
 			],
 		},
 	];
-
+	const newTeamForm = reactive([
+		{
+			name: "Full name",
+			value: "",
+			type: "input",
+		},
+		{
+			name: "Description",
+			value: "",
+			type: "input",
+		},
+		{
+			name: "Business hours",
+			type: "select",
+			value: "",
+			data: [
+				{
+					value: "General working hours",
+					label: "General working hours",
+				},
+			],
+		},
+	]);
 	definePageMeta({
 		layout: false,
 	});
@@ -92,7 +114,10 @@
 					</form>
 				</template>
 				<template #second-bar-right>
-					<NavButton class="bg-black text-white hover:bg-black">
+					<NavButton
+						class="bg-black text-white hover:bg-black"
+						@click="showTeamDialog = true"
+					>
 						New Teams
 					</NavButton>
 					<NavButton
@@ -124,6 +149,18 @@
 					<TicketListFilters />
 				</template>
 			</TableFeature>
+			<Dialog
+				title="New team"
+				:showDialog="showTeamDialog"
+				@closeDialog="showTeamDialog = false"
+			>
+				<template #dialog-data>
+					<form action="" class="grid gap-3">
+						<FormElems :formData="newTeamForm" />
+					</form>
+					<FormSubmitSec />
+				</template>
+			</Dialog>
 		</NuxtLayout>
 	</div>
 </template>

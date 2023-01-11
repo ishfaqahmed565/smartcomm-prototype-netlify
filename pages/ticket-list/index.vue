@@ -53,9 +53,7 @@
 			}
 		}
 	};
-	definePageMeta({
-		layout: false,
-	});
+
 	const sortOptions = ref([
 		{
 			value: "Date",

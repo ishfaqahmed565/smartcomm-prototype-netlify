@@ -42,6 +42,8 @@
 		},
 	];
 	const searchVal = ref("");
+	let showAgentDialog = ref(false);
+	const agentEmails = ref("");
 	definePageMeta({
 		layout: false,
 	});
@@ -149,6 +151,7 @@
 					<NavButton
 						class="bg-black text-white hover:bg-black"
 						v-show="settingsVal === 'Agents'"
+						@click="showAgentDialog = true"
 					>
 						Add Agent
 					</NavButton>
@@ -240,6 +243,23 @@
 					</div>
 				</template>
 			</TableFeature>
+			<Dialog
+				title="Add Agents"
+				:showDialog="showAgentDialog"
+				@closeDialog="showAgentDialog = false"
+			>
+				<template #dialog-data>
+					<el-input
+						placeholder="paste as many email adresses seperated by comma or space"
+						size="small"
+						v-model="agentEmails"
+						class="h-20"
+					>
+					</el-input>
+					<hr />
+					<FormSubmitSec />
+				</template>
+			</Dialog>
 		</NuxtLayout>
 	</div>
 </template>

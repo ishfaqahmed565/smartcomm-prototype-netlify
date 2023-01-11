@@ -35,6 +35,7 @@
 		},
 	];
 
+	const showEditModal = ref(false);
 	definePageMeta({
 		layout: false,
 	});
@@ -114,7 +115,7 @@
 				</template>
 				<template #feature-table>
 					<form action="">
-						<CompaniesTable />
+						<CompaniesTable @showEditModal="showEditModal = true" />
 					</form>
 				</template>
 				<template #feature-filter>
@@ -122,5 +123,9 @@
 				</template>
 			</TableFeature>
 		</NuxtLayout>
+		<CompaniesEditModal
+			@closeEditModal="showEditModal = false"
+			:showEditModal="showEditModal"
+		/>
 	</div>
 </template>

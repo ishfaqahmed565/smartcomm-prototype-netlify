@@ -1,8 +1,11 @@
 <script setup>
 	import { defineEmits, ref, defineProps, onMounted, watch } from "vue";
+	import useDetectOutsideClick from "~/composable/useDetectOutsideClick.js";
 
 	let props = defineProps({
 		showEditModal: {
+			default: false,
+			required: true,
 			type: Boolean,
 		},
 	});
@@ -20,8 +23,8 @@
 			<Transition name="wrapper">
 				<div
 					v-if="props.showEditModal"
-					ref="editModal"
-					class="w-[400px] h-[100vh] overflow-auto absolute z-[50] right-0 feature-container rounded-none px-10 pt-10"
+					ref="editDrawer"
+					class="w-[400px] h-[100vh] overflow-auto absolute z-[500] right-0 feature-container rounded-none px-10 pt-10"
 				>
 					<NavButton
 						class="bg-brand-red px-1 absolute top-0 left-0 p-[3px] px-[3px]"
@@ -30,7 +33,7 @@
 					>
 						<Svgs name="close" />
 					</NavButton>
-					<div class="grid gap-5" @click="!close">
+					<div class="grid gap-5">
 						<slot></slot>
 					</div>
 				</div>

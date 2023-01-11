@@ -63,10 +63,10 @@
 						>
 							<NuxtLink :to="`/${nav.to}`">
 								{{ nav.name }}
-								<span
-									class="absolute bg-[#C92C5F] text-white right-0 rounded-md top-[-10px] right-[-10px] px-2 text-xs"
-									>{{ nav.number }}</span
-								>
+
+								<Badge class="top-[-10px] right-[-10px] absolute">
+									{{ nav.number }}
+								</Badge>
 							</NuxtLink>
 						</NavButton>
 						<DropDown>
