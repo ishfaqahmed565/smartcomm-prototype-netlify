@@ -79,6 +79,16 @@
     }
     
 }
+.el-radio__input{
+    place-self:baseline !important;
+}
+.el-radio__label{
+    width:100%;
+    place-self:baseline !important;
+}
+.el-radio.el-radio--small {
+    height: auto !important;
+}
 .nav-border-brand-red{
     border-color: #7c3985;
     color: rgb(37, 36, 36);
