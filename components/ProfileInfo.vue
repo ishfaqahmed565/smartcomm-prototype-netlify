@@ -8,7 +8,7 @@
 	});
 </script>
 <template>
-	<div class="flex items-center gap-3">
+	<div class="flex items-center gap-5">
 		<img
 			:src="`/images/${props.img}.png`"
 			alt="profile-picture"

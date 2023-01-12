@@ -19,12 +19,12 @@
 					<img
 						src="/images/contacts/ashiq.png"
 						alt=""
-						class="w-9 object-cover rounded"
+						class="inbox-msg-img self-center"
 					/>
 
-					<div class="grid space-y-[-8px]">
-						<div class="font-semibold text-black">{{ scope.row.name }}</div>
-						<div class="text-[9px]">{{ scope.row.email }}</div>
+					<div class="space-y-[-9px]">
+						<p class="font-semibold text-black">{{ scope.row.name }}</p>
+						<p class="text-[9px]">{{ scope.row.email }}</p>
 					</div>
 				</NuxtLink></template
 			>

@@ -12,10 +12,10 @@
 }
 @layer components{ 
     .feature-main-card{
-        @apply grid gap-4 bg-gray-100 px-4 py-2
+        @apply grid gap-4 px-4 py-2
     }
     .form-space{
-        @apply space-y-6
+        @apply space-y-7
     }
     .form-elem-container{
         @apply grid gap-1 w-full
@@ -35,7 +35,7 @@
     }
     
     .inbox-header{
-        @apply bg-white border-[1px] border-gray-300 p-3 h-[55px] py-2  px-4 border-t-[0px]
+        @apply bg-white border-[1px] border-gray-300 p-3 h-[56px] py-2  px-4 border-t-[0px]
     }
     .inbox-text{
         @apply info-text text-[10px]
@@ -78,6 +78,16 @@
         @apply text-[12px]
     }
     
+}
+.el-radio__input{
+    place-self:baseline !important;
+}
+.el-radio__label{
+    width:100%;
+    place-self:baseline !important;
+}
+.el-radio.el-radio--small {
+    height: auto !important;
 }
 .nav-border-brand-red{
     border-color: #7c3985;
