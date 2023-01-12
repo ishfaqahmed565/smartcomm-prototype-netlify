@@ -1,5 +1,5 @@
 <template>
-	<div class="space-y-4">
+	<div>
 		<div class="second-bar">
 			<slot name="second-bar"> </slot>
 		</div>
