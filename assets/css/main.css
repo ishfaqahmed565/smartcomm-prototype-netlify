@@ -1,6 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
 *{
     box-sizing: border-box;
 }
@@ -13,6 +15,9 @@
 @layer components{ 
     .feature-main-card{
         @apply grid gap-4 px-4 py-2
+    }
+    .black-nav{
+        @apply bg-black text-white hover:bg-black !important
     }
     .form-space{
         @apply space-y-7
@@ -31,7 +36,7 @@
         @apply font-semibold text-gray-800 text-sm;
     }
     .info-text{
-        @apply text-gray-800 text-xs ;
+        @apply text-gray-800 text-xs  ;
     }
     
     .inbox-header{

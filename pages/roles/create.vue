@@ -117,6 +117,7 @@
 	const radio1 = ref("1");
 	const radio2 = ref("1");
 	const email = ref("");
+	const signature = ref("");
 </script>
 <template>
 	<NuxtLayout name="default">
@@ -218,7 +219,7 @@
 					</div>
 					<div class="form-elem-container">
 						<FormLabel> Signature </FormLabel>
-						<el-input placeholder="" v-model="aboutInput" class="h-20">
+						<el-input placeholder="" v-model="signature" class="h-20">
 						</el-input>
 					</div>
 					<div class="grid gap-3">
@@ -364,33 +365,33 @@
 				</form>
 			</div>
 			<div
-				class="w-2/12 bg-gray-800 h-full pt-10 p-5 bg-gray-200 overflow-y-auto space-y-2"
+				class="w-3/12 bg-gray-800 h-full pt-10 p-5 bg-gray-200 overflow-y-auto space-y-4"
 			>
-				<h5 class="info-header">Collaborators</h5>
-				<p class="info-text">
+				<h5 class="info-header font-bold">Collaborators</h5>
+				<p class="info-text text-gray-600">
 					Collaborators are other agents, other team members, or third party
 					contacts whose input is needed to resolve a customer ticket.
 				</p>
-				<p class="info-text">
+				<p class="info-text text-gray-600">
 					Ticket collaborators can get assigned/tagged to tickets, add/edit
 					private notes within their scope, update ticket status, modify their
 					time entry, view customer information related to the ticket.
 				</p>
-				<p class="info-text">
+				<p class="info-text text-gray-600">
 					Analytics collaborators can view reports in the Analytics module.
 				</p>
-				<h5 class="info-header">Scopes and Roles</h5>
-				<p class="info-text">
+				<h5 class="info-header font-bold">Scopes and Roles</h5>
+				<p class="info-text text-gray-600">
 					You can choose which tickets your agents can see by modifying their
 					Ticket Scope. You should also specify what actions an agent is able to
 					perform within your helpdesk by choosing a Role.
 				</p>
-				<p class="info-text">
+				<p class="info-text text-gray-600">
 					Note that you will not be able to either modify your own roles or
 					delete yourself as an agent.
 				</p>
-				<h5 class="info-header">Groups</h5>
-				<p class="info-text">
+				<h5 class="info-header font-bold">Groups</h5>
+				<p class="info-text text-gray-600">
 					You can organize agents into specific groups such as Sales and Product
 					Management. Segmenting agents into divisions lets you easily assign
 					tickets, create specific canned responses, manage workflows and
