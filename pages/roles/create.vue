@@ -121,7 +121,7 @@
 </script>
 <template>
 	<NuxtLayout name="default">
-		<template #title> Admin > Agents </template>
+		<template #title> Agents </template>
 		<div class="h-[86vh] mx-4 my-2 flex">
 			<div class="w-10/12 bg-white h-full p-12 overflow-y-auto">
 				<form class="h-full form-space max-w-[40rem]">
@@ -365,7 +365,7 @@
 				</form>
 			</div>
 			<div
-				class="w-3/12 bg-gray-800 h-full pt-10 p-5 bg-gray-200 overflow-y-auto space-y-4"
+				class="w-3/12 h-full pt-10 p-5 bg-gray-200 overflow-y-auto space-y-4"
 			>
 				<h5 class="info-header font-bold">Collaborators</h5>
 				<p class="info-text text-gray-600">

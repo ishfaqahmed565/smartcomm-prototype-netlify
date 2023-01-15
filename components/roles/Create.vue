@@ -148,6 +148,62 @@
 		}
 	});
 	//Analytics checkboxes ends here//
+
+	//Admin checkboxes starts here//
+	const adminTypeRadio = ref("admin-1"); //types are "admin-1"/"admin-2"/"admin-3"
+
+	//admin-2 checkboxes starts here
+	const manageAgents = ref(false);
+	const manageProReach = ref(false);
+	const manageAutoTicketAssign = ref(false);
+	const manageSkills = ref(false);
+	const manageTags = ref(false);
+	const manageCannedRes = ref(false);
+	const manageAutoRule1 = ref(false);
+	const manageAutoRule2 = ref(false);
+	const manageEmailSett = ref(false);
+	const manageTicketTemplates = ref(false);
+	const manageCustomObj = ref(false);
+	const managePortalSett = ref(false);
+	const managePortalCustomization = ref(false);
+	const manageAgentShifts = ref(false);
+
+	//radio options under manageAgents
+	const manageAgentsTypeRadio = ref(""); //types are "manage-agents-1"/"manage-agents-2"/"manage-agents-3"
+	//type manage-agents-3 has 1 checkbox under it
+	const assumeIdentity = ref(false);
+	watch(adminTypeRadio, (newVal) => {
+		if (newVal !== "admin-2") {
+			manageAgentsTypeRadio.value = "";
+			assumeIdentity.value = false;
+			manageAgents.value = false;
+			manageProReach.value = false;
+			manageAutoTicketAssign.value = false;
+			manageSkills.value = false;
+			manageTags.value = false;
+			manageCannedRes.value = false;
+			manageAutoRule1.value = false;
+			manageAutoRule2.value = false;
+			manageEmailSett.value = false;
+			manageTicketTemplates.value = false;
+			manageCustomObj.value = false;
+			managePortalSett.value = false;
+			managePortalCustomization.value = false;
+			manageAgentShifts.value = false;
+		}
+	});
+	//admin-2 checkboxes ends here
+
+	//admin-3 checkboxes starts here
+	const fullControl = ref(false);
+	watch(adminTypeRadio, (newVal) => {
+		if (newVal !== "admin-3") {
+			fullControl.value = false;
+		}
+	});
+	//admin-3 checkboxes ends here
+
+	//Admin checkboxes ends here//
 </script>
 <template>
 	<form action="" class="space-y-4 pr-5">
@@ -548,7 +604,7 @@
 					</div>
 				</div>
 				<!--Customers Checkboxes section ends here-->
-				<!--Scenario Automation Checkboxes section ends here-->
+				<!--Analytics Checkboxes section ends here-->
 				<div class="grid grid-cols-12 gap-10 items-center">
 					<div class="col-span-2 place-self-start">
 						<h3 class="text-base text-gray-500 font-light">Analytics</h3>
@@ -575,7 +631,151 @@
 						</div>
 					</div>
 				</div>
-				<!--Scenario Automation Checkboxes section ends here-->
+				<!--Analytics Checkboxes section ends here-->
+
+				<!--Admin Checkboxes section ends here-->
+				<div class="grid grid-cols-12 gap-10 items-center">
+					<div class="col-span-2 place-self-start">
+						<h3 class="text-base text-gray-500 font-light">Admin</h3>
+					</div>
+					<div class="col-span-10 border-l pl-4 grid gap-1">
+						<FormLabel>Agents can</FormLabel>
+						<el-radio-group v-model="adminTypeRadio" class="grid gap-1">
+							<el-radio label="admin-1" size="small"
+								>Not view any Administrator options</el-radio
+							>
+							<el-radio label="admin-2" size="small">
+								<div class="grid">
+									<p>Perform Operational Admin actions</p>
+									<div class="space-x-5 grid gap-1">
+										<el-checkbox
+											v-model="manageAgents"
+											:disabled="adminTypeRadio !== 'admin-2'"
+											label="Manage Agents"
+											size="small"
+										/>
+										<el-radio-group
+											v-model="manageAgentsTypeRadio"
+											class="grid gap-1"
+											:disabled="!manageAgents"
+										>
+											<el-radio label="manage-agents-1" size="small"
+												>Provide ticket access</el-radio
+											>
+											<el-radio label="manage-agents-2" size="small"
+												>Invite collaboraters and provide ticket
+												access</el-radio
+											>
+											<el-radio label="manage-agents-3" size="small"
+												><div class="grid">
+													<p>Manage all agents</p>
+													<div class="space-x-5 grid gap-1">
+														<el-checkbox
+															v-model="assumeIdentity"
+															label="Assume Identity"
+															:disabled="
+																manageAgentsTypeRadio !== 'manage-agents-3'
+															"
+															size="small"
+														/>
+													</div></div
+											></el-radio>
+										</el-radio-group>
+									</div>
+									<el-checkbox
+										v-model="manageProReach"
+										:disabled="adminTypeRadio !== 'admin-2'"
+										label="Manage Proactive outreaches"
+										size="small"
+									/>
+									<el-checkbox
+										v-model="manageAutoTicketAssign"
+										:disabled="adminTypeRadio !== 'admin-2'"
+										label="Manage automatic ticket assignment"
+										size="small"
+									/>
+									<el-checkbox
+										v-model="manageSkills"
+										:disabled="adminTypeRadio !== 'admin-2'"
+										label="Manage skills"
+										size="small"
+									/>
+									<el-checkbox
+										v-model="manageTags"
+										:disabled="adminTypeRadio !== 'admin-2'"
+										label="Manage tags"
+										size="small"
+									/>
+									<el-checkbox
+										v-model="manageCannedRes"
+										:disabled="adminTypeRadio !== 'admin-2'"
+										label="Manage canned responses"
+										size="small"
+									/>
+									<el-checkbox
+										v-model="manageAutoRule1"
+										:disabled="adminTypeRadio !== 'admin-2'"
+										label="Manage automation rules that run on ticket creation and ticket updates"
+										size="small"
+									/>
+									<el-checkbox
+										v-model="manageAutoRule2"
+										:disabled="adminTypeRadio !== 'admin-2'"
+										label="Manage automation rules that run on time triggers"
+										size="small"
+									/>
+									<el-checkbox
+										v-model="manageEmailSett"
+										:disabled="adminTypeRadio !== 'admin-2'"
+										label="Manage Email settings"
+										size="small"
+									/>
+									<el-checkbox
+										v-model="manageTicketTemplates"
+										:disabled="adminTypeRadio !== 'admin-2'"
+										label="Manage ticket templates"
+										size="small"
+									/>
+									<el-checkbox
+										v-model="manageCustomObj"
+										:disabled="adminTypeRadio !== 'admin-2'"
+										label="Manage custom objects"
+										size="small"
+									/>
+									<el-checkbox
+										v-model="managePortalSett"
+										:disabled="adminTypeRadio !== 'admin-2'"
+										label="Manage portal settings"
+										size="small"
+									/>
+									<el-checkbox
+										v-model="managePortalCustomization"
+										:disabled="adminTypeRadio !== 'admin-2'"
+										label="Manage portal customization"
+										size="small"
+									/>
+									<el-checkbox
+										v-model="manageAgentShifts"
+										:disabled="adminTypeRadio !== 'admin-2'"
+										label="Manage Agents Shifts"
+										size="small"
+									/>
+								</div>
+							</el-radio>
+							<el-radio label="admin-3" size="small"
+								><div class="grid">
+									<p>Play God with Super Admin Controls</p>
+									<el-checkbox
+										v-model="fullControl"
+										:disabled="adminTypeRadio !== 'admin-3'"
+										label="Include account management and organisation management"
+										size="small"
+									/></div
+							></el-radio>
+						</el-radio-group>
+					</div>
+				</div>
+				<!--Admin Checkboxes section ends here-->
 			</div>
 		</div>
 		<FormSubmitSec />
