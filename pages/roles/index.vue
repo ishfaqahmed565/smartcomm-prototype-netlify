@@ -97,9 +97,7 @@
 					</el-input>
 				</div>
 				<div class="second-bar__section">
-					<NavButton class="bg-black text-white hover:bg-black">
-						New Agents
-					</NavButton>
+					<NavButton class="black-nav"> New Agents </NavButton>
 					<NavButton
 						><svg
 							xmlns="http://www.w3.org/2000/svg"

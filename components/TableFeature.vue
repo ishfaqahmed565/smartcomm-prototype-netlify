@@ -12,23 +12,10 @@
 	//in the right section of the top bar the button for toggling filters tab will be fixed-done
 	//Table feature will contain
 
-	type tableAnimationType =
-		| "w-full"
-		| "leave-table-animation"
-		| "enter-table-animation";
-	const tableAnimation = ref<tableAnimationType>("w-full");
 	//showFiltersTab maintains showing the FiltersTab
 	const showFiltersTab = ref(false);
 	//this watcher is watching the showFiltersTab variable to change the styling of the table based on the
 	//filters tab
-	watch(showFiltersTab, (newV, oldVal) => {
-		if (oldVal === true) {
-			tableAnimation.value = "leave-table-animation";
-		}
-		if (oldVal === false) {
-			tableAnimation.value = "enter-table-animation";
-		}
-	});
 
 	//showEditOptions computes if an column is selected and show the edit options in the topnav
 	let showEditOptions = ref(false);
@@ -40,11 +27,11 @@
 		}
 	};
 	provide("setShowEditOptions", setShowEditOptions);
-	const showFiltersModal = ref(false);
+	let showFiltersModal = ref(false);
 </script>
 <template>
 	<div>
-		<div class="second-bar relative z-10">
+		<div class="second-bar">
 			<div class="second-bar__section">
 				<slot v-if="showEditOptions" name="second-bar-left-edit-options"></slot>
 				<slot
@@ -97,47 +84,4 @@
 		</div>
 	</div>
 </template>
-<style scoped>
-	.leave-table-animation {
-		animation: shrink;
-		animation-duration: 0.2s;
-		animation-fill-mode: forwards;
-		animation-direction: reverse;
-	}
-	.enter-table-animation {
-		animation: shrink;
-		animation-duration: 0.5s;
-		animation-fill-mode: forwards;
-	}
-	@keyframes shrink {
-		0% {
-			width: 100%;
-		}
-
-		100% {
-			width: 83.333333%;
-		}
-	}
-	.expand-enter-active {
-		animation-name: expand;
-		animation-duration: 0.5s;
-		transform-origin: 100% 50%;
-	}
-	.expand-leave-active {
-		animation: expand 0.2s reverse;
-
-		transform-origin: 100% 50%;
-	}
-
-	@keyframes expand {
-		0% {
-			transform: scaleX(0);
-			opacity: 0;
-		}
-
-		100% {
-			transform: scaleX(1);
-			opacity: 1;
-		}
-	}
-</style>
+<style scoped></style>

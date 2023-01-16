@@ -114,10 +114,7 @@
 					</form>
 				</template>
 				<template #second-bar-right>
-					<NavButton
-						class="bg-black text-white hover:bg-black"
-						@click="showTeamDialog = true"
-					>
+					<NavButton class="black-nav" @click="showTeamDialog = true">
 						New Teams
 					</NavButton>
 					<NavButton

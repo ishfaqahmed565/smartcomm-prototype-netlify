@@ -149,7 +149,7 @@
 				</template>
 				<template #second-bar-right>
 					<NavButton
-						class="bg-black text-white hover:bg-black"
+						class="black-nav"
 						v-show="settingsVal === 'Agents'"
 						@click="showAgentDialog = true"
 					>

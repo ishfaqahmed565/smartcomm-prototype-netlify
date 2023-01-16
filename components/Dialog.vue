@@ -14,7 +14,10 @@
 </script>
 <template>
 	<Teleport to="body">
-		<ModalMask v-show="props.showDialog" class="grid place-items-center">
+		<ModalMask
+			class="grid place-items-center"
+			:class="{ 'none ': !props.showDialog }"
+		>
 			<div class="feature-container w-[400px] grip space-y-4">
 				<div class="flex w-full justify-between items-center">
 					<span>{{ props.title }}</span>
@@ -29,3 +32,8 @@
 		</ModalMask>
 	</Teleport>
 </template>
+<style scoped>
+	.none {
+		display: none !important;
+	}
+</style>
