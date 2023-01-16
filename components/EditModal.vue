@@ -4,7 +4,6 @@
 
 	let props = defineProps({
 		showEditModal: {
-			default: false,
 			required: true,
 			type: Boolean,
 		},
@@ -19,7 +18,7 @@
 
 <template>
 	<Teleport to="body">
-		<ModalMask v-show="props.showEditModal">
+		<ModalMask :class="{ 'none ': !props.showEditModal }">
 			<Transition name="wrapper">
 				<div
 					v-if="props.showEditModal"
@@ -42,6 +41,9 @@
 	</Teleport>
 </template>
 <style scoped>
+	.none {
+		display: none !important;
+	}
 	.wrapper-enter-active {
 		animation-name: enter;
 		animation-duration: 0.5s;

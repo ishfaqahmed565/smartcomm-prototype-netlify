@@ -27,7 +27,7 @@
 		}
 	};
 	provide("setShowEditOptions", setShowEditOptions);
-	const showFiltersModal = ref(false);
+	let showFiltersModal = ref(false);
 </script>
 <template>
 	<div>
