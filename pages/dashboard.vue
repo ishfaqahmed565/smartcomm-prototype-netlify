@@ -14,6 +14,25 @@
 		{ name: "Average response time", number: 0 },
 		{ name: "Resolution within SLA", number: 0 },
 	];
+	const sortOptions = ref([
+		{
+			value: "All Groups",
+			label: "All Groups",
+		},
+		{
+			value: "Billing",
+			label: "Billing",
+		},
+		{
+			value: "Customer Support",
+			label: "Customer Support",
+		},
+		{
+			value: "Escalations",
+			label: "Escalations",
+		},
+	]);
+	const sortValue = ref("All Groups");
 	definePageMeta({
 		layout: false,
 	});
@@ -23,23 +42,19 @@
 		<template #title> Dashboard </template>
 		<GenFeature>
 			<template #second-bar>
-				<button class="flex gap-1 items-center">
-					<span>All Groups </span>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="1.5"
-						stroke="currentColor"
-						class="w-4"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-						/>
-					</svg>
-				</button>
+				<form action="" class="second-bar__section">
+					<client-only>
+						<el-select v-model="sortValue" placeholder="Sort by:">
+							<el-option
+								v-for="item in sortOptions"
+								:key="item.value"
+								:label="item.label"
+								:value="item.value"
+							>
+							</el-option>
+						</el-select>
+					</client-only>
+				</form>
 			</template>
 			<template #feature>
 				<div class="grid grid-cols-6 gap-2">

@@ -31,7 +31,7 @@
 </script>
 <template>
 	<div>
-		<div class="second-bar">
+		<div class="second-bar sticky-nav">
 			<div class="second-bar__section">
 				<slot v-if="showEditOptions" name="second-bar-left-edit-options"></slot>
 				<slot
