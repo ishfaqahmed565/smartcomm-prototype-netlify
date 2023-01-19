@@ -258,6 +258,7 @@
 				<FormLabel class="col-span-2" id="tickets">Agents</FormLabel>
 				<div class="col-span-10 grid gap-1">
 					<button
+						@click.prevent="$emit('showAgentsDialog')"
 						class="animate-text hover:text-blue-800 transition-all info-text w-fit"
 					>
 						No Agent - <button class="font-bold">Add</button>
