@@ -74,7 +74,7 @@
         @apply text-gray-400 text-[9px]
     }
     .ticket-info__main-section{
-        @apply py-2 border-b border-gray-200
+        @apply py-2  
     }
     .sidesticky-info-header{
         @apply text-gray-400 text-[11px]

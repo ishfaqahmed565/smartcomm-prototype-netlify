@@ -145,6 +145,46 @@
 	const showLogTimeModal = ref(false);
 	const showExcScenariosModal = ref(false);
 	const mergeSearchVal = ref("");
+	let tickets = [
+		{
+			subject: "Email Address Changed",
+			source: "mail",
+			clientMail: "ashiqzaman@gmail.com",
+			messages: [
+				{
+					type: "client",
+					from: "Ashiq Zaman",
+					img: "contacts/ashiq",
+					time: "4 months ago (Sun 17 April 2022 at 6:00 PM)",
+					message: `Hi, <br />
+			I need to update my email address. I want to know if
+			I'will loose access to my account if my email address
+			is changed. I've added quite a few products to my card
+			and I don't want to look for them again. It would be
+			great to continue using this a count with my email
+			address. Please let me know if that's possible.
+			<br />
+			Regards, <br />Ashiq Zaman`,
+				},
+				{
+					type: "reply",
+					img: "contacts/ishfaq",
+					from: "Ahmad Ishaq Abdullah",
+					time: "4 months ago (Sun 17 April 2022 at 6:00 PM)",
+					message: `Hi, Ashiq Zaman <br />
+													The good news is that you will loose the items in your
+													cart when you change your email address. A
+													verification email will be senf your email address
+													when you update it. Once you successfully update your
+													email address. you can acess you account as usual. If
+													you have any other questions we alway here to help.
+													<br />
+													Thank you, <br />
+													Customer Service.`,
+				},
+			],
+		},
+	];
 	definePageMeta({
 		layout: false,
 	});
@@ -205,7 +245,7 @@
 									d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
 								/>
 							</svg>
-							<span>Add Notes</span></NavButton
+							<span>Add notes</span></NavButton
 						>
 						<NavButton
 							><svg
@@ -319,83 +359,191 @@
 					<div class="flex gap-3">
 						<div class="w-8/12 feature-container">
 							<div v-show="!showActivity">
-								<div class="ticket-info__main-section">
-									<div
-										class="text-white w-max px-2 py-[4px] bg-red-600 rounded"
+								<div class="ticket-info__main-section border-b">
+									<NuxtLink
+										class="text-white w-max px-2 py-[4px] bg-red-600 rounded text-xs"
 									>
 										Overdue
-									</div>
+									</NuxtLink>
 								</div>
 								<!--Ticket state ends here-->
-								<div class="ticket-info__main-section flex items-center gap-2">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke-width="2"
-										stroke="currentColor"
-										class="w-4"
-									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
-										/>
-									</svg>
-									<h2 class="info-header">Email address changed</h2>
+								<div
+									class="ticket-info__main-section flex items-center gap-3 pl-3"
+								>
+									<Svgs name="facebook" class="w-5" stroke-width="1" />
+									<h2 class="text-lg font-semibold">Email address changed</h2>
 								</div>
 								<!--Ticket subject end here-->
-								<div class="client-message">
-									<ProfileInfo class="ticket-info__main-section">
-										<template #name>Ashiq Zaman</template>
-										<template #ticket-source> reported via phone </template>
-										<template #ticket-time
-											>4 months ago (Sun 17 April 2022 at 6:00 PM)</template
+
+								<!--Ticket Conversation Section-->
+								<div class="grid gap-5">
+									<!--Ticket Client starts here-->
+
+									<div class="client-message group grid gap-3 p-3">
+										<div
+											class="w-full flex items-center justify-between transition-all"
 										>
-									</ProfileInfo>
-									<!--Ticket profile info and ticket time ends here-->
-									<div class="info-text text-xs leading-6">
-										Hi, <br />
-										I need to update my email address. I want to know if I'will
-										loose access to my account if my email address is changed.
-										I've added quite a few products to my card and I don't want
-										to look for them again. It would be great to continue using
-										this a count with my email address. Please let me know if
-										that's possible.
-										<br />
-										Regards, <br />Ashiq Zaman
+											<ProfileInfo>
+												<template #name>Ashiq Zaman</template>
+												<template #ticket-source> reported via email </template>
+												<template #ticket-time
+													>4 months ago (Sun 17 April 2022 at 6:00 PM)</template
+												>
+											</ProfileInfo>
+											<div
+												class="flex opacity-0 group-hover:transition-all duration-500 invisible group-hover:visible group-hover:opacity-100"
+											>
+												<NavButton class="rounded-l-md rounded-r-none p-[5px]">
+													<Svgs name="pen" class="w-3" />
+												</NavButton>
+												<NavButton class="rounded-r-md rounded-l-none p-[5px]">
+													<Svgs name="forward" class="w-3" />
+												</NavButton>
+											</div>
+										</div>
+										<!--Ticket profile info and ticket time ends here-->
+										<div class="flex gap-5">
+											<Svgs
+												name="facebook"
+												class="self-start w-[30px] pt-[6px] text-gray-500"
+												stroke-width="1"
+											/>
+
+											<div class="info-text text-xs leading-6">
+												<p>
+													Hi, <br />
+													I need to update my email address. I want to know if
+													I'will loose access to my account if my email address
+													is changed. I've added quite a few products to my card
+													and I don't want to look for them again. It would be
+													great to continue using this a count with my email
+													address. Please let me know if that's possible.
+													<br />
+													Regards, <br />Ashiq Zaman
+												</p>
+											</div>
+										</div>
 									</div>
-								</div>
-								<!--Ticket Client subject end here-->
-								<div class="p-2 bg-blue-100/[.5] rounded mt-5">
-									<ProfileInfo>
-										<template #name>Customer Service</template>
-										<template #ticket-status>replied</template>
-										<template #ticket-time
-											>4 months ago (Sun 17 April at 8:00PM)</template
+									<!--Ticket Client reply end here-->
+
+									<!--Ticket reply starts here-->
+									<div
+										class="reply-message group p-3 bg-blue-100/[.3] rounded grid gap-2"
+									>
+										<div
+											class="w-full flex items-center justify-between transition-all"
 										>
-									</ProfileInfo>
-									<span class="text-xs"> To: ashiqzaman@gmail.com </span>
-									<p class="info-text text-xs leading-6">
-										Hi, Ashiq Zaman <br />
-										The good news is that you will loose the items in your cart
-										when you change your email address. A verification email
-										will be senf your email address when you update it. Once you
-										successfully update your email address. you can acess you
-										account as usual. If you have any other questions we alway
-										here to help. <br />
-										Thank you, <br />
-										Customer Service.
-									</p>
+											<ProfileInfo img="contacts/ishfaq">
+												<template #name>Ahmad Ishfaq Abdullah</template>
+												<template #ticket-source> replied </template>
+												<template #ticket-time
+													>4 months ago (Sun 17 April 2022 at 6:00 PM)</template
+												>
+											</ProfileInfo>
+											<div
+												class="flex opacity-0 group-hover:transition-all duration-500 invisible group-hover:visible group-hover:opacity-100"
+											>
+												<NavButton class="rounded-l-md rounded-r-none p-[5px]">
+													<Svgs name="forward" class="w-3" />
+												</NavButton>
+												<NavButton class="rounded-r-md rounded-l-none p-[5px]">
+													<Svgs name="delete" class="w-3 text-red-500" />
+												</NavButton>
+											</div>
+										</div>
+										<!--Ticket profile info and ticket time ends here-->
+										<div class="flex gap-5">
+											<Svgs
+												name="mail"
+												class="self-start w-[30px] pt-[6px] text-gray-400"
+											/>
+											<div class="info-text text-xs leading-6">
+												<span class="text-xs"> To: ashiqzaman@gmail.com </span>
+												<p>
+													Hi, Ashiq Zaman <br />
+													The good news is that you will loose the items in your
+													cart when you change your email address. A
+													verification email will be senf your email address
+													when you update it. Once you successfully update your
+													email address. you can acess you account as usual. If
+													you have any other questions we alway here to help.
+													<br />
+													Thank you, <br />
+													Customer Service.
+												</p>
+											</div>
+										</div>
+									</div>
+									<!--Ticket reply ends here-->
 								</div>
-								<!--Ticket reply ends here-->
+								<!--Ticket Conversion Section ends-->
+								<div
+									class="reply-message group p-3 bg-blue-100/[.3] rounded flex gap-2 mt-2"
+								>
+									<img
+										src="/images/contacts/ishfaq.png"
+										alt=""
+										class="inbox-msg-img"
+									/>
+									<NavButton
+										><svg
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke-width="2"
+											stroke="currentColor"
+											class="w-4"
+										>
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"
+											/>
+										</svg>
+										<span>Reply</span></NavButton
+									>
+									<NavButton
+										><svg
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke-width="2"
+											stroke="currentColor"
+											class="w-4"
+										>
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+											/>
+										</svg>
+										<span>Add notes</span></NavButton
+									>
+									<NavButton
+										><svg
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke-width="2"
+											stroke="currentColor"
+											class="w-4"
+										>
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												d="M15 15l6-6m0 0l-6-6m6 6H9a6 6 0 000 12h3"
+											/>
+										</svg>
+										<span>Forward</span></NavButton
+									>
+								</div>
 							</div>
 							<!--show activity feature section starts here-->
 							<div class="space-y-3" v-show="showActivity">
 								<div class="shadow border rounded p-2 flex">
 									<ProfileInfo>
 										<template #name>Ashiq Zaman</template>
-										<template #ticket-source>reported via phone</template>
+										<template #ticket-source>reported via email</template>
 										<template #ticket-time
 											>4 months ago (Sun 17 April 2022 at 6:00 PM)</template
 										>
