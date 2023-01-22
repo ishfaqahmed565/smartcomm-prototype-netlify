@@ -2,7 +2,7 @@
 	import { defineComponent, ref } from "vue";
 	import FormEl from "~/types/FormEl";
 	const route = useRoute();
-	const id = computed(() => route.params.id);
+	const id = route.params.id;
 	const showActivity = ref(false);
 
 	const formData = ref<FormEl[]>([
@@ -153,7 +153,7 @@
 			messages: [
 				{
 					type: "client",
-					from: "Ashiq Zaman",
+					name: "Ashiq Zaman",
 					img: "contacts/ashiq",
 					time: "4 months ago (Sun 17 April 2022 at 6:00 PM)",
 					message: `Hi, <br />
@@ -169,7 +169,7 @@
 				{
 					type: "reply",
 					img: "contacts/ishfaq",
-					from: "Ahmad Ishaq Abdullah",
+					name: "Ahmad Ishaq Abdullah",
 					time: "4 months ago (Sun 17 April 2022 at 6:00 PM)",
 					message: `Hi, Ashiq Zaman <br />
 													The good news is that you will loose the items in your
@@ -184,7 +184,26 @@
 				},
 			],
 		},
+		{
+			subject: "Good",
+			source: "facebook",
+			clientMail: "saad@gmail.com",
+			messages: [
+				{
+					type: "client",
+					name: "Saad",
+					img: "contacts/saad",
+					time: "9 days ago (Sun 17 April at 5:00 PM)",
+					message: `good`,
+				},
+			],
+		},
 	];
+
+	const selectedTicket = computed(() => {
+		const number = Number(id) - 1;
+		return tickets[number];
+	});
 	definePageMeta({
 		layout: false,
 	});
@@ -193,7 +212,7 @@
 <template>
 	<div>
 		<NuxtLayout name="default">
-			<template #title>Ticket>1</template>
+			<template #title>Ticket>{{ id }}</template>
 			<GenFeature>
 				<template #second-bar>
 					<div class="second-bar__section">
@@ -370,111 +389,40 @@
 								<div
 									class="ticket-info__main-section flex items-center gap-3 pl-3"
 								>
-									<Svgs name="facebook" class="w-5" stroke-width="1" />
-									<h2 class="text-lg font-semibold">Email address changed</h2>
+									<Svgs
+										:name="selectedTicket.source"
+										class="w-5"
+										stroke-width="1"
+									/>
+									<h2 class="text-lg font-semibold">
+										{{ selectedTicket.subject }}
+									</h2>
 								</div>
 								<!--Ticket subject end here-->
 
 								<!--Ticket Conversation Section-->
 								<div class="grid gap-5">
 									<!--Ticket Client starts here-->
-
-									<div class="client-message group grid gap-3 p-3">
-										<div
-											class="w-full flex items-center justify-between transition-all"
-										>
-											<ProfileInfo>
-												<template #name>Ashiq Zaman</template>
-												<template #ticket-source> reported via email </template>
-												<template #ticket-time
-													>4 months ago (Sun 17 April 2022 at 6:00 PM)</template
-												>
-											</ProfileInfo>
-											<div
-												class="flex opacity-0 group-hover:transition-all duration-500 invisible group-hover:visible group-hover:opacity-100"
-											>
-												<NavButton class="rounded-l-md rounded-r-none p-[5px]">
-													<Svgs name="pen" class="w-3" />
-												</NavButton>
-												<NavButton class="rounded-r-md rounded-l-none p-[5px]">
-													<Svgs name="forward" class="w-3" />
-												</NavButton>
-											</div>
-										</div>
-										<!--Ticket profile info and ticket time ends here-->
-										<div class="flex gap-5">
-											<Svgs
-												name="facebook"
-												class="self-start w-[30px] pt-[6px] text-gray-500"
-												stroke-width="1"
-											/>
-
-											<div class="info-text text-xs leading-6">
-												<p>
-													Hi, <br />
-													I need to update my email address. I want to know if
-													I'will loose access to my account if my email address
-													is changed. I've added quite a few products to my card
-													and I don't want to look for them again. It would be
-													great to continue using this a count with my email
-													address. Please let me know if that's possible.
-													<br />
-													Regards, <br />Ashiq Zaman
-												</p>
-											</div>
-										</div>
-									</div>
-									<!--Ticket Client reply end here-->
-
-									<!--Ticket reply starts here-->
-									<div
-										class="reply-message group p-3 bg-blue-100/[.3] rounded grid gap-2"
+									<TicketListMessageInfo
+										:class="{ 'bg-blue-100/[.3]': message.type == 'reply' }"
+										v-for="message in selectedTicket.messages"
+										:key="message.message"
+										:img="message.img"
+										:from="selectedTicket.source"
 									>
-										<div
-											class="w-full flex items-center justify-between transition-all"
-										>
-											<ProfileInfo img="contacts/ishfaq">
-												<template #name>Ahmad Ishfaq Abdullah</template>
-												<template #ticket-source> replied </template>
-												<template #ticket-time
-													>4 months ago (Sun 17 April 2022 at 6:00 PM)</template
-												>
-											</ProfileInfo>
-											<div
-												class="flex opacity-0 group-hover:transition-all duration-500 invisible group-hover:visible group-hover:opacity-100"
-											>
-												<NavButton class="rounded-l-md rounded-r-none p-[5px]">
-													<Svgs name="forward" class="w-3" />
-												</NavButton>
-												<NavButton class="rounded-r-md rounded-l-none p-[5px]">
-													<Svgs name="delete" class="w-3 text-red-500" />
-												</NavButton>
-											</div>
-										</div>
-										<!--Ticket profile info and ticket time ends here-->
-										<div class="flex gap-5">
-											<Svgs
-												name="mail"
-												class="self-start w-[30px] pt-[6px] text-gray-400"
-											/>
-											<div class="info-text text-xs leading-6">
-												<span class="text-xs"> To: ashiqzaman@gmail.com </span>
-												<p>
-													Hi, Ashiq Zaman <br />
-													The good news is that you will loose the items in your
-													cart when you change your email address. A
-													verification email will be senf your email address
-													when you update it. Once you successfully update your
-													email address. you can acess you account as usual. If
-													you have any other questions we alway here to help.
-													<br />
-													Thank you, <br />
-													Customer Service.
-												</p>
-											</div>
-										</div>
-									</div>
-									<!--Ticket reply ends here-->
+										<template #name>
+											{{ message.name }}
+										</template>
+										<template #from>
+											replied by {{ selectedTicket.source }}
+										</template>
+										<template #time>
+											{{ message.time }}
+										</template>
+										<template #message-box>
+											<p v-html="message.message"></p>
+										</template>
+									</TicketListMessageInfo>
 								</div>
 								<!--Ticket Conversion Section ends-->
 								<div
