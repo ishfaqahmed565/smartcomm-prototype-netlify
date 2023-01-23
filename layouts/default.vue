@@ -31,7 +31,7 @@
 	provide("something", something);
 </script>
 <template>
-	<div class="flex bg-gray-100">
+	<div class="flex bg-gray-100 font-['Heebo']">
 		<SideNav />
 		<div class="grow shrink-0 basis-[1285px]">
 			<!--Top Navigation Bar goes here-->

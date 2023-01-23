@@ -39,7 +39,7 @@
 </script>
 <template>
 	<NuxtLayout name="default">
-		<template #title> Dashboard </template>
+		<template #title> My Dashboard </template>
 		<GenFeature>
 			<template #second-bar>
 				<form action="" class="second-bar__section">
