@@ -8,11 +8,11 @@
 	});
 </script>
 <template>
-	<div class="flex items-center gap-5">
+	<div class="flex items-center gap-2">
 		<img
 			:src="`/images/${props.img}.png`"
 			alt="profile-picture"
-			class="w-10 h-10 object-cover rounded border border-gray-400 shadow-lg"
+			class="inbox-msg-img"
 		/>
 		<div>
 			<div class="flex items-center gap-2">

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="second-bar">
+		<div class="second-bar sticky-nav">
 			<slot name="second-bar"> </slot>
 		</div>
 		<div class="feature-main-card">

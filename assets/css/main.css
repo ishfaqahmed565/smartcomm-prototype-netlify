@@ -62,7 +62,7 @@
        @apply hover:bg-blue-100 text-black transition-all w-full text-start info-text p-2 hover:text-blue-400 flex gap-2 items-center border-b
     }
     .second-bar{
-        @apply flex p-3 justify-between w-full items-center bg-white shadow border-gray-300 font-medium text-sm
+        @apply flex p-3 justify-between w-full items-center bg-white shadow border-gray-300 font-medium text-sm z-50 top-[73px] !important ;
     }
     .second-bar__section{
         @apply flex gap-2 items-center
@@ -74,7 +74,7 @@
         @apply text-gray-400 text-[9px]
     }
     .ticket-info__main-section{
-        @apply py-2 border-b border-gray-200
+        @apply py-2  
     }
     .sidesticky-info-header{
         @apply text-gray-400 text-[11px]
@@ -83,6 +83,18 @@
         @apply text-[12px]
     }
     
+}
+.sticky-nav{
+    position:sticky;
+    top:0;
+    width: 100%;
+    z-index: 100;
+}
+body{
+    background:rgb(243 244 246);
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
 }
 .el-radio__input{
     place-self:baseline !important;

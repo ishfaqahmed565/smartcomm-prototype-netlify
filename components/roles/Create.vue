@@ -204,6 +204,10 @@
 	//admin-3 checkboxes ends here
 
 	//Admin checkboxes ends here//
+	//General checkboxes starts here//
+	const createTags = ref(false);
+	const status = ref(false);
+	//General checkboxes ends here//
 </script>
 <template>
 	<form action="" class="space-y-4 pr-5">
@@ -251,9 +255,10 @@
 				</div>
 			</div>
 			<div class="grid grid-cols-12 0 gap-10 items-center">
-				<FormLabel class="col-span-2">Agents</FormLabel>
+				<FormLabel class="col-span-2" id="tickets">Agents</FormLabel>
 				<div class="col-span-10 grid gap-1">
 					<button
+						@click.prevent="$emit('showAgentsDialog')"
 						class="animate-text hover:text-blue-800 transition-all info-text w-fit"
 					>
 						No Agent - <button class="font-bold">Add</button>
@@ -266,28 +271,49 @@
 			<h4>Permissions</h4>
 			<div class="flex gap-4 flex-wrap">
 				<span class="info-text">Scroll to</span>
-				<button class="info-text animate-text hover:underline">Tickets</button>
-				<button class="info-text animate-text hover:underline">
+				<NuxtLink to="#tickets" class="info-text animate-text hover:underline"
+					>Tickets</NuxtLink
+				>
+				<NuxtLink
+					to="#scenario-automation"
+					class="info-text animate-text hover:underline"
+				>
 					Scenario Automation
-				</button>
-				<button class="info-text animate-text hover:underline">
+				</NuxtLink>
+				<NuxtLink
+					to="#solutions"
+					class="info-text animate-text hover:underline"
+				>
 					Solutions
-				</button>
-				<button class="info-text animate-text hover:underline">Forums</button>
-				<button class="info-text animate-text hover:underline">
+				</NuxtLink>
+				<NuxtLink to="#forums" class="info-text animate-text hover:underline"
+					>Forums</NuxtLink
+				>
+				<NuxtLink
+					to="#customers"
+					class="info-text animate-text hover:underline"
+				>
 					Customers
-				</button>
-				<button class="info-text animate-text hover:underline">
+				</NuxtLink>
+				<NuxtLink
+					to="#analytics"
+					class="info-text animate-text hover:underline"
+				>
 					Analytics
-				</button>
-				<button class="info-text animate-text hover:underline">
+				</NuxtLink>
+				<NuxtLink to="#admin" class="info-text animate-text hover:underline">
 					Administration
-				</button>
-				<button class="info-text animate-text hover:underline">General</button>
+				</NuxtLink>
+				<NuxtLink to="#general" class="info-text animate-text hover:underline"
+					>General</NuxtLink
+				>
 			</div>
 			<div class="space-y-10">
 				<!--Tickets Checkboxes section starts here-->
-				<div class="grid grid-cols-12 gap-10 items-center">
+				<div
+					class="grid grid-cols-12 gap-10 items-center"
+					id="scenario-automation"
+				>
 					<div class="col-span-2 place-self-start">
 						<h3 class="text-base text-gray-500 font-light">Tickets</h3>
 					</div>
@@ -397,7 +423,7 @@
 				<!--Tickets Checkboxes section ends here-->
 
 				<!--Scenario Automation Checkboxes section ends here-->
-				<div class="grid grid-cols-12 gap-10 items-center">
+				<div class="grid grid-cols-12 gap-10 items-center" id="solutions">
 					<div class="col-span-2 place-self-start">
 						<h3 class="text-base text-gray-500 font-light">
 							Scenario <br />
@@ -430,7 +456,7 @@
 				<!--Scenario Automation Checkboxes section ends here-->
 
 				<!--Solutions Checkboxes section starts here-->
-				<div class="grid grid-cols-12 gap-10 items-center">
+				<div class="grid grid-cols-12 gap-10 items-center" id="forums">
 					<div class="col-span-2 place-self-start">
 						<h3 class="text-base text-gray-500 font-light">Solutions</h3>
 					</div>
@@ -502,7 +528,7 @@
 				<!--Solutions Checkboxes section ends here-->
 
 				<!--Forums Checkboxes section starts here-->
-				<div class="grid grid-cols-12 gap-10 items-center">
+				<div class="grid grid-cols-12 gap-10 items-center" id="customers">
 					<div class="col-span-2 place-self-start">
 						<h3 class="text-base text-gray-500 font-light">Forums</h3>
 					</div>
@@ -552,7 +578,7 @@
 				<!--Forums Checkboxes section ends here-->
 
 				<!--Customers Checkboxes section starts here-->
-				<div class="grid grid-cols-12 gap-10 items-center">
+				<div class="grid grid-cols-12 gap-10 items-center" id="analytics">
 					<div class="col-span-2 place-self-start">
 						<h3 class="text-base text-gray-500 font-light">Customers</h3>
 					</div>
@@ -605,7 +631,7 @@
 				</div>
 				<!--Customers Checkboxes section ends here-->
 				<!--Analytics Checkboxes section ends here-->
-				<div class="grid grid-cols-12 gap-10 items-center">
+				<div class="grid grid-cols-12 gap-10 items-center" id="admin">
 					<div class="col-span-2 place-self-start">
 						<h3 class="text-base text-gray-500 font-light">Analytics</h3>
 					</div>
@@ -634,7 +660,7 @@
 				<!--Analytics Checkboxes section ends here-->
 
 				<!--Admin Checkboxes section ends here-->
-				<div class="grid grid-cols-12 gap-10 items-center">
+				<div class="grid grid-cols-12 gap-10 items-center" id="general">
 					<div class="col-span-2 place-self-start">
 						<h3 class="text-base text-gray-500 font-light">Admin</h3>
 					</div>
@@ -776,6 +802,27 @@
 					</div>
 				</div>
 				<!--Admin Checkboxes section ends here-->
+				<!--General Checkboxes section ends here-->
+				<div class="grid grid-cols-12 gap-10 items-center">
+					<div class="col-span-2 place-self-start">
+						<h3 class="text-base text-gray-500 font-light">Genral</h3>
+					</div>
+					<div class="col-span-10 border-l pl-4 grid gap-1">
+						<FormLabel>Agents can</FormLabel>
+
+						<el-checkbox
+							v-model="createTags"
+							label="Create new tags for tickets, contacts and articles"
+							size="small"
+						/>
+						<el-checkbox
+							v-model="status"
+							label="Schedule out of office"
+							size="small"
+						/>
+					</div>
+				</div>
+				<!--General Checkboxes section ends here-->
 			</div>
 		</div>
 		<FormSubmitSec />

@@ -21,7 +21,7 @@
 	];
 </script>
 <template>
-	<div class="bg-[#7c3985] min-h-[100vh] z-[99999]">
+	<div class="bg-[#7c3985] min-h-[100vh] z-[99999] min-w-[3rem] max-w-[3rem]">
 		<div class="sidebar p-2 gap-5 flex flex-col items-center">
 			<!--SmartComm logo goes here-->
 			<img src="/images/logo_3.png" alt="" class="w-[40px] object-cover mt-2" />

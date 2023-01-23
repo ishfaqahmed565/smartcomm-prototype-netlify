@@ -31,13 +31,13 @@
 	provide("something", something);
 </script>
 <template>
-	<div class="flex bg-gray-100 w-full">
+	<div class="flex bg-gray-100">
 		<SideNav />
-		<div class="w-full overflow-auto">
+		<div class="grow shrink-0 basis-[1295px]">
 			<!--Top Navigation Bar goes here-->
 			<!--In the top bar there two dynamic named slots which #title and #secondbar which varies from page to page-->
 			<!--Second bar is the bottom section of the top bar-->
-			<div class="bg-white border-b border-gray-300">
+			<div class="bg-white border-b border-gray-300 sticky-nav">
 				<div class="flex items-center p-3 justify-between">
 					<div class="left space-x-5 flex items-center justify-center">
 						<h2 class="text-xl font-bold mb-[2px]">

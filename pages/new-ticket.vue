@@ -12,7 +12,7 @@
 <template>
 	<div>
 		<NuxtLayout name="default">
-			<template #title>Tickets</template>
+			<template #title>New Ticket</template>
 
 			<div class="flex space-x-3 mt-3 px-2">
 				<div class="bg-white rounded w-10/12 py-10 px-20 shadow">

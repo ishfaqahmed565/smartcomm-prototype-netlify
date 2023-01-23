@@ -89,12 +89,27 @@
 		],
 	});
 
-	const tickets = ref<Ticket[]>([
+	const tickets = ref([
 		{
 			contact: "Ashiq Zaman",
 			subject: "Email adress changed",
+			source: "mail",
+			id: 1,
 			img: "ashiq",
 			state: "Overdue",
+			group: "None",
+			agent: "Ishfaq Ahmad",
+			priority: "Low",
+			status: "Open",
+		},
+
+		{
+			contact: "Saad",
+			id: 2,
+			source: "facebook",
+			img: "Saad",
+			subject: "Good",
+			state: "New",
 			group: "None",
 			agent: "Ishfaq Ahmad",
 			priority: "Low",
@@ -103,18 +118,10 @@
 		{
 			contact: "Kamrun Nahar",
 			subject: "Payment failed",
+			source: "messenger",
+			id: 3,
 			img: "kamrun-nahar",
 			state: "Customer Responded",
-			group: "None",
-			agent: "Ishfaq Ahmad",
-			priority: "Low",
-			status: "Open",
-		},
-		{
-			contact: "Ishfaq Ahmad",
-			img: "ishfaq",
-			subject: "Hello",
-			state: "New",
 			group: "None",
 			agent: "Ishfaq Ahmad",
 			priority: "Low",
@@ -133,11 +140,11 @@
 		<el-table-column type="selection"> </el-table-column>
 		<el-table-column label="Contact">
 			<template #default="scope"
-				><NuxtLink to="/customers/1" class="flex items-center gap-2 group">
+				><NuxtLink :to="`/customers/1`" class="flex items-center gap-2 group">
 					<img
 						:src="`/images/contacts/${scope.row.img}.png`"
 						alt=""
-						class="w-7 object-cover rounded"
+						class="inbox-msg-img"
 					/>
 
 					<span class="group-hover:animate-text">{{ scope.row.contact }}</span>
@@ -147,8 +154,12 @@
 
 		<el-table-column property="subject" label="Subject">
 			<template #default="scope">
-				<NuxtLink to="/ticket-list/1 " class="hover:animate-text">
+				<NuxtLink
+					:to="`/ticket-list/${scope.row.id}`"
+					class="hover:animate-text flex gap-2"
+				>
 					{{ scope.row.subject }}
+					<Svgs :name="scope.row.source" />
 				</NuxtLink>
 			</template>
 		</el-table-column>
