@@ -33,7 +33,7 @@
 <template>
 	<div class="flex bg-gray-100">
 		<SideNav />
-		<div class="grow shrink-0 basis-[1295px]">
+		<div class="grow shrink-0 basis-[1285px]">
 			<!--Top Navigation Bar goes here-->
 			<!--In the top bar there two dynamic named slots which #title and #secondbar which varies from page to page-->
 			<!--Second bar is the bottom section of the top bar-->

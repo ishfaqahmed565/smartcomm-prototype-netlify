@@ -32,7 +32,7 @@
 			<NavButton
 				class="bg-light-purple rounded shadow p-[6px] font-medium text-xs text-white text-center grid hover:bg-light-purple"
 			>
-				Continue
+				<NuxtLink to="/dashboard">Continue</NuxtLink>
 			</NavButton>
 		</form>
 		<div class="inbox-text text-gray-400 place-self-center">
