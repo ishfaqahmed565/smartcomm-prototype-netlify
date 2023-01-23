@@ -24,7 +24,7 @@
 			],
 		},
 	]);
-	const value2 = ref(true);
+	const autoTicketAssign = ref(false);
 	const settingsVal = ref("Agents");
 
 	const options = [
@@ -44,6 +44,8 @@
 	const searchVal = ref("");
 	let showAgentDialog = ref(false);
 	const agentEmails = ref("");
+	const assignModeRadio = ref("assignment-1"); //types are assignment-1 or assignment-2 or assignment-3
+	const agentAvailRadio = ref("avail-1"); //types are avail-1 or avail-2
 	definePageMeta({
 		layout: false,
 	});
@@ -61,7 +63,7 @@
 				<template #second-bar-left-sorting-options>
 					<span
 						class="info-header flex gap-1 items-center"
-						v-show="settingsVal === 'Team Settings'"
+						v-if="settingsVal === 'Team Settings'"
 					>
 						<p>Team Settings</p>
 						<svg
@@ -244,29 +246,108 @@
 					</div>
 					<!--Team Properties is here-->
 					<div
-						v-show="settingsVal === 'Team Properties'"
+						v-if="settingsVal === 'Team Properties'"
 						class="feature-container rounded-none grid gap-3"
 					>
-						<div
-							class="border border-gray-600 feature-container rounded shadow-none flex items-center justify-between"
-						>
-							<div>
-								<h4 class="info-header">Automatic ticket assignment</h4>
-								<p class="info-text">
-									Distribute and balance the number of tickets assigned to
-									agents in this group
-								</p>
+						<div class="border border-gray-300 rounded shadow-none">
+							<div class="flex items-center justify-between p-5">
+								<div>
+									<h4 class="info-header">Automatic ticket assignment</h4>
+									<p class="info-text">
+										Distribute and balance the number of tickets assigned to
+										agents in this group
+									</p>
+								</div>
+
+								<el-switch
+									v-model="autoTicketAssign"
+									class="ml-2"
+									style="
+										--el-switch-on-color: #13ce66;
+										--el-switch-off-color: #ff4949;
+									"
+									size="small"
+								/>
 							</div>
-							<el-switch
-								v-model="value2"
-								class="ml-2"
-								style="
-									--el-switch-on-color: #13ce66;
-									--el-switch-off-color: #ff4949;
-								"
-								size="small"
-							/>
+							<div class="p-5 bg-gray-100 grid gap-4" v-if="autoTicketAssign">
+								<span class="text-xs text-gray-500"
+									>Choose an assignment mode</span
+								>
+								<form action="">
+									<el-radio-group v-model="assignModeRadio" class="grid gap-3">
+										<el-radio label="assignment-1" size="small"
+											><h5 class="info-text grid">
+												Round robin ticket assignment
+												<span class="text-[10px] text-gray-500 font-light"
+													>Assign ticket to agents in a circular order</span
+												>
+											</h5>
+										</el-radio>
+										<el-radio label="assignment-2" size="small"
+											><h5 class="info-text grid">
+												Load balanced ticket assignment ( Powered by Omniroute )
+												<span class="text-[10px] text-gray-500 font-light"
+													>Tickets are assigned based on an agent's load.
+													Configyre agent laod under
+													<NuxtLink class="animate-text hover:underline"
+														>Omniroute settings</NuxtLink
+													></span
+												>
+											</h5>
+										</el-radio>
+										<el-radio label="assignment-2" size="small"
+											><h5 class="info-text grid">
+												Skill based ticket assignment
+												<span class="text-[10px] text-gray-500 font-light"
+													>Assign ticekts to agents base on their skills
+													<NuxtLink class="animate-text hover:underline"
+														>Create skills
+													</NuxtLink>
+												</span>
+												<span class="text-[10px] text-gray-500 font-light"
+													>The agent load can be configured here
+													<NuxtLink class="animate-text hover:underline"
+														>Manage skills
+													</NuxtLink>
+												</span>
+											</h5>
+										</el-radio>
+									</el-radio-group>
+								</form>
+							</div>
 						</div>
+						<form
+							action=""
+							class="grid gap-4 feature-container shadow-none"
+							v-if="autoTicketAssign"
+						>
+							<h4 class="info-header">Agent availability</h4>
+							<el-radio-group v-model="agentAvailRadio" class="grid gap-3">
+								<el-radio label="assign-1" size="small"
+									><h5 class="info-text grid">
+										Allow agents to set their own availability status
+										<span class="text-[10px] text-gray-500 font-light"
+											>Agents can set their status according to their activity.
+											Admins and supervisors can still override an agent's
+											<br />
+											availability from the dashboard</span
+										>
+									</h5>
+								</el-radio>
+								<el-radio label="assignment-2" size="small"
+									><h5 class="info-text grid">
+										Load balanced ticket assignment ( Powered by Omniroute )
+										<span class="text-[10px] text-gray-500 font-light"
+											>Tickets are assigned based on an agent's load. Configyre
+											agent laod under
+											<NuxtLink class="animate-text hover:underline"
+												>Omniroute settings</NuxtLink
+											></span
+										>
+									</h5>
+								</el-radio>
+							</el-radio-group>
+						</form>
 						<hr />
 						<div class="pl-4">
 							<h4 class="info-header">Ticket escalation settings</h4>
@@ -308,3 +389,8 @@
 		</NuxtLayout>
 	</div>
 </template>
+<style scoped>
+	.grid {
+		display: grid !important;
+	}
+</style>

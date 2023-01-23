@@ -144,7 +144,7 @@
 					<img
 						:src="`/images/contacts/${scope.row.img}.png`"
 						alt=""
-						class="w-7 object-cover rounded"
+						class="inbox-msg-img"
 					/>
 
 					<span class="group-hover:animate-text">{{ scope.row.contact }}</span>
