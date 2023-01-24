@@ -85,20 +85,23 @@
 					</button>
 				</div>
 				<!--Six info tasks ends here-->
-				<div class="feature-container grid grid-cols-12">
-					<div class="col-span-8">
+				<div class="feature-container flex gap-5">
+					<div class="w-8/12">
 						<DashboardChartItem />
 					</div>
-					<div class="stats col-span-4 grid-cols-2 gap-2 grid">
+					<div class="stats w-4/12 flex flex-wrap gap-1 py-[4rem]">
 						<div
 							v-for="stat in stats"
 							:key="stat.name"
-							class="px-4 py-3 grid gap-2 group hover:text-blue-400 transition-all"
+							class="px-4 py-3 flex flex-col group text-white hover:text-blue-400 transition-all grow col-auto basis-[97px] bg-light-purple"
 						>
-							<span class="info-header w-max">{{ stat.name }}</span>
-							<span class="info-text group-hover:text-blue-400 transition-all"
-								>{{ stat.number }}
-							</span>
+							<span class="text-sm text-white w-max">{{ stat.name }}</span>
+
+							<p
+								class="info-header text-white text-lg group-hover:text-blue-400 transition-all"
+							>
+								{{ stat.number }}
+							</p>
 						</div>
 					</div>
 				</div>

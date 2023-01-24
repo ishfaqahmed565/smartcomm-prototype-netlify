@@ -150,7 +150,7 @@
 							columnWidth: "60%",
 						},
 					},
-					colors: ["#7c3985"],
+					colors: ["#3B2A82"],
 					dataLabels: {
 						enabled: false,
 					},
@@ -160,7 +160,7 @@
 						customLegendItems: ["Today", "Yesterday"],
 						horizontalAlign: "right",
 						markers: {
-							fillColors: ["#DB1F2A", "black"],
+							fillColors: ["#3B2A82", "gray"],
 							style: {
 								justifyContent: "end",
 								fontSize: "2px !important",
