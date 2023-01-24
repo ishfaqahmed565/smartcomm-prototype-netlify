@@ -3,11 +3,6 @@
 	import useDetectOutsideClick from "~/composable/useDetectOutsideClick.js";
 	const something = "Hello";
 
-	const leftNav = [
-		{ name: "Customer", to: "customer" },
-		{ name: "Call Center", to: "call-center" },
-		{ name: "Social Media", to: "social-media" },
-	];
 	const rightNav = [
 		{ name: "New tickets", to: "new-ticket", number: 5 },
 		{ name: "Waiting Tickets", to: "waiting-tickets", number: 20 },
@@ -31,9 +26,9 @@
 	provide("something", something);
 </script>
 <template>
-	<div class="flex bg-gray-100">
+	<div class="flex bg-gray-100 font-['Heebo']">
 		<SideNav />
-		<div class="grow shrink-0 basis-[1295px]">
+		<div class="grow shrink-0 basis-[1285px]">
 			<!--Top Navigation Bar goes here-->
 			<!--In the top bar there two dynamic named slots which #title and #secondbar which varies from page to page-->
 			<!--Second bar is the bottom section of the top bar-->
@@ -56,35 +51,11 @@
 					<div
 						class="right space-x-5 flex items-center justify-center font-medium text-sm"
 					>
-						<NavButton
-							v-for="nav in rightNav"
-							:key="nav.to"
-							class="shadow-sm border active:translate-y-px p-1 rounded-md relative hover:bg-gray-200 transition-all"
+						<DropDown
+							buttonStyle="bg-primary-red-nav hover:bg-primary-red text-white "
 						>
-							<NuxtLink :to="`/${nav.to}`">
-								{{ nav.name }}
-
-								<Badge class="top-[-10px] right-[-10px] absolute">
-									{{ nav.number }}
-								</Badge>
-							</NuxtLink>
-						</NavButton>
-						<DropDown>
 							<template #drop-button>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke-width="3"
-									stroke="currentColor"
-									class="w-4"
-								>
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-									/>
-								</svg>
+								<Svgs name="add" class="w-[12px]" stroke-width="2" />
 								<span>New</span>
 							</template>
 							<template #drop-data>
@@ -126,26 +97,23 @@
 								</div>
 							</template>
 						</DropDown>
-						<button class="p-[7px] rounded-full bg-green-500"></button>
+						<NavButton
+							v-for="nav in rightNav"
+							:key="nav.to"
+							class="shadow-sm border active:translate-y-px p-1 rounded-md relative hover:bg-gray-200 transition-all"
+						>
+							<NuxtLink :to="`/${nav.to}`">
+								{{ nav.name }}
+
+								<Badge class="top-[-10px] right-[-10px] absolute">
+									{{ nav.number }}
+								</Badge>
+							</NuxtLink>
+						</NavButton>
+
 						<div class="relative grid" ref="profileTabButton">
-							<button
-								class="p-3 rounded-lg bg-gray-200"
-								@click="profileTab = !profileTab"
-							>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke-width="1.5"
-									stroke="currentColor"
-									class="w-6"
-								>
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
-									/>
-								</svg>
+							<button @click="profileTab = !profileTab">
+								<img src="/avatar.png" alt="" class="w-8 object-cover" />
 							</button>
 							<TransWrap :show="profileTab">
 								<PopUp v-show="profileTab"

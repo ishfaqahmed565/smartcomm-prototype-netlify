@@ -39,12 +39,18 @@
 </script>
 <template>
 	<NuxtLayout name="default">
-		<template #title> Dashboard </template>
+		<template #title>
+			<span class="text-light-purple">My Dashboard</span>
+		</template>
 		<GenFeature>
 			<template #second-bar>
 				<form action="" class="second-bar__section">
 					<client-only>
-						<el-select v-model="sortValue" placeholder="Sort by:">
+						<el-select
+							v-model="sortValue"
+							placeholder="Sort by:"
+							class="w-[9rem]"
+						>
 							<el-option
 								v-for="item in sortOptions"
 								:key="item.value"
@@ -61,29 +67,41 @@
 					<button
 						v-for="task in tasks"
 						:key="task.name"
-						class="feature-container grid place-items-start group hover:text-blue-400 transition-all"
+						class="feature-container group hover:text-blue-400 transition-all flex gap-5 py-2"
 					>
-						<span class="info-header">{{ task.name }}</span>
-						<span class="info-text group-hover:text-blue-400 transition-all"
-							>0</span
-						>
+						<img
+							:src="`/svgs/dashboard/${task.name}.svg`"
+							alt=""
+							class="w-11"
+						/>
+						<div class="grid place-items-start">
+							<h3 class="text-sm text-gray-400">{{ task.name }}</h3>
+							<p
+								class="info-header text-lg group-hover:text-blue-400 transition-all"
+							>
+								0
+							</p>
+						</div>
 					</button>
 				</div>
 				<!--Six info tasks ends here-->
-				<div class="feature-container grid grid-cols-12">
-					<div class="col-span-8">
+				<div class="feature-container flex gap-5">
+					<div class="w-8/12">
 						<DashboardChartItem />
 					</div>
-					<div class="stats col-span-4 grid-cols-2 gap-2 grid">
+					<div class="stats w-4/12 flex flex-wrap gap-1 py-[4rem]">
 						<div
 							v-for="stat in stats"
 							:key="stat.name"
-							class="px-4 py-3 grid gap-2 group hover:text-blue-400 transition-all"
+							class="px-4 py-3 flex flex-col group text-white hover:text-blue-400 transition-all grow col-auto basis-[97px] bg-light-purple"
 						>
-							<span class="info-header w-max">{{ stat.name }}</span>
-							<span class="info-text group-hover:text-blue-400 transition-all"
-								>{{ stat.number }}
-							</span>
+							<span class="text-sm text-white w-max">{{ stat.name }}</span>
+
+							<p
+								class="info-header text-white text-lg group-hover:text-blue-400 transition-all"
+							>
+								{{ stat.number }}
+							</p>
 						</div>
 					</div>
 				</div>

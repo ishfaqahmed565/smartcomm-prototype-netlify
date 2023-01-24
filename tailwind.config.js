@@ -8,12 +8,18 @@ module.exports = {
 		"./nuxt.config.{js,ts}",
 		"./app.vue",
 	],
+
 	theme: {
 		extend: {
 			colors: {
+				"primary-red": "#D83742",
 				"brand-red": "#DB1F2A",
 				"brand-purple": "#7c3985",
 				"brand-status": "#C92C5F",
+				"light-purple": "#3B2A82",
+			},
+			fontFamily: {
+				body: ["Heebo"],
 			},
 		},
 	},

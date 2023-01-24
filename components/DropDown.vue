@@ -6,6 +6,10 @@
 			default: true,
 			type: Boolean,
 		},
+		buttonStyle: {
+			required: false,
+			type: String,
+		},
 	});
 	let showDropdown = ref(false);
 	let dropDown = ref(null);
@@ -15,15 +19,15 @@
 </script>
 <template>
 	<div class="relative grid" ref="dropDown">
-		<NavButton @click="showDropdown = !showDropdown">
+		<NavButton @click="showDropdown = !showDropdown" :class="buttonStyle">
 			<slot name="drop-button"></slot>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
 				viewBox="0 0 24 24"
-				stroke-width="1.5"
+				stroke-width="2"
 				stroke="currentColor"
-				class="w-3"
+				class="w-[10px]"
 				v-if="props.showCarret"
 				:class="{ 'rotate-180': showDropdown }"
 			>

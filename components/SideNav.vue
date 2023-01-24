@@ -7,26 +7,29 @@
 		{ name: "Call History", imgName: "call-history" },
 	];
 	const side2: SideNavButton[] = [
-		{ name: "Summary", imgName: "summary" },
 		{ name: "Ticket List", imgName: "ticket-list" },
 		{ name: "Assigned Tickets", imgName: "assigned-tickets" },
-		{ name: "Message Templates", imgName: "message-templates" },
-		{ name: "Long Waited Queues", imgName: "long-waited-queues" },
+		{ name: "Inbox", imgName: "inbox" },
 	];
 	const side3: SideNavButton[] = [
-		{ name: "Inbox", imgName: "inbox" },
 		{ name: "Team", imgName: "teams" },
 		{ name: "Roles", imgName: "roles" },
 		{ name: "Channel Automation", imgName: "channel-automation" },
 	];
 </script>
 <template>
-	<div class="bg-[#7c3985] min-h-[100vh] z-[99999] min-w-[3rem] max-w-[3rem]">
-		<div class="sidebar p-2 gap-5 flex flex-col items-center">
+	<div
+		class="bg-light-purple min-h-[100vh] z-[99999] min-w-[4rem] max-w-[4rem]"
+	>
+		<div class="sidebar p-2 pt-0 gap-5 flex flex-col items-center">
 			<!--SmartComm logo goes here-->
-			<img src="/images/logo_3.png" alt="" class="w-[40px] object-cover mt-2" />
+			<img
+				src="/images/logo_3.png"
+				alt=""
+				class="min-w-[70px] object-cover mt-2"
+			/>
 			<!--SideNav Button goes here-->
-			<div class="space-y-[3rem]">
+			<div class="space-y-[2rem]">
 				<div class="space-y-[.2rem]">
 					<SideIcon
 						v-for="icon in side1"

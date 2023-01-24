@@ -17,13 +17,6 @@
 		<div
 			class="scale-0 group-hover:scale-100 transition-all ease-linear duration-100 self-start"
 		>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				viewBox="0 0 24 24"
-				class="absolute w-3 h-3 rotate-[271deg] left-[16px] top-[2px] fill-[#7c3985] hidden group-hover:block"
-			>
-				<path d="M24 22h-24l12-20z" />
-			</svg>
 			<div
 				class="absolute z-10 w-max rounded left-[26px] top-[-7px] bg-[#7c3985] text-white text-xs p-2"
 			>
