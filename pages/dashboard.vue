@@ -67,12 +67,21 @@
 					<button
 						v-for="task in tasks"
 						:key="task.name"
-						class="feature-container grid place-items-start group hover:text-blue-400 transition-all"
+						class="feature-container group hover:text-blue-400 transition-all flex gap-5 py-2"
 					>
-						<span class="info-header">{{ task.name }}</span>
-						<span class="info-text group-hover:text-blue-400 transition-all"
-							>0</span
-						>
+						<img
+							:src="`/svgs/dashboard/${task.name}.svg`"
+							alt=""
+							class="w-11"
+						/>
+						<div class="grid place-items-start">
+							<h3 class="text-sm text-gray-400">{{ task.name }}</h3>
+							<p
+								class="info-header text-lg group-hover:text-blue-400 transition-all"
+							>
+								0
+							</p>
+						</div>
 					</button>
 				</div>
 				<!--Six info tasks ends here-->
