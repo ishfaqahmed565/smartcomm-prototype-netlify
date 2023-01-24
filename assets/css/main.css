@@ -8,6 +8,15 @@
 *{
     box-sizing: border-box;
 }
+:root {
+    --primary-red: #D83742;
+    --light-purple: #3B2A82;
+    --light-feature: #E1E4F1;
+    --dark-blue: #252438;
+    --dark-feature: #171932;
+    --dark-l-blue: #107297;
+  }
+  
 .table-header {
     background: #F3F4F6 !important;
 }
@@ -16,7 +25,7 @@
 }
 @layer components{ 
     .feature-main-card{
-        @apply grid gap-4 px-4 py-2
+        @apply grid gap-4 px-4 py-2 
     }
     .bg-primary-red-nav{
         @apply bg-primary-red !important
@@ -34,14 +43,14 @@
         @apply w-10 h-10 object-cover rounded
     }
     .feature-container{
-        @apply bg-white p-4 rounded shadow
+        @apply bg-white p-4 rounded shadow border border-light-purple/[.4] dark:bg-dark-blue
     }
     
     .info-header{
-        @apply font-semibold text-gray-800 text-sm;
+        @apply font-semibold text-gray-800 text-sm dark:text-white;
     }
     .info-text{
-        @apply text-gray-800 text-xs  ;
+        @apply text-gray-800 text-xs dark:text-white ;
     }
     
     .inbox-header{
@@ -67,14 +76,12 @@
        @apply hover:bg-blue-100 text-black transition-all w-full text-start info-text p-2 hover:text-blue-400 flex gap-2 items-center border-b
     }
     .second-bar{
-        @apply flex p-3 justify-between w-full items-center bg-white shadow border-gray-300 font-medium text-sm z-50 top-[56px] !important ;
+        @apply flex p-3 justify-between w-full items-center bg-white shadow border-gray-300 font-medium text-sm z-50 top-[56px] dark:bg-dark-blue border-b dark:border-gray-600 !important ;
     }
     .second-bar__section{
         @apply flex gap-2 items-center
         
     }
-   
-    
     .ticket-info__time{
         @apply text-gray-400 text-[9px]
     }
@@ -88,6 +95,26 @@
         @apply text-[12px]
     }
     
+}
+.dark .apexcharts-bar-area{
+    fill:var(--dark-l-blue) ;
+
+}
+.dark .apexcharts-title-text{
+    fill:white ;
+}
+.dark .apexcharts-text {
+    fill: white 
+}
+.dark .apexcharts-legend-text{
+    color: white !important;
+
+}
+.dark .feature-container{
+    border-color: #1072974D;
+}
+.dark .el-input__wrapper{
+    background:transparent !important;
 }
 .login .el-checkbox__label {
     color: rgb(156 163 175);
@@ -145,13 +172,22 @@ body{
     border-radius: 5px !important;
 }
  .is-focus{
-    outline:2px solid #7c3985;
+    outline:2px solid var(--light-purple);
     outline-offset: -2px;
     border-radius: 3px;
 
 }
+.dark .is-focus{
+    outline:2px solid var(--dark-l-blue);
+}
+.dark .el-input__wrapper{
+    box-shadow: 0 0 0 1px gray inset !important;
+}
 .el-textarea{
-    --el-input-focus-border-color: #7c3985 !important;
+    --el-input-focus-border-color: var(--light-purple) !important;
+}
+.dark .el-textarea{
+    --el-input-focus-border-color: var(--dark-l-blue) !important;
 }
 
 .cell .el-select{

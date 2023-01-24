@@ -8,7 +8,7 @@
 <template>
 	<NuxtLink
 		:to="`/${props.sideNavData.imgName}`"
-		class="bg-none hover:bg-white/[.20] group side-icon rounded-lg p-2 relative flex transition-all ease-linear"
+		class="bg-none group side-icon rounded-lg p-2 relative flex transition-all ease-linear"
 	>
 		<img
 			:src="`/svgs/sidebar/${props.sideNavData.imgName}.svg`"
@@ -26,12 +26,7 @@
 	</NuxtLink>
 </template>
 <style scoped>
-	.side-icon:hover .filter-bg {
-		filter: invert(31%) sepia(45%) saturate(1993%) hue-rotate(266deg)
-			brightness(100%) contrast(101%);
-	}
-	.router-link-active > .dynImg {
-		filter: invert(31%) sepia(45%) saturate(1993%) hue-rotate(266deg)
-			brightness(100%) contrast(101%);
+	.router-link-active {
+		background-color: rgb(255 255 255 / 0.2);
 	}
 </style>

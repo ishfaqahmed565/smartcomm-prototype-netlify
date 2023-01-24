@@ -1,5 +1,7 @@
 <script setup>
 	import { provide } from "vue";
+	import { useThemeStore } from "@/stores/themeStore.js";
+
 	import useDetectOutsideClick from "~/composable/useDetectOutsideClick.js";
 	const something = "Hello";
 
@@ -24,19 +26,33 @@
 		newTab.value = false;
 	});
 	provide("something", something);
+	let barColor = computed(() => {
+		if (theme.getTheme) {
+			return "#107297";
+		}
+		return "#3B2A82";
+	});
+	let theme = useThemeStore();
 </script>
 <template>
-	<div class="flex bg-gray-100 font-['Heebo']">
-		<SideNav />
-		<div class="grow shrink-0 basis-[1285px]">
+	<div class="flex font-['Heebo']" :class="{ dark: theme.getTheme }">
+		<SideNav class="dark:bg-dark-blue" />
+		<div
+			class="grow shrink-0 basis-[1285px] bg-light-feature dark:bg-dark-feature"
+		>
 			<!--Top Navigation Bar goes here-->
 			<!--In the top bar there two dynamic named slots which #title and #secondbar which varies from page to page-->
 			<!--Second bar is the bottom section of the top bar-->
-			<div class="bg-white border-b border-gray-300 sticky-nav">
+			<div
+				class="bg-white border-b border-gray-300 dark:border-gray-600 sticky-nav dark:bg-dark-blue"
+			>
 				<div class="flex items-center p-3 justify-between">
 					<div class="left space-x-5 flex items-center justify-center">
-						<h2 class="text-xl font-bold mb-[2px]">
+						<h2
+							class="text-xl font-bold mb-[2px] dark:text-white text-light-purple"
+						>
 							<slot name="title"></slot>
+							{{ barColor }}
 						</h2>
 
 						<NuxtLink
@@ -51,8 +67,9 @@
 					<div
 						class="right space-x-5 flex items-center justify-center font-medium text-sm"
 					>
+						<NavButton @click="theme.toggleTheme">Dark</NavButton>
 						<DropDown
-							buttonStyle="bg-primary-red-nav hover:bg-primary-red text-white "
+							buttonStyle="bg-primary-red-nav hover:bg-primary-red text-white dark:bg-black"
 						>
 							<template #drop-button>
 								<Svgs name="add" class="w-[12px]" stroke-width="2" />
@@ -148,7 +165,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="feature-slot bg-gray-100">
+			<div class="feature-slot">
 				<!--This is the dynamic part of the page that keeps changin i.e:feature-card-->
 				<slot />
 			</div>

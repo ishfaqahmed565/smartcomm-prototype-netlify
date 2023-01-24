@@ -19,7 +19,7 @@
 </script>
 <template>
 	<div
-		class="bg-light-purple min-h-[100vh] z-[99999] min-w-[4rem] max-w-[4rem]"
+		class="bg-light-purple min-h-[100vh] z-[99999] min-w-[4rem] max-w-[4rem] border-r border border-gray-600"
 	>
 		<div class="sidebar p-2 pt-0 gap-5 flex flex-col items-center">
 			<!--SmartComm logo goes here-->
