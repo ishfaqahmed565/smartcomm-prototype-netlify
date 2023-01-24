@@ -39,12 +39,18 @@
 </script>
 <template>
 	<NuxtLayout name="default">
-		<template #title> My Dashboard </template>
+		<template #title>
+			<span class="text-light-purple">My Dashboard</span>
+		</template>
 		<GenFeature>
 			<template #second-bar>
 				<form action="" class="second-bar__section">
 					<client-only>
-						<el-select v-model="sortValue" placeholder="Sort by:">
+						<el-select
+							v-model="sortValue"
+							placeholder="Sort by:"
+							class="w-[9rem]"
+						>
 							<el-option
 								v-for="item in sortOptions"
 								:key="item.value"

@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="h-[100vh] bg-gradient-to-t from-[#E8E7F5] to-[#E1F1F0] grid place-items-center"
+		class="h-[100vh] bg-gradient-to-t from-[#E8E7F5] to-[#E1F1F0] grid place-items-center font-['Heebo']"
 	>
 		<img
 			src="/images/login/side_img.png"

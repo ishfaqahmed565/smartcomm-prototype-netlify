@@ -18,6 +18,9 @@
     .feature-main-card{
         @apply grid gap-4 px-4 py-2
     }
+    .bg-primary-red-nav{
+        @apply bg-primary-red !important
+    }
     .black-nav{
         @apply bg-black text-white hover:bg-black !important
     }
@@ -64,7 +67,7 @@
        @apply hover:bg-blue-100 text-black transition-all w-full text-start info-text p-2 hover:text-blue-400 flex gap-2 items-center border-b
     }
     .second-bar{
-        @apply flex p-3 justify-between w-full items-center bg-white shadow border-gray-300 font-medium text-sm z-50 top-[73px] !important ;
+        @apply flex p-3 justify-between w-full items-center bg-white shadow border-gray-300 font-medium text-sm z-50 top-[56px] !important ;
     }
     .second-bar__section{
         @apply flex gap-2 items-center
