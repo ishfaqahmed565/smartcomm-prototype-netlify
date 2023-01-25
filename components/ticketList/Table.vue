@@ -118,6 +118,8 @@
 		{
 			contact: "Kamrun Nahar",
 			subject: "Payment failed",
+			type: "inbox",
+			uid: "16878734",
 			source: "messenger",
 			id: 3,
 			img: "kamrun-nahar",
@@ -155,11 +157,15 @@
 		<el-table-column property="subject" label="Subject">
 			<template #default="scope">
 				<NuxtLink
-					:to="`/ticket-list/${scope.row.id}`"
+					:to="
+						scope.row.type === 'inbox'
+							? `/inbox/${scope.row.uid}`
+							: `/ticket-list/${scope.row.id}`
+					"
 					class="hover:animate-text flex gap-2"
 				>
-					{{ scope.row.subject }}
 					<Svgs :name="scope.row.source" />
+					{{ scope.row.subject }}
 				</NuxtLink>
 			</template>
 		</el-table-column>
