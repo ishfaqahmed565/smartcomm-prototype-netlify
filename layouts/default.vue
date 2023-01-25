@@ -3,6 +3,7 @@
 	import { useThemeStore } from "@/stores/themeStore.js";
 
 	import useDetectOutsideClick from "~/composable/useDetectOutsideClick.js";
+	let theme = useThemeStore();
 	const something = "Hello";
 
 	const rightNav = [
@@ -32,7 +33,17 @@
 		}
 		return "#3B2A82";
 	});
-	let theme = useThemeStore();
+	let bodyClass = computed(() => {
+		if (theme.getTheme) {
+			return "dark";
+		}
+		return "";
+	});
+	useHead({
+		bodyAttrs: {
+			class: bodyClass,
+		},
+	});
 </script>
 <template>
 	<div class="flex font-['Heebo']" :class="{ dark: theme.getTheme }">
@@ -52,7 +63,6 @@
 							class="text-xl font-bold mb-[2px] dark:text-white text-light-purple"
 						>
 							<slot name="title"></slot>
-							{{ barColor }}
 						</h2>
 
 						<NuxtLink
@@ -69,7 +79,7 @@
 					>
 						<NavButton @click="theme.toggleTheme">Dark</NavButton>
 						<DropDown
-							buttonStyle="bg-primary-red-nav hover:bg-primary-red text-white dark:bg-black"
+							buttonStyle="bg-primary-red-nav hover:bg-primary-red text-white new-button dark:border-none"
 						>
 							<template #drop-button>
 								<Svgs name="add" class="w-[12px]" stroke-width="2" />

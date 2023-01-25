@@ -44,7 +44,6 @@
 	<NuxtLayout name="default">
 		<template #title>
 			<button @click="theme.toggleTheme()">My Dashboard</button>
-			{{ theme.getTheme }}
 		</template>
 		<GenFeature>
 			<template #second-bar>
@@ -74,7 +73,11 @@
 						class="feature-container group hover:text-blue-400 transition-all flex gap-5 py-2"
 					>
 						<img
-							:src="`/svgs/dashboard/${task.name}.svg`"
+							:src="
+								theme.getTheme
+									? `/svgs/dashboard/dark-${task.name}.svg`
+									: `/svgs/dashboard/${task.name}.svg`
+							"
 							alt=""
 							class="w-11"
 						/>
@@ -95,11 +98,12 @@
 					<div class="w-8/12">
 						<DashboardChartItem />
 					</div>
-					<div class="stats w-4/12 flex flex-wrap gap-1 py-[4rem]">
+					<div class="stats w-4/12 grid grid-cols-2 gap-1 py-[4rem]">
 						<div
-							v-for="stat in stats"
+							v-for="(stat, index) in stats"
 							:key="stat.name"
-							class="px-4 py-3 flex flex-col group text-white hover:text-blue-400 transition-all grow col-auto basis-[97px] bg-light-purple dark:bg-dark-l-blue"
+							class="px-4 py-3 flex flex-col group text-white hover:text-blue-400 transition-all bg-light-purple dark:bg-dark-l-blue"
+							:class="{ 'col-span-2': index == 4 }"
 						>
 							<span class="text-sm text-white w-max">{{ stat.name }}</span>
 
@@ -208,7 +212,7 @@
 								<el-progress
 									:percentage="50"
 									color="#3B2A82"
-									:stroke-width="8"
+									:stroke-width="9"
 								/>
 							</div>
 							<div>
@@ -216,7 +220,7 @@
 								<el-progress
 									:percentage="50"
 									color="#6BB437"
-									:stroke-width="8"
+									:stroke-width="9"
 								/>
 							</div>
 							<div>
@@ -224,7 +228,7 @@
 								<el-progress
 									:percentage="50"
 									color="#FFD426"
-									:stroke-width="8"
+									:stroke-width="9"
 								/>
 							</div>
 							<div>
@@ -232,7 +236,7 @@
 								<el-progress
 									:percentage="50"
 									color="#CD2E4E"
-									:stroke-width="8"
+									:stroke-width="9"
 								/>
 							</div>
 						</div>

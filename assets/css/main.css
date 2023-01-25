@@ -171,6 +171,12 @@ body{
 .ql-toolbar.ql-snow{
     border-radius: 5px !important;
 }
+.dark .nav-button{
+    background: #353E53 !important;
+}
+.dark .new-button{
+    background: var(--dark-l-blue) !important;
+}
  .is-focus{
     outline:2px solid var(--light-purple);
     outline-offset: -2px;
@@ -189,6 +195,30 @@ body{
 .dark .el-textarea{
     --el-input-focus-border-color: var(--dark-l-blue) !important;
 }
+.dark .el-input{
+    --el-input-text-color:#fafafa  !important;
+    --el-input-placeholder-color: #fafafa !important;
+}
+ .el-popper__arrow::before{
+    display: none !important;
+    
+}
+.el-input {
+    --el-input-text-color: black !important;
+    --el-input-border: var(--el-border);
+    --el-input-hover-border: var(--el-border-color-hover);
+    --el-input-focus-border-color: var(--light-purple) !important;
+    --el-input-transparent-border: 0 0 0 1px transparent inset;
+    --el-input-border-color: var(--el-border-color);
+    --el-input-border-radius: var(--el-border-radius-base);
+    --el-input-bg-color: var(--el-fill-color-blank);
+    --el-input-icon-color: var(--el-text-color-placeholder);
+    --el-input-placeholder-color: black !important;
+    --el-input-hover-border-color: var(--el-border-color-hover);
+    --el-input-clear-hover-color: var(--el-text-color-secondary);
+    font-size: var(--el-font-size-base);
+}
+
 
 .cell .el-select{
     
@@ -200,6 +230,21 @@ body{
     box-shadow:none !important;
 }
 
+.dark .el-scrollbar{
+    background-color:var(--dark-blue) !important
+}
+.dark .el-select-dropdown__item{
+    color:white
+}
+.dark .el-select-dropdown__item.hover{
+    background-color: var(--dark-feature) !important;
+}
+.dark .el-select-dropdown__item:hover {
+    background-color: var(--dark-feature) !important;
+}
+.dark .el-popper.is-light{
+    border-color:var(--dark-l-blue) !important
+}
 .el-textarea__inner{
     font-size:12px !important;
 }

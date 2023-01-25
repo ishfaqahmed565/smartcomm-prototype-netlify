@@ -8,7 +8,7 @@
 <template>
 	<NuxtLink
 		:to="`/${props.sideNavData.imgName}`"
-		class="bg-none group side-icon rounded-lg p-2 relative flex transition-all ease-linear"
+		class="bg-none group side-icon rounded-lg p-2 relative flex transition-all ease-linear hover:bg-white/[.20]"
 	>
 		<img
 			:src="`/svgs/sidebar/${props.sideNavData.imgName}.svg`"
@@ -18,7 +18,7 @@
 			class="scale-0 group-hover:scale-100 transition-all ease-linear duration-100 self-start"
 		>
 			<div
-				class="absolute z-10 w-max rounded left-[26px] top-[-7px] bg-[#7c3985] text-white text-xs p-2"
+				class="absolute z-10 w-max rounded left-[26px] top-[-7px] bg-[#7c3985] dark:bg-dark-blue dark:border-[1px] dark:border-dark-l-blue text-white text-xs p-2"
 			>
 				{{ props.sideNavData.name }}
 			</div>
