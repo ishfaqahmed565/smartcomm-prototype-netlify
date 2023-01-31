@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+\cp -fR /node_modules .
+chmod -R 0777 node_modules
+
+npm run dev

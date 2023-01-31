@@ -1,0 +1,21 @@
+# Ignore everything
+*
+
+# Allow files and directories
+!/assets
+!/components
+!/composable
+!/hacks
+!/layouts
+!/pages
+!/plugins
+!/public
+!/stores
+!/types
+
+# Allow important files from root directory
+!/nuxt.config.ts
+!/package.json
+!/package-lock.json
+!/tailwind.config.js
+!/tsconfig.json

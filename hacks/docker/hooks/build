@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+ROOT_PROJECT_PATH=$(dirname $(dirname $PWD))
+docker build -f $PWD/Dockerfile.prod \
+  --build-arg VUE_APP_META_MANAGER_BASE_URL="$VUE_APP_META_MANAGER_BASE_URL" \
+  -t $IMAGE_NAME $ROOT_PROJECT_PATH

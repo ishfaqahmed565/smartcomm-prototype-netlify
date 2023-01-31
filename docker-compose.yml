@@ -1,0 +1,29 @@
+version: '3'
+services:
+    smartcomm_frontend_new:
+        build:
+            context: .
+            dockerfile: hacks/docker/Dockerfile
+        ports:
+            - '7000:3000'
+        labels:
+            - "traefik.enable=true"
+            - 'traefik.http.services.smartcomm_frontend.loadbalancer.server.port=3000'
+            - "traefik.http.routers.smartcomm_frontend.rule=HostRegexp(`{subdomain:.+}.smartcomm.com`) && !PathPrefix(`/api`)"
+            - "traefik.http.routers.smartcomm_frontend.service=smartcomm_frontend"
+            - 'traefik.http.routers.smartcomm_frontend.entryPoints=web'
+            # hmr
+            - 'traefik.http.services.smartcomm_frontend_hmr.loadbalancer.server.port=24678'
+            - "traefik.http.routers.smartcomm_frontend_hmr.rule=HostRegexp(`{subdomain:.+}.smartcomm.com`)"
+            - 'traefik.http.routers.smartcomm_frontend_hmr.service=smartcomm_frontend_hmr'
+            - 'traefik.http.routers.smartcomm_frontend_hmr.entryPoints=nuxthmr24678'
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
+        volumes:
+            - '.:/app'
+        networks:
+            - smartcomm
+networks:
+    smartcomm:
+        external: true
+
