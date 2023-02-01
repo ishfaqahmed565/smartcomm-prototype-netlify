@@ -18,11 +18,11 @@
 			<img src="/images/login/logo.png" alt="" class="w-32" />
 
 			<div class="grid gap-4">
-				<div class="grid place-items-center">
+				<div class="grid place-items-center text-center">
 					<h2 class="text-lg font-medium text-primary-red">
 						<slot name="login-title"></slot>
 					</h2>
-					<span class="text-xs text-gray-400">
+					<span class="text-xs text-gray-400 w-[17rem]">
 						<slot name="login-info"></slot
 					></span>
 				</div>

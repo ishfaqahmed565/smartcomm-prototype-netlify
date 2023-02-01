@@ -18,7 +18,7 @@
 			class="scale-0 group-hover:scale-100 transition-all ease-linear duration-100 self-start"
 		>
 			<div
-				class="absolute z-10 w-max rounded left-[26px] top-[-7px] bg-[#7c3985] dark:bg-dark-blue dark:border-[1px] dark:border-dark-l-blue text-white text-xs p-2"
+				class="absolute z-10 w-max rounded left-[26px] top-[-7px] bg-light-purple dark:bg-dark-blue dark:border-[1px] dark:border-dark-l-blue text-white text-xs p-2"
 			>
 				{{ props.sideNavData.name }}
 			</div>

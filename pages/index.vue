@@ -12,8 +12,12 @@
 			>Enter your credential to access your account</template
 		>
 
-		<form action="" class="login grid gap-2 w-full">
-			<el-input v-model="email" placeholder="example@company.com" />
+		<form action="" class="login flex flex-col gap-2 w-full">
+			<el-input
+				v-model="email"
+				placeholder="example@company.com"
+				class="w-full"
+			/>
 			<el-input
 				v-model="password"
 				type="password"
