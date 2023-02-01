@@ -35,7 +35,10 @@
 	]);
 </script>
 <template>
-	<TableContainer :tableData="tickets">
+	<TableContainer
+		:tableData="tickets"
+		@selection-change="$emit('selection-change')"
+	>
 		<el-table-column type="selection"> </el-table-column>
 		<el-table-column label="Contact">
 			<template #default="scope"

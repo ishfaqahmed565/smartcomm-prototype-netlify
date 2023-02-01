@@ -11,11 +11,7 @@
 	const ascending = ref(false);
 	const descending = ref(false);
 	//tableAnimation controls the shrinking and expanding of the data table
-	type tableAnimationType =
-		| "w-full"
-		| "leave-table-animation"
-		| "enter-table-animation";
-	const tableAnimation = ref<tableAnimationType>("w-full");
+
 	const multipleSelection = ref<Ticket[]>([]);
 	//columnsArr array hold the values of which column to show and which not to show i.e which columns are active
 	const colShowArr = ref<colShowArrInt[]>([

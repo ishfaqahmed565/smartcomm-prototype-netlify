@@ -2,7 +2,8 @@
 	import { ref } from "vue";
 	import colShowArrInt from "~/types/colShowArr";
 	import Ticket from "~/types/Ticket";
-
+	import { useCustomersPageStore } from "@/stores/customersPageStore.js";
+	let customerPageStore = useCustomersPageStore();
 	const input4 = ref("");
 	const filtersFormData = [
 		{
@@ -109,12 +110,16 @@
 						</svg>
 						<span>Export</span>
 					</NavButton>
-					<span class="text-gray-400"> 1 - 10 of 10 </span>
+					<span class="text-gray-400">
+						{{ customerPageStore.multipleSelection }}
+					</span>
 					<PagButton />
 				</template>
 				<template #feature-table>
 					<form action="">
-						<ContactsTable />
+						<CustomersTable
+							@selection-change="customerPageStore.selectionChange($event)"
+						/>
 					</form>
 				</template>
 				<template #feature-filter>

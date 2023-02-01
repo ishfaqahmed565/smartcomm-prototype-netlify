@@ -18,7 +18,7 @@
 <template>
 	<el-table
 		ref="multipleTable"
-		@selection-change="handleSelectionChange"
+		@selection-change="$emit('selected-change')"
 		:data="tableData"
 		empty-text
 		tooltip
