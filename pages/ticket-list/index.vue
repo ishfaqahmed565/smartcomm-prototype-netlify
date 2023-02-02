@@ -1,6 +1,8 @@
 <script setup lang="ts">
 	import colShowArrInt from "~/types/colShowArr";
 	import Ticket from "~/types/Ticket";
+	import { useTicketsStore } from "~/stores/ticketsStore.js";
+	let ticketsStore = useTicketsStore();
 	//selected rows that are selected by the check button
 	const selectedRows = ref<Ticket[]>([]);
 	//showFiltersTab maintains showing the FiltersTab
@@ -83,7 +85,7 @@
 	<div>
 		<NuxtLayout name="default">
 			<template #title> Tickets </template>
-			<TableFeature>
+			<TableFeature :showEditOptions="ticketsStore.showEditOptions">
 				<template #second-bar-left-edit-options>
 					<NavButton>
 						<svg
@@ -220,7 +222,7 @@
 					</NavButton>
 				</template>
 				<template #second-bar-left-sorting-options>
-					<form action="" v-if="!showEditOptions" class="second-bar__section">
+					<form action="" class="second-bar__section">
 						<client-only>
 							<el-select v-model="sortValue" placeholder="Sort by:">
 								<el-option

@@ -1,6 +1,9 @@
 <script setup lang="ts">
 	import { defineComponent, ref } from "vue";
 	import FormEl from "~/types/FormEl";
+	import { useTicketsStore } from "~/stores/ticketsStore.js";
+	let ticketsStore = useTicketsStore();
+
 	const route = useRoute();
 	const id = route.params.id;
 	const showActivity = ref(false);
@@ -283,7 +286,7 @@
 							</svg>
 							<span>Forward</span></NavButton
 						>
-						<NavButton @click="showMergeModal = true"
+						<NavButton @click="ticketsStore.openMergeModal"
 							><svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -339,10 +342,16 @@
 								<Svgs name="hr-ellipsis" class="w-5" />
 							</template>
 							<template #drop-data>
-								<button class="drop-data" @click="showExcScenariosModal = true">
+								<button
+									class="drop-data"
+									@click="ticketsStore.openExcScenarioModal"
+								>
 									Execute scenarios
 								</button>
-								<button class="drop-data" @click="showLogTimeModal = true">
+								<button
+									class="drop-data"
+									@click="ticketsStore.openLogTimeModal"
+								>
 									Log Time
 								</button>
 								<button class="drop-data">Edit ticket details</button>
@@ -671,18 +680,11 @@
 				</template>
 			</GenFeature>
 			<!--Modal goes here-->
-			<TicketListMergeModal
-				:showMergeModal="showMergeModal"
-				@closeMergeModal="showMergeModal = false"
-			/>
+			<TicketListMergeModal @close="ticketsStore.closeMergeModal" />
 			<TicketListExcScenariosModal
-				:showExcScenariosModal="showExcScenariosModal"
-				@closeExcScenariosModal="showExcScenariosModal = false"
+				@close="ticketsStore.closeExcScenarioModal"
 			/>
-			<TicketListLogTimeModal
-				:showLogTimeModal="showLogTimeModal"
-				@closeLogTimeModal="showLogTimeModal = false"
-			/>
+			<TicketListLogTimeModal @close="ticketsStore.closeLogTimeModal" />
 		</NuxtLayout>
 	</div>
 </template>

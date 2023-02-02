@@ -10,7 +10,7 @@
 </script>
 <template>
 	<div
-		class="overflow-hidden bg-white rounded h-min py-2 flex-col items-center shadow-sm border border-gray-200 justify-center space-y-3 w-full"
+		class="overflow-hidden bg-white rounded h-min py-2 flex-col items-center shadow-sm border border-light-purple/[.4] justify-center space-y-3 w-full"
 	>
 		<button
 			class="flex gap-2 items-center justify-between w-full h-full px-3"

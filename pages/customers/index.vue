@@ -2,41 +2,12 @@
 	import { ref } from "vue";
 	import colShowArrInt from "~/types/colShowArr";
 	import Ticket from "~/types/Ticket";
-	import { useCustomersPageStore } from "@/stores/customersPageStore.js";
-	let customersPageStore = useCustomersPageStore();
+	import { useCustomersStore } from "~/stores/customersStore.js";
+	let customersStore = useCustomersStore();
 
 	const input4 = ref("");
-	const filtersFormData = [
-		{
-			name: "Created",
-			value: "",
-			type: "select",
-			data: [
-				{ label: "Any Time", value: "Any Time" },
-				{ label: "Last Week", value: "Last Week" },
-				{ label: "Last Month", value: "Last Month" },
-				{ label: "Last Year", value: "Last Year" },
-			],
-		},
-		{
-			name: "Time Zone",
-			type: "select",
-			value: "",
-			data: [{ label: "(GMT +06:00) Dhaka", value: "(GMT +06:00) Dhaka" }],
-		},
-		{
-			name: "Companies",
-			type: "select",
-			value: "",
-			data: [
-				{ label: "Udvash", value: "Udvash" },
-				{ label: "Unmesh", value: "Unmesh" },
-				{ label: "Square", value: "Square" },
-				{ label: "Bashundhara", value: "Bashundhara" },
-			],
-		},
-	];
 
+	const showEditModal = ref(true);
 	definePageMeta({
 		layout: false,
 	});
@@ -46,7 +17,7 @@
 	<div>
 		<NuxtLayout name="default">
 			<template #title>Customers</template>
-			<TableFeature :showEditOptions="customersPageStore.showEditOptions">
+			<TableFeature :showEditOptions="customersStore.showEditOptions">
 				<template #second-bar-left-edit-options>
 					<NavButton>
 						<svg
@@ -116,15 +87,17 @@
 				</template>
 				<template #feature-table>
 					<form action="">
-						<CustomersTable
-							@selection-change="customersPageStore.selectionChange($event)"
-						/>
+						<CustomersTable @showEditModal="showEditModal = true" />
 					</form>
 				</template>
 				<template #feature-filter>
-					<TicketListFilters />
+					<CustomersFilters />
 				</template>
 			</TableFeature>
+			<CustomersEditModal
+				:showEditModal="customersStore.showTableCustomerEditModal"
+				@close="customersStore.closeTableCustomerEditModal"
+			/>
 		</NuxtLayout>
 	</div>
 </template>

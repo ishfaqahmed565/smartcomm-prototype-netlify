@@ -1,7 +1,8 @@
 <script setup lang="ts">
 	import { ref, PropType, inject } from "vue";
 	import Ticket from "~/types/Ticket";
-	import type { Ref } from "vue";
+	import { useTicketsStore } from "~/stores/ticketsStore.js";
+	let ticketsStore = useTicketsStore();
 	interface Columns {
 		name: String;
 		show: Boolean;
@@ -138,7 +139,10 @@
 	}
 </script>
 <template>
-	<TableContainer :tableData="tickets">
+	<TableContainer
+		:tableData="tickets"
+		@selection-change="ticketsStore.selectionChange($event)"
+	>
 		<el-table-column type="selection"> </el-table-column>
 		<el-table-column label="Contact">
 			<template #default="scope"

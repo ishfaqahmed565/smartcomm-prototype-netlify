@@ -167,37 +167,35 @@
 </script>
 <template>
 	<Filters>
-		<template #filters>
-			<div class="grid gap-2" v-for="elem in filters" :key="elem.name">
-				<label for="contact" class="text-gray-400 text-xs font-bold">
-					{{ elem.name }} <span class="text-red-300">*</span>
-				</label>
-				<!--select elem-->
-				<client-only>
-					<el-select
-						v-show="elem.type === 'select'"
-						v-model="elem.value"
-						placeholder="Select"
-						filterable
-					>
-						<el-option
-							v-for="item in elem.data"
-							:key="item.value"
-							:label="item.label"
-							:value="item.value"
-						>
-						</el-option>
-					</el-select>
-				</client-only>
-				<!--select element-->
-				<!--input elem-->
-				<el-input
-					placeholder=""
+		<div class="grid gap-2" v-for="elem in filters" :key="elem.name">
+			<label for="contact" class="text-gray-400 text-xs font-bold">
+				{{ elem.name }} <span class="text-red-300">*</span>
+			</label>
+			<!--select elem-->
+			<client-only>
+				<el-select
+					v-show="elem.type === 'select'"
 					v-model="elem.value"
-					v-show="elem.type === 'input'"
-				></el-input>
-				<!--input elem-->
-			</div>
-		</template>
+					placeholder="Select"
+					filterable
+				>
+					<el-option
+						v-for="item in elem.data"
+						:key="item.value"
+						:label="item.label"
+						:value="item.value"
+					>
+					</el-option>
+				</el-select>
+			</client-only>
+			<!--select element-->
+			<!--input elem-->
+			<el-input
+				placeholder=""
+				v-model="elem.value"
+				v-show="elem.type === 'input'"
+			></el-input>
+			<!--input elem-->
+		</div>
 	</Filters>
 </template>

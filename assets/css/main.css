@@ -96,6 +96,9 @@
     .sidesticky-info-text{
         @apply text-[12px]
     }
+    .bg-light-purple-nav{
+        @apply text-white bg-light-purple hover:bg-light-purple !important
+    }
     
 }
 ::placeholder {
