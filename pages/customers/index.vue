@@ -3,7 +3,8 @@
 	import colShowArrInt from "~/types/colShowArr";
 	import Ticket from "~/types/Ticket";
 	import { useCustomersPageStore } from "@/stores/customersPageStore.js";
-	let customerPageStore = useCustomersPageStore();
+	let customersPageStore = useCustomersPageStore();
+
 	const input4 = ref("");
 	const filtersFormData = [
 		{
@@ -45,7 +46,7 @@
 	<div>
 		<NuxtLayout name="default">
 			<template #title>Customers</template>
-			<TableFeature>
+			<TableFeature :showEditOptions="customersPageStore.showEditOptions">
 				<template #second-bar-left-edit-options>
 					<NavButton>
 						<svg
@@ -108,17 +109,15 @@
 								d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
 							/>
 						</svg>
-						<span>Export</span>
+						<span>Export </span>
 					</NavButton>
-					<span class="text-gray-400">
-						{{ customerPageStore.multipleSelection }}
-					</span>
+					<span class="text-gray-400"> </span>
 					<PagButton />
 				</template>
 				<template #feature-table>
 					<form action="">
 						<CustomersTable
-							@selection-change="customerPageStore.selectionChange($event)"
+							@selection-change="customersPageStore.selectionChange($event)"
 						/>
 					</form>
 				</template>

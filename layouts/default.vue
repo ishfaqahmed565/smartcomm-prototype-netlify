@@ -64,15 +64,6 @@
 						>
 							<slot name="title"></slot>
 						</h2>
-
-						<NuxtLink
-							v-for="nav in leftNav"
-							:key="nav.to"
-							:to="nav.to"
-							class="info-header hover:animate-text"
-						>
-							{{ nav.name }}</NuxtLink
-						>
 					</div>
 					<div
 						class="right space-x-5 flex items-center justify-center font-medium text-sm"

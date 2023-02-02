@@ -6,6 +6,10 @@
 			default: true,
 			required: false,
 		},
+		showEditOptions: {
+			type: Boolean,
+			required: false,
+		},
 	});
 	//in the left section of the top bar i want to toggle between a sorting option i.e:Sort by or Search-done
 	// and edit options row when any column is selected.-done
@@ -18,15 +22,7 @@
 	//filters tab
 
 	//showEditOptions computes if an column is selected and show the edit options in the topnav
-	let showEditOptions = ref(false);
-	const setShowEditOptions = (array: Ticket[]) => {
-		if (array.length > 0) {
-			showEditOptions.value = true;
-		} else {
-			showEditOptions.value = false;
-		}
-	};
-	provide("setShowEditOptions", setShowEditOptions);
+
 	let showFiltersModal = ref(false);
 </script>
 <template>

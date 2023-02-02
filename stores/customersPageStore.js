@@ -8,4 +8,12 @@ export const useCustomersPageStore = defineStore("customersPage", {
 			this.multipleSelection = arr;
 		},
 	},
+	getters: {
+		showEditOptions(state) {
+			if (state.multipleSelection.length > 0) {
+				return true;
+			}
+			return false;
+		},
+	},
 });
