@@ -1,25 +1,21 @@
 <script setup>
-	let props = defineProps({
-		showMergeModal: {
-			required: true,
-			type: Boolean,
-		},
-	});
+	import ModalFormSubmitSec from "../ModalFormSubmitSec.vue";
+	import { useTicketsStore } from "~/stores/ticketsStore.js";
+	let ticketsStore = useTicketsStore();
 </script>
 <template>
-	<EditModal :showEditModal="showMergeModal" @close="$emit('closeMergeModal')">
-		<div class="grid gap-2">
-			<div class="flex items-center gap-2">
-				<NavButton>
-					<Svgs name="merge" />
-				</NavButton>
-				<span class="info-header">Merge Ticket</span>
-			</div>
-			<span class="info-text"
-				>1 ticket(s) selected (interactions from secondary tickets will be added
-				to the primary ticket)</span
-			>
-		</div>
+	<EditModal
+		:showEditModal="ticketsStore.showMergeModal"
+		@close="$emit('close')"
+	>
+		<EditModalHeader>
+			<template #title> Merge Ticket</template>
+			<template #svg> <Svgs name="merge" /></template>
+		</EditModalHeader>
+		<span class="info-text"
+			>1 ticket(s) selected (interactions from secondary tickets will be added
+			to the primary ticket)</span
+		>
 		<div class="flex items-center gap-2">
 			<DropDown>
 				<template #drop-button> Contact </template>
@@ -57,8 +53,6 @@
 			<input type="checkbox" />
 			<span class="inbox-text">Add secondary ticket recipients to CC</span>
 		</div>
-		<div class="flex items-center justify-between border-t pt-3">
-			<FormSubmitSec />
-		</div>
+		<ModalFormSubmitSec />
 	</EditModal>
 </template>

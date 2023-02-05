@@ -23,16 +23,18 @@
 				<div
 					v-if="props.showEditModal"
 					ref="editDrawer"
-					class="w-[400px] h-[100vh] overflow-auto absolute z-[500] right-0 feature-container rounded-none px-10 pt-10"
+					class="w-[400px] h-[100vh] overflow-clip absolute z-[500] right-0 feature-container rounded-none pt-10 pr-0"
 				>
 					<NavButton
-						class="bg-brand-red px-1 absolute top-0 left-0 p-[3px] px-[3px]"
+						class="bg-light-purple-nav text-white px-1 absolute top-0 left-0 p-[3px] px-[3px]"
 						style="border-radius: 0px"
 						@click="close"
 					>
 						<Svgs name="close" />
 					</NavButton>
-					<div class="grid gap-5">
+					<div
+						class="flex flex-col gap-5 max-h-[90vh] overflow-auto w-full px-10 pb-12"
+					>
 						<slot></slot>
 					</div>
 				</div>

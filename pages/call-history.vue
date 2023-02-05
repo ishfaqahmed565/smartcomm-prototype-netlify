@@ -113,7 +113,7 @@
 				</template>
 				<template #feature-table>
 					<form action="">
-						<ContactsTable />
+						<CustomersTable />
 					</form>
 				</template>
 				<template #feature-filter>

@@ -1,6 +1,11 @@
 <script setup lang="ts">
 	import colShowArrInt from "~/types/colShowArr";
 	import Ticket from "~/types/Ticket";
+	import { useTicketsStore } from "~/stores/ticketsStore.js";
+	let ticketsStore = useTicketsStore();
+	onBeforeUnmount(() => {
+		ticketsStore.$reset();
+	});
 	//selected rows that are selected by the check button
 	const selectedRows = ref<Ticket[]>([]);
 	//showFiltersTab maintains showing the FiltersTab
@@ -11,11 +16,7 @@
 	const ascending = ref(false);
 	const descending = ref(false);
 	//tableAnimation controls the shrinking and expanding of the data table
-	type tableAnimationType =
-		| "w-full"
-		| "leave-table-animation"
-		| "enter-table-animation";
-	const tableAnimation = ref<tableAnimationType>("w-full");
+
 	const multipleSelection = ref<Ticket[]>([]);
 	//columnsArr array hold the values of which column to show and which not to show i.e which columns are active
 	const colShowArr = ref<colShowArrInt[]>([
@@ -87,7 +88,7 @@
 	<div>
 		<NuxtLayout name="default">
 			<template #title> Tickets </template>
-			<TableFeature>
+			<TableFeature :showEditOptions="ticketsStore.showEditOptions">
 				<template #second-bar-left-edit-options>
 					<NavButton>
 						<svg
@@ -224,7 +225,7 @@
 					</NavButton>
 				</template>
 				<template #second-bar-left-sorting-options>
-					<form action="" v-if="!showEditOptions" class="second-bar__section">
+					<form action="" class="second-bar__section">
 						<client-only>
 							<el-select v-model="sortValue" placeholder="Sort by:">
 								<el-option

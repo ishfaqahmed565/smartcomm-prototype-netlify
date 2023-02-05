@@ -2,39 +2,14 @@
 	import { ref } from "vue";
 	import colShowArrInt from "~/types/colShowArr";
 	import Ticket from "~/types/Ticket";
+	import { useCustomersStore } from "~/stores/customersStore.js";
+	let customersStore = useCustomersStore();
 
 	const input4 = ref("");
-	const filtersFormData = [
-		{
-			name: "Created",
-			value: "",
-			type: "select",
-			data: [
-				{ label: "Any Time", value: "Any Time" },
-				{ label: "Last Week", value: "Last Week" },
-				{ label: "Last Month", value: "Last Month" },
-				{ label: "Last Year", value: "Last Year" },
-			],
-		},
-		{
-			name: "Time Zone",
-			type: "select",
-			value: "",
-			data: [{ label: "(GMT +06:00) Dhaka", value: "(GMT +06:00) Dhaka" }],
-		},
-		{
-			name: "Companies",
-			type: "select",
-			value: "",
-			data: [
-				{ label: "Udvash", value: "Udvash" },
-				{ label: "Unmesh", value: "Unmesh" },
-				{ label: "Square", value: "Square" },
-				{ label: "Bashundhara", value: "Bashundhara" },
-			],
-		},
-	];
-
+	onBeforeUnmount(() => {
+		customersStore.$reset();
+	});
+	const showEditModal = ref(true);
 	definePageMeta({
 		layout: false,
 	});
@@ -44,7 +19,7 @@
 	<div>
 		<NuxtLayout name="default">
 			<template #title>Customers</template>
-			<TableFeature>
+			<TableFeature :showEditOptions="customersStore.showEditOptions">
 				<template #second-bar-left-edit-options>
 					<NavButton>
 						<svg
@@ -107,20 +82,24 @@
 								d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
 							/>
 						</svg>
-						<span>Export</span>
+						<span>Export </span>
 					</NavButton>
-					<span class="text-gray-400"> 1 - 10 of 10 </span>
+					<span class="text-gray-400"> </span>
 					<PagButton />
 				</template>
 				<template #feature-table>
 					<form action="">
-						<ContactsTable />
+						<CustomersTable @showEditModal="showEditModal = true" />
 					</form>
 				</template>
 				<template #feature-filter>
-					<TicketListFilters />
+					<CustomersFilters />
 				</template>
 			</TableFeature>
+			<CustomersEditModal
+				:showEditModal="customersStore.showTableCustomerEditModal"
+				@close="customersStore.closeTableCustomerEditModal"
+			/>
 		</NuxtLayout>
 	</div>
 </template>

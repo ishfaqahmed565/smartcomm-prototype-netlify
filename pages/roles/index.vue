@@ -97,7 +97,9 @@
 					</el-input>
 				</div>
 				<div class="second-bar__section">
-					<NavButton class="black-nav"> New Agents </NavButton>
+					<NavButton class="black-nav">
+						<NuxtLink to="/roles/create">New Agents</NuxtLink>
+					</NavButton>
 					<NavButton
 						><svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -220,7 +222,6 @@
 					</div>
 				</div>
 				<TableContainer :tableData="agents">
-					<el-table-column type="selection"> </el-table-column>
 					<el-table-column label="Name" property="name">
 						<template #default="scope"
 							><NuxtLink to="" class="flex items-center gap-2">

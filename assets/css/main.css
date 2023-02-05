@@ -15,6 +15,8 @@
     --dark-blue: #252438;
     --dark-feature: #171932;
     --dark-l-blue: #107297;
+    --placeholder-color:rgb(203 213 225);
+   
   }
   
 .table-header {
@@ -94,8 +96,23 @@
     .sidesticky-info-text{
         @apply text-[12px]
     }
+    .bg-light-purple-nav{
+        @apply text-white bg-light-purple hover:bg-light-purple !important
+    }
     
 }
+::placeholder {
+    color:var(--placeholder-color) !important;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:var(--placeholder-color) !important;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+   color:var(--placeholder-color) !important;
+  }
 .dark .apexcharts-bar-area{
     fill:var(--dark-l-blue) ;
 

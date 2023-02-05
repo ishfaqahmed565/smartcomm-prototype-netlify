@@ -1,7 +1,11 @@
 <script setup lang="ts">
 	import { ref } from "vue";
-
 	import FormEl from "~/types/FormEl";
+	import { useTeamsStore } from "~/stores/teamsStore.js";
+	let teamsStore = useTeamsStore();
+	onBeforeUnmount(() => {
+		teamsStore.$reset();
+	});
 	let settingsForm = ref<FormEl[]>([
 		{
 			name: "Description",
@@ -59,7 +63,10 @@
 					$route.params.id
 				}}</span>
 			</template>
-			<TableFeature :showFiltersButton="false">
+			<TableFeature
+				:showFiltersButton="false"
+				:showEditOptions="teamsStore.showEditOptions"
+			>
 				<template #second-bar-left-sorting-options>
 					<span
 						class="info-header flex gap-1 items-center"
@@ -198,7 +205,7 @@
 					<NavButton
 						class="black-nav"
 						v-if="settingsVal === 'Agents'"
-						@click="showAgentDialog = true"
+						@click="teamsStore.openAddAgentDialog"
 					>
 						Add Agent
 					</NavButton>
@@ -230,18 +237,7 @@
 						<form class="grid form-space">
 							<FormElems :formData="settingsForm" />
 							<hr class="border-gray-300" />
-							<div class="flex max-w-fit place-self-end gap-2">
-								<button
-									class="py-1 px-2 text-sm infoheader border border-gray-400 rounded"
-								>
-									Cancel
-								</button>
-								<button
-									class="py-1 px-3 text-sm infoheader border border-black bg-blue-800 rounded text-white"
-								>
-									Save
-								</button>
-							</div>
+							<FormSubmitSec />
 						</form>
 					</div>
 					<!--Team Properties is here-->
@@ -263,8 +259,8 @@
 									v-model="autoTicketAssign"
 									class="ml-2"
 									style="
-										--el-switch-on-color: #13ce66;
-										--el-switch-off-color: #ff4949;
+										--el-switch-on-color: var(--light-purple);
+										--el-switch-off-color: #dcdfe6;
 									"
 									size="small"
 								/>
@@ -354,25 +350,14 @@
 							<form action=""></form>
 						</div>
 						<hr />
-						<div class="flex max-w-fit place-self-end gap-2">
-							<button
-								class="py-1 px-2 text-sm infoheader border border-gray-400 rounded"
-							>
-								Cancel
-							</button>
-							<button
-								class="py-1 px-3 text-sm infoheader border border-black bg-blue-800 rounded text-white"
-							>
-								Save
-							</button>
-						</div>
+						<FormSubmitSec />
 					</div>
 				</template>
 			</TableFeature>
 			<Dialog
 				title="Add Agents"
-				:showDialog="showAgentDialog"
-				@closeDialog="showAgentDialog = false"
+				:showDialog="teamsStore.showAddAgentDialog"
+				@closeDialog="teamsStore.closeAddAgentDialog"
 			>
 				<template #dialog-data>
 					<el-input
