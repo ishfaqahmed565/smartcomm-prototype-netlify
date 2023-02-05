@@ -2,7 +2,11 @@
 	import { ref } from "vue";
 	import colShowArrInt from "~/types/colShowArr";
 	import Ticket from "~/types/Ticket";
-
+	import { useCompaniesStore } from "~/stores/companiesStore.js";
+	let companiesStore = useCompaniesStore();
+	onBeforeUnmount(() => {
+		companiesStore.$reset();
+	});
 	const input4 = ref("");
 	const filtersFormData = [
 		{
@@ -45,7 +49,7 @@
 	<div>
 		<NuxtLayout name="default">
 			<template #title>All companies</template>
-			<TableFeature>
+			<TableFeature :showEditOptions="companiesStore.showEditOptions">
 				<template #second-bar-left-edit-options>
 					<NavButton>
 						<svg

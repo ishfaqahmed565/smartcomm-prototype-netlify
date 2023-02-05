@@ -32,7 +32,9 @@
 					>
 						<Svgs name="close" />
 					</NavButton>
-					<div class="flex flex-col gap-5 h-[90vh] overflow-auto w-full px-10">
+					<div
+						class="flex flex-col gap-5 max-h-[90vh] overflow-auto w-full px-10 pb-12"
+					>
 						<slot></slot>
 					</div>
 				</div>

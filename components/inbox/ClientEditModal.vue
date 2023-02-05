@@ -1,12 +1,7 @@
 <script setup lang="ts">
 	import { PropType } from "vue";
-	let props = defineProps({
-		showClientEditModal: {
-			required: true,
-			type: Boolean as PropType<boolean>,
-		},
-	});
-
+	import { useInboxStore } from "~/stores/inboxStore.js";
+	const inboxStore = useInboxStore();
 	let formElemSize = "";
 	let nameVal = ref("Ashiq Zaman");
 	let mobileVal = ref("");
@@ -23,8 +18,8 @@
 <template>
 	<Dialog
 		title="Edit Details"
-		@closeDialog="$emit('closeClientEditModal')"
-		:showDialog="props.showClientEditModal"
+		@closeDialog="$emit('close')"
+		:showDialog="inboxStore.showClientEditModal"
 	>
 		<template #dialog-data>
 			<form action="" class="grid gap-3">

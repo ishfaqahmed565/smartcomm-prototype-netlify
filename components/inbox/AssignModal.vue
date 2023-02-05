@@ -1,12 +1,8 @@
 <script lang="ts" setup>
 	import { ref } from "vue";
 
-	let props = defineProps({
-		showAssignModal: {
-			required: true,
-			type: Boolean,
-		},
-	});
+	import { useInboxStore } from "~/stores/inboxStore.js";
+	const inboxStore = useInboxStore();
 	let searchVal = ref("");
 	let ticketStatus = ref("pending");
 	let channels = ref("all");
@@ -49,20 +45,20 @@
 </script>
 <template>
 	<EditModal
-		:showEditModal="showAssignModal"
-		@close="$emit('closeAssignModal')"
+		:showEditModal="inboxStore.showAssignModal"
+		@close="$emit('close')"
 	>
-		<div class="flex items-center gap-2">
-			<div class="text-gray-700 bg-gray-100 p-1 rounded">
-				<Svgs name="arrow-path" />
-			</div>
-			<div class="grid space-y-[-1px]">
-				<h4 class="info-header">Assign Agent or Group</h4>
-				<p class="info-text">
+		<EditModalHeader>
+			<template #title>
+				Assign Agent or Group <br />
+				<p class="text-[10px] text-gray-400 capitalize">
 					You can only assign one agent or a group at a time
 				</p>
-			</div>
-		</div>
+			</template>
+			<template #svg>
+				<Svgs name="arrow-path" />
+			</template>
+		</EditModalHeader>
 		<div class="grid gap-2">
 			<div class="flex items-center justify-between">
 				<span class="info-text">Currently Assigned to:</span>

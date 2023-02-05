@@ -6,7 +6,9 @@
 	let customersStore = useCustomersStore();
 
 	const input4 = ref("");
-
+	onBeforeUnmount(() => {
+		customersStore.$reset();
+	});
 	const showEditModal = ref(true);
 	definePageMeta({
 		layout: false,

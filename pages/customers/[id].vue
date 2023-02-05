@@ -2,7 +2,9 @@
 	import { defineComponent } from "vue";
 	import { useCustomersStore } from "~/stores/customersStore.js";
 	let customersStore = useCustomersStore();
-
+	onBeforeUnmount(() => {
+		customersStore.$reset();
+	});
 	const route = useRoute();
 	const id = computed(() => route.params.id);
 	const showTimeline = ref<Boolean>(true);

@@ -2,7 +2,11 @@
 	import { ref, reactive } from "vue";
 	import colShowArrInt from "~/types/colShowArr";
 	import Ticket from "~/types/Ticket";
-	const showTeamDialog = ref(false);
+	import { useTeamsStore } from "~/stores/teamsStore.js";
+	const teamsStore = useTeamsStore();
+	onBeforeUnmount(() => {
+		teamsStore.$reset();
+	});
 	const input4 = ref("");
 	const filtersFormData = [
 		{
@@ -114,7 +118,7 @@
 					</form>
 				</template>
 				<template #second-bar-right>
-					<NavButton class="black-nav" @click="showTeamDialog = true">
+					<NavButton class="black-nav" @click="teamsStore.openTeamDialog">
 						New Teams
 					</NavButton>
 					<NavButton
@@ -148,8 +152,8 @@
 			</TableFeature>
 			<Dialog
 				title="New team"
-				:showDialog="showTeamDialog"
-				@closeDialog="showTeamDialog = false"
+				:showDialog="teamsStore.showTeamDialog"
+				@closeDialog="teamsStore.closeTeamDialog"
 			>
 				<template #dialog-data>
 					<form action="" class="grid gap-3">

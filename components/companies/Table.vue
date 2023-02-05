@@ -1,6 +1,7 @@
 <script setup lang="ts">
 	import { ref, PropType } from "vue";
-
+	import { useCompaniesStore } from "~/stores/companiesStore.js";
+	let companiesStore = useCompaniesStore();
 	const companies = ref([
 		{
 			name: "Grammenphone",
@@ -42,7 +43,10 @@
 	];
 </script>
 <template>
-	<TableContainer :tableData="companies">
+	<TableContainer
+		:tableData="companies"
+		@selection-change="companiesStore.selectionChange($event)"
+	>
 		<el-table-column type="selection"> </el-table-column>
 		<el-table-column label="Company" property="name">
 			<template #default="scope"

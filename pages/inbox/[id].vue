@@ -1,4 +1,9 @@
 <script lang="ts" setup>
+	import { useInboxStore } from "~/stores/inboxStore.js";
+	const inboxStore = useInboxStore();
+	onBeforeUnmount(() => {
+		inboxStore.$reset();
+	});
 	definePageMeta({
 		layout: false,
 	});

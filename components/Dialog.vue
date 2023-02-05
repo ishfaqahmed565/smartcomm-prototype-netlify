@@ -21,7 +21,7 @@
 			<div class="feature-container w-[400px] grip space-y-4">
 				<div class="flex w-full justify-between items-center">
 					<span>{{ props.title }}</span>
-					<NavButton class="bg-brand-red" @click="$emit('closeDialog')">
+					<NavButton class="bg-light-purple-nav" @click="$emit('closeDialog')">
 						<Svgs name="close" />
 					</NavButton>
 				</div>

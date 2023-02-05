@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 	import { ref } from "vue";
+	import { useInboxStore } from "~/stores/inboxStore.js";
+	const inboxStore = useInboxStore();
 	const showEditModal = ref(false);
 	let showClientEditModal = ref(false);
 	let showAssignModal = ref(false);
@@ -117,16 +119,7 @@
 		/>
 	</div>
 	<!--Editmodals starts here-->
-	<InboxClientEditModal
-		:showClientEditModal="showClientEditModal"
-		@closeClientEditModal="showClientEditModal = false"
-	/>
-	<InboxFilterModal
-		:showEditModal="showEditModal"
-		@closeEditModal="showEditModal = false"
-	/>
-	<InboxAssignModal
-		:showAssignModal="showAssignModal"
-		@closeAssignModal="showAssignModal = false"
-	/>
+	<InboxClientEditModal @close="inboxStore.closeClientEditModal" />
+	<InboxFiltersModal @close="inboxStore.closeFiltersModal" />
+	<InboxAssignModal @close="inboxStore.closeAssignModal" />
 </template>

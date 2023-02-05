@@ -3,6 +3,9 @@
 	import Ticket from "~/types/Ticket";
 	import { useTicketsStore } from "~/stores/ticketsStore.js";
 	let ticketsStore = useTicketsStore();
+	onBeforeUnmount(() => {
+		ticketsStore.$reset();
+	});
 	//selected rows that are selected by the check button
 	const selectedRows = ref<Ticket[]>([]);
 	//showFiltersTab maintains showing the FiltersTab

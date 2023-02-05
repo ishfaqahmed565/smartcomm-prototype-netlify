@@ -1,6 +1,7 @@
 <script setup lang="ts">
 	import { ref, PropType } from "vue";
-
+	import { useTeamsStore } from "~/stores/teamsStore.js";
+	let teamsStore = useTeamsStore();
 	const agents = ref([
 		{
 			name: "Ashiq Zaman",
@@ -11,7 +12,10 @@
 	]);
 </script>
 <template>
-	<TableContainer :tableData="agents">
+	<TableContainer
+		:tableData="agents"
+		@selection-change="teamsStore.selectionChange($event)"
+	>
 		<el-table-column type="selection"> </el-table-column>
 		<el-table-column label="Name" property="name">
 			<template #default="scope"

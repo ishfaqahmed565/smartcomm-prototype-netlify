@@ -3,7 +3,9 @@
 	import FormEl from "~/types/FormEl";
 	import { useTicketsStore } from "~/stores/ticketsStore.js";
 	let ticketsStore = useTicketsStore();
-
+	onBeforeUnmount(() => {
+		ticketsStore.$reset();
+	});
 	const route = useRoute();
 	const id = route.params.id;
 	const showActivity = ref(false);

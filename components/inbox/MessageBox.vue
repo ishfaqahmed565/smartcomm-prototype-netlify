@@ -1,4 +1,6 @@
 <script setup>
+	import { useInboxStore } from "~/stores/inboxStore.js";
+	const inboxStore = useInboxStore();
 	let props = defineProps({
 		messages: {
 			required: true,
@@ -45,14 +47,14 @@
 							class="ml-2"
 							size="small"
 							style="
-								--el-switch-on-color: #7c3985;
+								--el-switch-on-color: var(--light-purple);
 								--el-switch-off-color: #dcdfe6;
 							"
 						/>
 					</div>
 					<NavButton
-						class="nav-border-brand-red"
-						@click="$emit('showAssignModal')"
+						class="border-light-purple"
+						@click="inboxStore.openAssignModal"
 						>Agent
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +71,7 @@
 							/>
 						</svg>
 					</NavButton>
-					<NavButton class="bg-brand-red">Resolve </NavButton>
+					<NavButton class="bg-light-purple-nav">Resolve </NavButton>
 				</div>
 			</div>
 			<!--Message box-->
@@ -257,7 +259,7 @@
 							/>
 						</svg>
 					</div>
-					<NavButton class="bg-brand-red"
+					<NavButton class="bg-light-purple-nav"
 						><svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
