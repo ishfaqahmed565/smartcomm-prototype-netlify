@@ -40,7 +40,7 @@
 				<NavButton
 					@click="showFiltersModal = !showFiltersModal"
 					v-if="props.showFiltersButton"
-					><Svgs name="filter" />
+					><Svgs name="filter" class="w-4" />
 				</NavButton>
 			</div>
 		</div>

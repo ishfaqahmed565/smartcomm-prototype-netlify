@@ -2,17 +2,8 @@
 	import { ref, PropType, inject } from "vue";
 	import Ticket from "~/types/Ticket";
 	import { useTicketsStore } from "~/stores/ticketsStore.js";
+
 	let ticketsStore = useTicketsStore();
-	interface Columns {
-		name: String;
-		show: Boolean;
-	}
-	const props = defineProps({
-		columns: {
-			type: Array as PropType<Columns[]>,
-			required: false,
-		},
-	});
 
 	const selectElemInfo = ref({
 		group: [
@@ -93,8 +84,8 @@
 	const tickets = ref([
 		{
 			contact: "Ashiq Zaman",
-			subject: "Email adress changed",
-			source: "mail",
+			subject: "Email adress...",
+			source: "messenger",
 			id: 1,
 			img: "ashiq",
 			state: "Overdue",
@@ -121,7 +112,7 @@
 			subject: "Payment failed",
 			type: "inbox",
 			uid: "16878734",
-			source: "messenger",
+			source: "instagram",
 			id: 3,
 			img: "kamrun-nahar",
 			state: "Customer Responded",
@@ -131,12 +122,6 @@
 			status: "Open",
 		},
 	]);
-
-	function showCol(name2: String) {
-		const foundCol = props.columns.find((elem) => elem.name === name2);
-
-		return foundCol.show;
-	}
 </script>
 <template>
 	<TableContainer
@@ -166,14 +151,32 @@
 							? `/inbox/${scope.row.uid}`
 							: `/ticket-list/${scope.row.id}`
 					"
-					class="hover:animate-text flex gap-2"
+					class="flex items-center"
 				>
-					<Svgs :name="scope.row.source" />
-					{{ scope.row.subject }}
+					<div class="hover:animate-text flex gap-2">
+						<SocialSvgs :name="scope.row.source" />
+						{{ scope.row.subject }}
+					</div>
+					<span class="text-primary-red text-[11px]">#{{ scope.row.id }}</span>
 				</NuxtLink>
 			</template>
 		</el-table-column>
-		<el-table-column label="Group" property="group" v-if="showCol('Group')">
+		<el-table-column label="State" prop="state">
+			<template #default="scope">
+				<div
+					class="text-white w-max p-[1px] px-2 rounded text-xs border"
+					:class="{
+						'border-red-500 text-red-500 ': scope.row.state === 'Overdue',
+						'border-green-500 text-green-500': scope.row.state === 'New',
+						'border-blue-500 text-blue-500':
+							scope.row.state === 'Customer Responded',
+					}"
+				>
+					{{ scope.row.state }}
+				</div>
+			</template>
+		</el-table-column>
+		<el-table-column label="Group" property="group">
 			<template #default="scope">
 				<client-only>
 					<el-select
@@ -192,22 +195,8 @@
 				</client-only>
 			</template>
 		</el-table-column>
-		<el-table-column label="State" v-if="showCol('State')" prop="state">
-			<template #default="scope">
-				<div
-					class="text-white w-max px-2 py-[4px] rounded"
-					:class="{
-						'bg-red-500': scope.row.state === 'Overdue',
-						'bg-green-500': scope.row.state === 'New',
-						'bg-blue-500': scope.row.state === 'Customer Responded',
-					}"
-				>
-					{{ scope.row.state }}
-				</div>
-			</template>
-		</el-table-column>
 
-		<el-table-column label="Agent" property="agent" v-if="showCol('Group')">
+		<el-table-column label="Agent" property="agent">
 			<template #default="scope">
 				<client-only>
 					<el-select v-model="scope.row.agent" filterable>
@@ -226,7 +215,7 @@
 			label="Priority"
 			class-name="priority"
 			property="priority"
-			v-if="showCol('Priority')"
+			v-if="ticketsStore.showCol('Priority')"
 		>
 			<template #default="scope">
 				<client-only
@@ -264,7 +253,11 @@
 				</client-only>
 			</template>
 		</el-table-column>
-		<el-table-column label="Status" prop="status" v-if="showCol('Status')">
+		<el-table-column
+			label="Status"
+			prop="status"
+			v-if="ticketsStore.showCol('Status')"
+		>
 			<template #default="scope">
 				<client-only>
 					<el-select v-model="scope.row.status" filterable>

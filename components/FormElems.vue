@@ -3,7 +3,7 @@
 	import FormEl from "~/types/FormEl";
 	export default defineComponent({
 		props: {
-			formData: { required: true, type: Array as PropType<FormEl[]> },
+			formData: { required: true, type: Array },
 			size: { required: false, type: String as PropType<String> },
 		},
 	});
@@ -21,9 +21,9 @@
 				:size="size"
 				filterable
 				v-model="elem.value"
-				:multiple="elem.name === 'Tags'"
-				:allow-create="elem.name === 'Tags'"
-				:default-first-option="elem.name === 'Tags'"
+				:multiple="elem.tags === 'true'"
+				:allow-create="elem.tags === 'true'"
+				:default-first-option="elem.tags === 'true'"
 			>
 				<el-option
 					v-for="item in elem.data"

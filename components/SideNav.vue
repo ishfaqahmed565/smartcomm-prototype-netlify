@@ -29,22 +29,22 @@
 				class="min-w-[70px] object-cover mt-2"
 			/>
 			<!--SideNav Button goes here-->
-			<div class="space-y-[2rem]">
-				<div class="space-y-[.2rem]">
+			<div class="space-y-[1.5rem]">
+				<div class="space-y-[.3rem]">
 					<SideIcon
 						v-for="icon in side1"
 						:key="icon.imgName"
 						:sideNavData="icon"
 					/>
 				</div>
-				<div class="space-y-[.2rem]">
+				<div class="space-y-[.3rem]">
 					<SideIcon
 						v-for="icon in side2"
 						:key="icon.imgName"
 						:sideNavData="icon"
 					/>
 				</div>
-				<div class="space-y-[.2rem]">
+				<div class="space-y-[.3rem]">
 					<SideIcon
 						v-for="icon in side3"
 						:key="icon.imgName"
