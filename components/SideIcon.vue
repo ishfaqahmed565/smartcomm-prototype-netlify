@@ -8,7 +8,7 @@
 <template>
 	<NuxtLink
 		:to="`/${props.sideNavData.imgName}`"
-		class="bg-none group side-icon rounded-lg p-2 relative flex transition-all ease-linear hover:bg-white/[.20]"
+		class="bg-none group side-icon rounded-full p-2 relative flex transition-all ease-linear hover:bg-white/[.10]"
 	>
 		<img
 			:src="`/svgs/sidebar/${props.sideNavData.imgName}.svg`"
@@ -27,6 +27,6 @@
 </template>
 <style scoped>
 	.router-link-active {
-		background-color: rgb(255 255 255 / 0.2);
+		background-color: rgb(255 255 255 / 0.1);
 	}
 </style>

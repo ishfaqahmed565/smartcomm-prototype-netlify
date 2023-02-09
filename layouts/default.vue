@@ -55,12 +55,12 @@
 			<!--In the top bar there two dynamic named slots which #title and #secondbar which varies from page to page-->
 			<!--Second bar is the bottom section of the top bar-->
 			<div
-				class="bg-white border-b border-gray-300 dark:border-gray-600 sticky-nav dark:bg-dark-blue"
+				class="bg-white border-b border-light-purple dark:border-gray-600 sticky-nav dark:bg-dark-blue"
 			>
 				<div class="flex items-center p-3 justify-between">
 					<div class="left space-x-5 flex items-center justify-center">
 						<h2
-							class="text-xl font-bold mb-[2px] dark:text-white text-light-purple"
+							class="text-lg font-bold mb-[2px] dark:text-white text-light-purple"
 						>
 							<slot name="title"></slot>
 						</h2>
@@ -70,7 +70,7 @@
 					>
 						<NavButton @click="theme.toggleTheme">Dark</NavButton>
 						<DropDown
-							buttonStyle="bg-primary-red-nav hover:bg-primary-red text-white new-button dark:border-none"
+							buttonStyle="bg-primary-red-nav hover:bg-primary-red text-white new-button dark:border-dark-l-blue border-primary-red"
 						>
 							<template #drop-button>
 								<Svgs name="add" class="w-[12px]" stroke-width="2" />
@@ -131,7 +131,16 @@
 
 						<div class="relative grid" ref="profileTabButton">
 							<button @click="profileTab = !profileTab">
-								<img src="/avatar.png" alt="" class="w-8 object-cover" />
+								<img
+									src="/images/avatar.png"
+									alt=""
+									class="w-8 object-cover dark:hidden"
+								/>
+								<img
+									src="/images/dark-avatar.png"
+									alt=""
+									class="w-8 object-cover dark:block hidden"
+								/>
 							</button>
 							<TransWrap :show="profileTab">
 								<PopUp v-show="profileTab"

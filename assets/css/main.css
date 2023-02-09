@@ -11,19 +11,51 @@
 :root {
     --primary-red: #D83742;
     --light-purple: #3B2A82;
+    --form-light-purple: #8C82AD; 
+    --dark-text-blue: #8997BD;
+   
     --light-feature: #E1E4F1;
     --dark-blue: #252438;
     --dark-feature: #171932;
     --dark-l-blue: #107297;
     --placeholder-color:rgb(203 213 225);
+    --light-text-purple: #8C82AD;
+    --light-table-header:#5A55CE;
+   
    
   }
-  
+  .dark .el-select {
+    
+    --el-select-input-focus-border-color:var(--dark-l-blue) !important;
+
+   
+}
+  .el-select {
+    --el-select-border-color-hover: var(--light-purple) !important;
+    --el-select-disabled-border: var(--el-disabled-border-color);
+    --el-select-font-size: var(--el-font-size-base);
+    --el-select-close-hover-color: var(--el-text-color-secondary);
+    --el-select-input-color: var(--el-text-color-placeholder);
+    --el-select-multiple-input-color: var(--el-text-color-regular);
+    --el-select-input-focus-border-color:var(--light-purple) !important;
+    --el-select-input-font-size: 14px;
+   
+}
+ th{
+    color:white;
+    font-weight:500
+ }
+ .el-tag.el-tag--info {
+    --el-tag-text-color: #ffffff !important;
+}
 .table-header {
-    background: #F3F4F6 !important;
+    background: var(--light-table-header) !important;
 }
 .apexcharts-title-text {
     margin: 5px !important;
+}
+.el-select__tags .el-tag--info {
+    background-color: var(--light-table-header) !important;
 }
 @layer components{ 
     .feature-main-card{
@@ -35,24 +67,28 @@
     .black-nav{
         @apply bg-black text-white hover:bg-black !important
     }
+    .second-bar .nav-button{
+        @apply text-xs p-[3px] px-1
+    }
     .form-space{
         @apply space-y-7
     }
     .form-elem-container{
         @apply grid gap-1 w-full
     } 
+  
     .profile-img{
         @apply w-10 h-10 object-cover rounded
     }
     .feature-container{
-        @apply bg-white p-4 rounded shadow border border-light-purple/[.4] dark:bg-dark-blue
+        @apply bg-white p-4 rounded shadow border  dark:border-dark-blue-border border-form-light-purple dark:bg-dark-blue  
     }
     
     .info-header{
         @apply font-semibold text-gray-800 text-sm dark:text-white;
     }
     .info-text{
-        @apply text-gray-800 text-xs dark:text-white ;
+        @apply text-light-text-purple text-xs dark:text-dark-text-blue ;
     }
     
     .inbox-header{
@@ -78,7 +114,7 @@
        @apply hover:bg-blue-100 text-black transition-all w-full text-start info-text p-2 hover:text-blue-400 flex gap-2 items-center border-b
     }
     .second-bar{
-        @apply flex p-3 justify-between w-full items-center bg-white shadow border-gray-300 font-medium text-sm z-50 top-[56px] dark:bg-dark-blue border-b dark:border-gray-600 !important ;
+        @apply flex p-2 px-3 justify-between w-full items-center bg-white shadow-md border-transparent font-medium text-sm z-50 top-[56px] dark:bg-dark-blue border-b dark:border-gray-600 !important ;
     }
     .second-bar__section{
         @apply flex gap-2 items-center
@@ -127,9 +163,7 @@
     color: white !important;
 
 }
-.dark .feature-container{
-    border-color: #1072974D;
-}
+
 .dark .el-input__wrapper{
     background:transparent !important;
 }
@@ -194,7 +228,7 @@ body{
 .dark .new-button{
     background: var(--dark-l-blue) !important;
 }
- .is-focus{
+ /*.is-focus{
     outline:2px solid var(--light-purple);
     outline-offset: -2px;
     border-radius: 3px;
@@ -202,7 +236,7 @@ body{
 }
 .dark .is-focus{
     outline:2px solid var(--dark-l-blue);
-}
+}*/
 .dark .el-input__wrapper{
     box-shadow: 0 0 0 1px gray inset !important;
 }
@@ -226,12 +260,12 @@ body{
     --el-input-hover-border: var(--el-border-color-hover);
     --el-input-focus-border-color: var(--light-purple) !important;
     --el-input-transparent-border: 0 0 0 1px transparent inset;
-    --el-input-border-color: var(--el-border-color);
+    --el-input-border-color: var(--form-light-purple) !important;
     --el-input-border-radius: var(--el-border-radius-base);
     --el-input-bg-color: var(--el-fill-color-blank);
     --el-input-icon-color: var(--el-text-color-placeholder);
     --el-input-placeholder-color: black !important;
-    --el-input-hover-border-color: var(--el-border-color-hover);
+    --el-input-hover-border-color: var(--light-purple) !important;
     --el-input-clear-hover-color: var(--el-text-color-secondary);
     font-size: var(--el-font-size-base);
 }

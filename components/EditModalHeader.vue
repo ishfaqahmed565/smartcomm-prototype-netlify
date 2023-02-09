@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="flex justify-between w-full items-center sticky top-0 bg-white z-[10] pb-2 border-b"
+		class="flex justify-between w-full items-center sticky top-0 bg-white z-[10] pb-3 border-b dark:bg-dark-blue"
 	>
 		<span class="text-[14px] font-[500] uppercase">
 			<slot name="title"></slot>

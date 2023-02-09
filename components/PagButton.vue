@@ -1,6 +1,6 @@
 <template>
 	<div class="flex">
-		<NavButton class="rounded-l-md rounded-r-none">
+		<NavButton class="rounded-l-md rounded-r-none border-r-[0px]">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"

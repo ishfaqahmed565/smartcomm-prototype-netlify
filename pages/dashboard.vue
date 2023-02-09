@@ -52,7 +52,8 @@
 						<el-select
 							v-model="sortValue"
 							placeholder="Sort by:"
-							class="w-[9rem]"
+							class="w-[8.5rem]"
+							size="small"
 						>
 							<el-option
 								v-for="item in sortOptions"
@@ -82,7 +83,7 @@
 							class="w-11"
 						/>
 						<div class="grid place-items-start">
-							<h3 class="text-sm text-gray-400 dark:text-white">
+							<h3 class="text-sm text-light-text-purple dark:text-white">
 								{{ task.name }}
 							</h3>
 							<p
@@ -98,11 +99,11 @@
 					<div class="w-8/12">
 						<DashboardChartItem />
 					</div>
-					<div class="stats w-4/12 grid grid-cols-2 gap-1 py-[4rem]">
+					<div class="stats w-4/12 grid grid-cols-2 gap-2 py-[4rem]">
 						<div
 							v-for="(stat, index) in stats"
 							:key="stat.name"
-							class="px-4 py-3 flex flex-col group text-white hover:text-blue-400 transition-all bg-light-purple dark:bg-dark-l-blue"
+							class="px-4 py-3 flex rounded flex-col group text-white transition-all bg-light-purple dark:bg-dark-l-blue"
 							:class="{ 'col-span-2': index == 4 }"
 						>
 							<span class="text-sm text-white w-max">{{ stat.name }}</span>
@@ -118,45 +119,125 @@
 				<!--Chart info ends here-->
 				<div class="grid grid-cols-3 gap-4">
 					<div class="feature-container p-4">
-						<div class="todo-header ml-2">
-							<h3 class="info-header mb-1">To-do</h3>
-							<div class="flex space-x-1">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke-width="1.5"
-									stroke="currentColor"
-									class="w-5 text-green-400"
-								>
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-									/>
-								</svg>
-								<span class="info-text">Add a todo</span>
+						<div class="todo-header">
+							<div class="ml-2">
+								<h3 class="info-header mb-1">To-do</h3>
+								<div class="flex space-x-1">
+									<p class="info-text text-light-text-purple">Add a todo</p>
+								</div>
+							</div>
+							<div class="flex mb-1 items-center justify-between">
+								<div class="info-text flex items-center gap-1">
+									<Svgs name="chevron-left" class="w-3" />Thursday
+								</div>
+								<div class="info-text flex items-center gap-1">
+									12th May,2023<Svgs name="chevron-right" class="w-3" />
+								</div>
 							</div>
 						</div>
 						<hr />
 						<div class="flex flex-col items-center justify-center gap-2 pt-9">
 							<svg
-								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 100 100"
 								fill="none"
-								viewBox="0 0 24 24"
-								stroke-width=".8"
-								stroke="currentColor"
-								class="w-20 text-gray-400"
+								xmlns="http://www.w3.org/2000/svg"
+								class="w-[5rem] dark:hidden"
 							>
 								<path
+									d="M16.6667 33.3333H83.3334"
+									stroke="#3B2A82"
+									stroke-width="2"
 									stroke-linecap="round"
 									stroke-linejoin="round"
-									d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z"
+								/>
+								<path
+									d="M79.1668 16.6667H20.8334C18.5322 16.6667 16.6667 18.5322 16.6667 20.8334V79.1667C16.6667 81.4679 18.5322 83.3334 20.8334 83.3334H79.1668C81.4679 83.3334 83.3334 81.4679 83.3334 79.1667V20.8334C83.3334 18.5322 81.4679 16.6667 79.1668 16.6667Z"
+									stroke="#3B2A82"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+								<path
+									d="M60.4166 58.3333H39.5833"
+									stroke="#3B2A82"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+								<path
+									d="M50 47.9167V68.75"
+									stroke="#3B2A82"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+								<path
+									d="M66.6667 8.33331V16.6666"
+									stroke="#3B2A82"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+								<path
+									d="M33.3333 8.33331V16.6666"
+									stroke="#3B2A82"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
 								/>
 							</svg>
-							<span class="info-text text-gray-400"
-								>You have no task to do!</span
+							<svg
+								class="w-[5rem] hidden dark:block"
+								viewBox="0 0 100 100"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
 							>
+								<path
+									d="M79.1668 16.6666H20.8334C18.5322 16.6666 16.6667 18.5321 16.6667 20.8333V79.1666C16.6667 81.4678 18.5322 83.3333 20.8334 83.3333H79.1668C81.4679 83.3333 83.3334 81.4678 83.3334 79.1666V20.8333C83.3334 18.5321 81.4679 16.6666 79.1668 16.6666Z"
+									fill="#41475C"
+									stroke="white"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+								<path
+									d="M16.667 33.334H83.3337"
+									stroke="white"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+								<path
+									d="M60.4166 58.3334H39.5833"
+									stroke="white"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+								<path
+									d="M50 47.9166V68.75"
+									stroke="white"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+								<path
+									d="M66.6667 8.33337V16.6667"
+									stroke="white"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+								<path
+									d="M33.3333 8.33337V16.6667"
+									stroke="white"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+
+							<span class="info-text">You have no task to do!</span>
 						</div>
 					</div>
 					<!--Todo ends here-->
@@ -167,31 +248,25 @@
 									Unresolved Tickets
 								</h3>
 								<NuxtLink
-									class="text-light-purple text-[11px] hover:underline dark:text-white"
+									class="text-[11px] text-light-purple e dark:text-white"
 									>View Details</NuxtLink
 								>
 							</div>
-
+							<p class="info-text">Across smartcomm</p>
 							<div class="flex mb-1 items-center justify-between">
-								<span class="info-text text-gray-400">Group</span>
-								<span class="info-text text-light-purple dark:text-dark-l-blue"
-									>Open</span
-								>
+								<p class="info-text">Group</p>
+								<p class="info-text">Open</p>
 							</div>
 						</div>
 						<hr />
 						<div class="grid gap-1 mt-2">
 							<div class="flex space-x-1 mb-1 items-center justify-between">
-								<span class="info-text text-gray-400">Customer Support</span>
-								<span class="info-text text-light-purple dark:text-dark-l-blue"
-									>32</span
-								>
+								<p class="info-text">Customer Support</p>
+								<p class="info-text">32</p>
 							</div>
 							<div class="flex space-x-1 mb-1 items-center justify-between">
-								<span class="info-text text-gray-400">Customer Support</span>
-								<span class="info-text text-light-purple dark:text-dark-l-blue"
-									>32</span
-								>
+								<p class="info-text">Customer Support</p>
+								<p class="info-text">32</p>
 							</div>
 						</div>
 					</div>
@@ -200,9 +275,7 @@
 					<div class="feature-container feedback space-y-2">
 						<div class="feedback-header">
 							<h3 class="info-header dark:text-white">Customer satisfaction</h3>
-							<p class="info-text text-gray-400 dark:text-dark-l-blue">
-								Accross helpdesk this month
-							</p>
+							<p class="info-text">Accross smartcomm this month</p>
 						</div>
 						<div class="grid gap-2">
 							<div>

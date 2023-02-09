@@ -95,9 +95,9 @@
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
 							viewBox="0 0 24 24"
-							stroke-width="2"
+							stroke-width="1.3"
 							stroke="currentColor"
-							class="w-[17px]"
+							class="w-4"
 						>
 							<path
 								stroke-linecap="round"
@@ -113,9 +113,9 @@
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
 							viewBox="0 0 24 24"
-							stroke-width="2"
+							stroke-width="1.3"
 							stroke="currentColor"
-							class="w-[17px]"
+							class="w-4"
 						>
 							<path
 								stroke-linecap="round"
@@ -129,9 +129,9 @@
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
 							viewBox="0 0 24 24"
-							stroke-width="2"
+							stroke-width="1.3"
 							stroke="currentColor"
-							class="w-[17px]"
+							class="w-4"
 						>
 							<path
 								stroke-linecap="round"
@@ -145,9 +145,9 @@
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
 							viewBox="0 0 24 24"
-							stroke-width="1.5"
+							stroke-width="1.3"
 							stroke="currentColor"
-							class="w-[17px]"
+							class="w-4"
 						>
 							<path
 								stroke-linecap="round"
@@ -161,9 +161,9 @@
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
 							viewBox="0 0 24 24"
-							stroke-width="1.5"
+							stroke-width="1.3"
 							stroke="currentColor"
-							class="w-[17px]"
+							class="w-4"
 						>
 							<path
 								stroke-linecap="round"
@@ -177,9 +177,9 @@
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
 							viewBox="0 0 24 24"
-							stroke-width="1.5"
+							stroke-width="1.3"
 							stroke="currentColor"
-							class="w-[17px]"
+							class="w-4"
 						>
 							<path
 								stroke-linecap="round"
@@ -193,9 +193,9 @@
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
 							viewBox="0 0 24 24"
-							stroke-width="1.5"
+							stroke-width="1.3"
 							stroke="currentColor"
-							class="w-[17px]"
+							class="w-4"
 						>
 							<path
 								stroke-linecap="round"
@@ -205,29 +205,16 @@
 						</svg>
 						<span>Spam</span>
 					</NavButton>
-					<NavButton>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke-width="1.5"
-							stroke="currentColor"
-							class="w-[17px]"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-							/>
-						</svg>
-
-						<span>Delete</span>
-					</NavButton>
+					<DeleteButton />
 				</template>
 				<template #second-bar-left-sorting-options>
 					<form action="" class="second-bar__section">
 						<client-only>
-							<el-select v-model="sortValue" placeholder="Sort by:">
+							<el-select
+								v-model="sortValue"
+								placeholder="Sort by:"
+								size="small"
+							>
 								<el-option
 									v-for="item in sortOptions"
 									:key="item.value"
@@ -250,157 +237,13 @@
 					</form>
 				</template>
 				<template #second-bar-right>
-					<NavButton
-						><svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke-width="1.5"
-							stroke="currentColor"
-							class="w-4"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-							/>
-						</svg>
-						<span>Export</span>
-					</NavButton>
-					<span class="text-gray-400"> 1 - 10 of 10 </span>
+					<ExportButton />
+					<span class="text-xs text-black"> 1 - 10 of 10 </span>
 					<PagButton />
 
-					<div class="relative">
-						<NavButton @click="showColsTab = !showColsTab"
-							><svg
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke-width="1.5"
-								stroke="currentColor"
-								class="w-[13px] text-blue-600"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
-								/>
-							</svg>
-						</NavButton>
-						<TransWrap :show="showColsTab">
-							<PopUp class="max-h-[30rem] overflow-y-auto">
-								<div class="space-y-4 p-5">
-									<div
-										class="grid border-b-2 border-gray-300 border-dotted pb-5 gap-2"
-									>
-										<span class="info-header">Fixed Columns</span>
-
-										<div class="p-2 grid gap-2">
-											<span>Contact</span> <span>Subject</span>
-										</div>
-									</div>
-
-									<div
-										class="grid gap-2 grid border-b-2 border-gray-300 border-dotted pb-5"
-									>
-										<span class="info-header"
-											>Columns you've added
-											<i class="text-[10px] text-gray-600">(Max 4)</i></span
-										>
-
-										<button
-											class="flex justify-between group active:translate-y-0 active:shadow-none items-center px-2 py-1 trasition-all duration-500 hover:shadow-lg hover:-translate-y-1"
-											v-for="col in colsActive"
-											:key="col.name"
-											@click="toggleShowCol(col.name)"
-										>
-											<div class="flex items-center gap-1">
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													fill="none"
-													viewBox="0 0 24 24"
-													stroke-width="1.5"
-													stroke="currentColor"
-													class="w-5 text-red-500 group-hover:text-red-800"
-												>
-													<path
-														stroke-linecap="round"
-														stroke-linejoin="round"
-														d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-													/>
-												</svg>
-												<span>{{ col.name }}</span>
-											</div>
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												fill="none"
-												viewBox="0 0 24 24"
-												stroke-width="1.5"
-												stroke="currentColor"
-												class="w-4"
-											>
-												<path
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
-												/>
-											</svg>
-										</button>
-									</div>
-									<div class="grid gap-2 grid pb-5">
-										<span class="info-header">Columns you can add </span>
-
-										<button
-											:class="{
-												' active:translate-y-0 active:shadow-none trasition-all opacity-100 duration-500 hover:shadow-lg hover:-translate-y-1 ':
-													colsActive.length < 5,
-											}"
-											class="flex justify-between group items-center px-2 py-1 opacity-50"
-											v-for="col in colsInActive"
-											@click="colsActive.length < 5 && toggleShowCol(col.name)"
-											:key="col.name"
-										>
-											<div class="flex items-center gap-1">
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													fill="none"
-													viewBox="0 0 24 24"
-													stroke-width="1.5"
-													stroke="currentColor"
-													:class="{
-														'text-green-500 group-hover:text-green-800':
-															colsActive.length < 5,
-													}"
-													class="w-5"
-												>
-													<path
-														stroke-linecap="round"
-														stroke-linejoin="round"
-														d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-													/>
-												</svg>
-												<span>{{ col.name }}</span>
-											</div>
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												fill="none"
-												viewBox="0 0 24 24"
-												stroke-width="1.5"
-												stroke="currentColor"
-												class="w-4"
-											>
-												<path
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
-												/>
-											</svg>
-										</button>
-									</div>
-								</div>
-							</PopUp>
-						</TransWrap>
-					</div>
+					<NavButton @click="ticketsStore.openColumnsModal"
+						><Svgs name="pen" class="w-4" />
+					</NavButton>
 				</template>
 				<template #feature-table>
 					<form action="">
@@ -409,6 +252,7 @@
 				</template>
 				<template #feature-filter> <TicketListFilters /> </template>
 			</TableFeature>
+			<TicketListColumnsModal />
 		</NuxtLayout>
 	</div>
 </template>
