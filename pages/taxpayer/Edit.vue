@@ -105,10 +105,12 @@
 						<el-form-item prop="residentialStatus">
 							<div class="form-elem-container">
 								<FormLabel> Residential Status </FormLabel>
-								<el-radio-group v-model="formData.residentialStatus">
-									<el-radio label="Residential" />
-									<el-radio label="Non-Residential" />
-								</el-radio-group>
+
+								<el-checkbox
+									v-model="formData.residentialStatus"
+									label="Resident"
+									size="large"
+								/>
 							</div>
 						</el-form-item>
 
@@ -126,7 +128,7 @@
 									@click.prevent="submitForm(ruleFormRef)"
 									class="py-1 px-3 infoheader border shadow bg-blue-500 rounded text-white text-sm"
 								>
-									Create
+									Submit
 								</button>
 							</div>
 						</div>
