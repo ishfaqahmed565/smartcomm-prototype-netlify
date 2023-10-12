@@ -25,6 +25,7 @@
         "vue-apexcharts": "^1.6.2",
         "vue-closable": "^0.0.3",
         "vue-draggable-next": "^2.1.1",
+        "vue-use-head": "^0.0.0",
         "vue3-apexcharts": "^1.4.1",
         "vuedraggable": "^4.1.0"
     }

@@ -2,6 +2,7 @@
 	const email = ref("");
 	const password = ref("");
 	let form = ref({
+		name: "",
 		email: "",
 		password: "",
 	});
@@ -46,9 +47,7 @@
 			<div class="space-y-8">
 				<div class="text-center">
 					<h2 class="mt-6 text-3xl font-bold text-gray-900">Welcome To Wasa</h2>
-					<p class="mt-2 text-sm text-gray-500">
-						Please sign in to your account
-					</p>
+					<p class="mt-2 text-sm text-gray-500">Please create a new account</p>
 				</div>
 				<div class="flex flex-row justify-center items-center space-x-3">
 					<img
@@ -61,9 +60,19 @@
 				<el-form :model="form" class="mt-8 space-y-6">
 					<div class="relative">
 						<label class="ml-2 text-sm font-bold text-gray-700 tracking-wide"
+							>Name</label
+						>
+
+						<el-form-item prop="name" required>
+							<el-input placeholder="Name" size="large" v-model="form.name" />
+						</el-form-item>
+					</div>
+					<div class="relative">
+						<label class="ml-2 text-sm font-bold text-gray-700 tracking-wide"
 							>Email</label
 						>
-						<el-form-item prop="name" required>
+
+						<el-form-item prop="email" required>
 							<el-input
 								placeholder="your@email.com"
 								size="large"
@@ -75,6 +84,7 @@
 						<label class="ml-2 text-sm font-bold text-gray-700 tracking-wide">
 							Password
 						</label>
+
 						<el-form-item prop="password" required>
 							<el-input
 								size="large"
@@ -90,16 +100,16 @@
 							type="submit"
 							class="border-0 w-full transition-all flex justify-center bg-[#0090D5] text-white border shadow p-2 rounded-md tracking-wide font-semibold shadow-lg cursor-pointer transition ease-in duration-500 transtion-all hover:scale-[1.09]"
 						>
-							Sign In
+							Sign Up
 						</button>
 					</div>
 					<div class="flex items-center justify-center">
 						<div class="text-sm">
 							<NuxtLink
-								to="signup"
+								to="/"
 								class="text-[#6ABCE9] hover:text-[#0091D5] transition-all"
 							>
-								Don't have an account?
+								Have an account?
 							</NuxtLink>
 						</div>
 					</div>

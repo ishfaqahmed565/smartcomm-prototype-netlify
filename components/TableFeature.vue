@@ -37,11 +37,6 @@
 			</div>
 			<div class="second-bar__section">
 				<slot name="second-bar-right"> </slot>
-				<NavButton
-					@click="showFiltersModal = !showFiltersModal"
-					v-if="props.showFiltersButton"
-					><Svgs name="filter" class="w-4" />
-				</NavButton>
 			</div>
 		</div>
 		<div class="feature-main-card">
