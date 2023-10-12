@@ -86,12 +86,12 @@
 					</div>
 
 					<div>
-						<button
-							type="submit"
+						<NuxtLink
+							to="/taxpayer"
 							class="border-0 w-full transition-all flex justify-center bg-[#0090D5] text-white border shadow p-2 rounded-md tracking-wide font-semibold shadow-lg cursor-pointer transition ease-in duration-500 transtion-all hover:scale-[1.09]"
 						>
 							Sign In
-						</button>
+						</NuxtLink>
 					</div>
 					<div class="flex items-center justify-center">
 						<div class="text-sm">
